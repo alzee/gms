@@ -42,7 +42,7 @@
                 <a href="index.html">
                     <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
                     <span class="logo-compact">嘉骏0</span>
-                    <span class="brand-title">嘉骏</span>
+                    <span class="brand-title">嘉骏 GMS</span>
                 </a>
             </div>
         </div>
@@ -59,7 +59,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
                         </div>
-                        <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
+                        <input type="search" class="form-control" placeholder="搜索" aria-label="Search Dashboard">
                         <div class="drop-down animated flipInX d-md-none">
                             <form action="#">
                                 <input type="text" class="form-control" placeholder="Search">
@@ -230,44 +230,39 @@
         <div class="nk-sidebar">           
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li class="nav-label">统计</li>
+                    <li class="nav-label">数据</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">首页</span>
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">图表</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./index.html">Home 1</a></li>
-                            <!-- <li><a href="./index-2.html">Home 2</a></li> -->
+                            <li><a href="/dashboard">图表</a></li>
                         </ul>
                     </li>
                     <li class="mega-menu mega-menu-sm">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Layouts</span>
+                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">明细</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./layout-blank.html">Blank</a></li>
-                            <li><a href="./layout-one-column.html">One Column</a></li>
-                            <li><a href="./layout-two-column.html">Two column</a></li>
-                            <li><a href="./layout-compact-nav.html">Compact Nav</a></li>
-                            <li><a href="./layout-vertical.html">Vertical</a></li>
-                            <li><a href="./layout-horizontal.html">Horizontal</a></li>
-                            <li><a href="./layout-boxed.html">Boxed</a></li>
-                            <li><a href="./layout-wide.html">Wide</a></li>
-                            
-                            
-                            <li><a href="./layout-fixed-header.html">Fixed Header</a></li>
-                            <li><a href="layout-fixed-sidebar.html">Fixed Sidebar</a></li>
+                            <li><a href="/dashboard">交收明细</a></li>
+                            <li><a href="/dashboard">持单明细</a></li>
+                            <li><a href="/dashboard">工费查询</a></li>
+                            <li><a href="/dashboard">结存查询</a></li>
                         </ul>
                     </li>
-                    <li class="nav-label">Apps</li>
+                    <li class="nav-label">单据</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Email</span>
+                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">中央单</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./email-inbox.html">Inbox</a></li>
-                            <li><a href="./email-read.html">Read</a></li>
-                            <li><a href="./email-compose.html">Compose</a></li>
+                            <li><a href="./email-inbox.html">中央单</a></li>
+                            <li><a href="./email-read.html">自发单</a></li>
+                            <li><a href="./email-compose.html">分单</a></li>
+                            <li><a href="./email-compose.html">合单</a></li>
+                            <li><a href="./email-compose.html">单据类型</a></li>
+                            <li><a href="./email-compose.html">合作方式</a></li>
+                            <li><a href="./email-compose.html">工厂</a></li>
                         </ul>
                     </li>
                     <li>
@@ -292,10 +287,10 @@
                             <li><a href="./chart-peity.html">Peity</a></li>
                         </ul>
                     </li>
-                    <li class="nav-label">UI Components</li>
+                    <li class="nav-label">组织</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-grid menu-icon"></i><span class="nav-text">UI Components</span>
+                            <i class="icon-grid menu-icon"></i><span class="nav-text">部门</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./ui-accordion.html">Accordion</a></li>
@@ -314,25 +309,120 @@
                             <li><a href="./ui-progressbar.html">Progressbar</a></li>
                             <li><a href="./ui-tab.html">Tab</a></li>
                             <li><a href="./ui-typography.html">Typography</a></li>
-                        <!-- </ul>
+                        </ul>
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-layers menu-icon"></i><span class="nav-text">Components</span>
+                            <i class="icon-layers menu-icon"></i><span class="nav-text">人员</span>
                         </a>
-                        <ul aria-expanded="false"> -->
-                            <li><a href="./uc-nestedable.html">Nestedable</a></li>
-                            <li><a href="./uc-noui-slider.html">Noui Slider</a></li>
-                            <li><a href="./uc-sweetalert.html">Sweet Alert</a></li>
-                            <li><a href="./uc-toastr.html">Toastr</a></li>
+                        <ul aria-expanded="false">
+                            <li><a href="./uc-noui-slider.html">员工管理</a></li>
+                            <li><a href="./uc-sweetalert.html">文员</a></li>
+                            <li><a href="./uc-toastr.html">工匠</a></li>
+                            <li><a href="./uc-nestedable.html">员工性质</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="widgets.html" aria-expanded="false">
-                            <i class="icon-badge menu-icon"></i><span class="nav-text">Widget</span>
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">工艺科室</span>
                         </a>
                     </li>
-                    <li class="nav-label">Forms</li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">组别</span>
+                        </a>
+                    </li>
+                    <li class="nav-label">流程</li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">工序</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">工费</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">单类</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">模号类型</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">处理次序</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">操作类型</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">耗率</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">位置</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">金类</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">首饰类别</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">珠宝类别</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">货类</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">专线类型</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">处理次序</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">产品系列</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">粒数</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">镶嵌原料</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">附件</span>
+                        </a>
+                    </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-note menu-icon"></i><span class="nav-text">Forms</span>
