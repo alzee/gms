@@ -36,7 +36,7 @@ class DashboardController extends AbstractController
      */
     public function wage(): Response
     {
-        return $this->render('dashboard/trans.html.twig', [
+        return $this->render('dashboard/wage.html.twig', [
             'controller_name' => 'DashboardController',
         ]);
     }
