@@ -13,11 +13,11 @@
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
-        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-        <link href="./plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="./plugins/chartist/css/chartist.min.css">
-        <link rel="stylesheet" href="./plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
-        <link href="css/style.css" rel="stylesheet">
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+        <link href="/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/plugins/chartist/css/chartist.min.css">
+        <link rel="stylesheet" href="/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+        <link href="/css/style.css" rel="stylesheet">
     </head>
     <body>
         {% block body %}
@@ -40,7 +40,7 @@
         <div class="nav-header">
             <div class="brand-logo">
                 <a href="index.html">
-                    <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
+                    <b class="logo-abbr"><img src="/images/logo.png" alt=""> </b>
                     <span class="logo-compact">嘉骏0</span>
                     <span class="brand-title">嘉骏 GMS</span>
                 </a>
@@ -84,7 +84,7 @@
                                     <ul>
                                         <li class="notification-unread">
                                             <a href="javascript:void()">
-                                                <img class="float-left mr-3 avatar-img" src="images/avatar/1.jpg" alt="">
+                                                <img class="float-left mr-3 avatar-img" src="/images/avatar/1.jpg" alt="">
                                                 <div class="notification-content">
                                                     <div class="notification-heading">李偏</div>
                                                     <div class="notification-timestamp">8 小时前 </div>
@@ -94,7 +94,7 @@
                                         </li>
                                         <li class="notification-unread">
                                             <a href="javascript:void()">
-                                                <img class="float-left mr-3 avatar-img" src="images/avatar/2.jpg" alt="">
+                                                <img class="float-left mr-3 avatar-img" src="/images/avatar/2.jpg" alt="">
                                                 <div class="notification-content">
                                                     <div class="notification-heading">徐群</div>
                                                     <div class="notification-timestamp">8 小时前</div>
@@ -104,7 +104,7 @@
                                         </li>
                                         <li>
                                             <a href="javascript:void()">
-                                                <img class="float-left mr-3 avatar-img" src="images/avatar/3.jpg" alt="">
+                                                <img class="float-left mr-3 avatar-img" src="/images/avatar/3.jpg" alt="">
                                                 <div class="notification-content">
                                                     <div class="notification-heading">王约翰</div>
                                                     <div class="notification-timestamp">8 小时前</div>
@@ -114,7 +114,7 @@
                                         </li>
                                         <li>
                                             <a href="javascript:void()">
-                                                <img class="float-left mr-3 avatar-img" src="images/avatar/4.jpg" alt="">
+                                                <img class="float-left mr-3 avatar-img" src="/images/avatar/4.jpg" alt="">
                                                 <div class="notification-content">
                                                     <div class="notification-heading">毛玲丽</div>
                                                     <div class="notification-timestamp">8 小时前</div>
@@ -197,7 +197,7 @@
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="images/user/1.png" height="40" width="40" alt="">
+                                <img src="/images/user/1.png" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
@@ -354,28 +354,28 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
-        <script src="plugins/common/common.min.js"></script>
-        <script src="js/custom.min.js"></script>
-        <script src="js/settings.js"></script>
-        <script src="js/gleek.js"></script>
-        <script src="js/styleSwitcher.js"></script>
+        <script src="/plugins/common/common.min.js"></script>
+        <script src="/js/custom.min.js"></script>
+        <script src="/js/settings.js"></script>
+        <script src="/js/gleek.js"></script>
+        <script src="/js/styleSwitcher.js"></script>
         <!-- Chartjs -->
-        <script src="./plugins/chart.js/Chart.bundle.min.js"></script>
+        <script src="/plugins/chart.js/Chart.bundle.min.js"></script>
         <!-- Circle progress -->
-        <script src="./plugins/circle-progress/circle-progress.min.js"></script>
+        <script src="/plugins/circle-progress/circle-progress.min.js"></script>
         <!-- Datamap -->
-        <script src="./plugins/d3v3/index.js"></script>
-        <script src="./plugins/topojson/topojson.min.js"></script>
-        <script src="./plugins/datamaps/datamaps.world.min.js"></script>
+        <script src="/plugins/d3v3/index.js"></script>
+        <script src="/plugins/topojson/topojson.min.js"></script>
+        <script src="/plugins/datamaps/datamaps.world.min.js"></script>
         <!-- Morrisjs -->
-        <script src="./plugins/raphael/raphael.min.js"></script>
-        <script src="./plugins/morris/morris.min.js"></script>
+        <script src="/plugins/raphael/raphael.min.js"></script>
+        <script src="/plugins/morris/morris.min.js"></script>
         <!-- Pignose Calender -->
-        <script src="./plugins/moment/moment.min.js"></script>
-        <script src="./plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+        <script src="/plugins/moment/moment.min.js"></script>
+        <script src="/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
         <!-- ChartistJS -->
-        <script src="./plugins/chartist/js/chartist.min.js"></script>
-        <script src="./plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
-        <script src="./js/dashboard/dashboard-1.js"></script>
+        <script src="/plugins/chartist/js/chartist.min.js"></script>
+        <script src="/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+        <script src="/js/dashboard/dashboard-1.js"></script>
     </body>
 </html>
