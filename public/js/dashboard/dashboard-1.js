@@ -232,7 +232,7 @@
             defaultFontFamily: 'Montserrat',
             datasets: [{
                 data: [0, 15, 57, 12, 85, 10, 50],
-                label: "iPhone X",
+                label: "出货件数",
                 backgroundColor: '#847DFA',
                 borderColor: '#847DFA',
                 borderWidth: 0.5,
@@ -241,7 +241,7 @@
                 pointBorderColor: 'transparent',
                 pointBackgroundColor: '#847DFA',
             }, {
-                label: "Pixel 2",
+                label: "出货金额",
                 data: [0, 30, 5, 53, 15, 55, 0],
                 backgroundColor: '#F196B0',
                 borderColor: '#F196B0',
@@ -325,7 +325,7 @@
             defaultFontFamily: 'Montserrat',
             datasets: [{
                 data: [0, 15, 57, 12, 85, 10],
-                label: "iPhone X",
+                label: "出货件数",
                 backgroundColor: 'transparent',
                 borderColor: '#847DFA',
                 borderWidth: 2,
