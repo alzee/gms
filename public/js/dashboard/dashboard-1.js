@@ -237,7 +237,7 @@
                 borderColor: '#847DFA',
                 borderWidth: 0.5,
                 pointStyle: 'circle',
-                pointRadius: 5,
+                pointRadius: 0,
                 pointBorderColor: 'transparent',
                 pointBackgroundColor: '#847DFA',
             }, {
@@ -247,7 +247,7 @@
                 borderColor: '#F196B0',
                 borderWidth: 0.5,
                 pointStyle: 'circle',
-                pointRadius: 5,
+                pointRadius: 0,
                 pointBorderColor: 'transparent',
                 pointBackgroundColor: '#F196B0',
             }]
