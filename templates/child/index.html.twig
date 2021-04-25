@@ -10,6 +10,7 @@
                             <div class="card-body">
                             <div class="row mb-2">
                                 <h4 class="card-title col">交收明细</h4>
+                                <button type="button" class="btn btn-primary col-auto"><span class="caret m-l-5">导入</span> </button>
                                 <div class="input-group icons col-2">
                                 <div class="input-group-prepend">
                                 <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
@@ -81,8 +82,8 @@
                                                 <th>操作类型</th>
                                                 <th>件数</th>
                                                 <th>耗率</th>
-                                                <th>今重</th>
-                                                <th>总重</th>
+                                                <th></th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -112,8 +113,8 @@
                                                 <td>1</td>
                                                 <td>1</td>
                                                 <td>0.92%</td>
-                                                <td>10</td>
-                                                <td>15</td>
+                                                <td><button class="btn btn-primary">查看</button></td>
+                                                <td><button class="btn btn-primary">合单</button></td>
                                             </tr>
                                             {% endfor %}
                                         </tbody>
