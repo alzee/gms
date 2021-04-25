@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DashboardController extends AbstractController
 {
     /**
-     * @Route("/", name="dashboard")
+     * @Route("", name="dashboard")
      */
     public function index(): Response
     {
@@ -25,6 +25,16 @@ class DashboardController extends AbstractController
      * @Route("/trans", name="dashboard_trans")
      */
     public function trans(): Response
+    {
+        return $this->render('dashboard/trans.html.twig', [
+            'controller_name' => 'DashboardController',
+        ]);
+    }
+
+    /**
+     * @Route("/wage", name="dashboard_wage")
+     */
+    public function wage(): Response
     {
         return $this->render('dashboard/trans.html.twig', [
             'controller_name' => 'DashboardController',
