@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Own{% endblock %}
+
+{% block body %}
+    <h1>Create new Own</h1>
+
+    {{ include('own/_form.html.twig') }}
+
+    <a href="{{ path('own_index') }}">back to list</a>
+{% endblock %}
