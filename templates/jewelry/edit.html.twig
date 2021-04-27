@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Jewelry{% endblock %}
+
+{% block body %}
+    <h1>Edit Jewelry</h1>
+
+    {{ include('jewelry/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('jewelry_index') }}">back to list</a>
+
+    {{ include('jewelry/_delete_form.html.twig') }}
+{% endblock %}
