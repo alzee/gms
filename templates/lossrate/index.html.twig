@@ -19,8 +19,8 @@
                 <td>{{ lossrate.id }}</td>
                 <td>{{ lossrate.rate }}</td>
                 <td>
-                    <a href="{{ path('lossrate_show', {'id': lossrate.id}) }}">show</a>
-                    <a href="{{ path('lossrate_edit', {'id': lossrate.id}) }}">edit</a>
+                    <a class="btn btn-success" href="{{ path('lossrate_show', {'id': lossrate.id}) }}">show</a>
+                    <a class="btn btn-info" href="{{ path('lossrate_edit', {'id': lossrate.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
