@@ -7,7 +7,7 @@
 
     {{ include('embed/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('embed_index') }}">{{'back to list' | trans}}</a>
+    <a class="btn btn-primary" href="{{ path('embed_index') }}">{{'back to list' | trans}}</a>
 
     {{ include('embed/_delete_form.html.twig') }}
 {% endblock %}

@@ -18,9 +18,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('factory_index') }}">{{'back to list' | trans}}</a>
+    <a class="btn btn-primary" href="{{ path('factory_index') }}">{{'back to list' | trans}}</a>
 
-    <a href="{{ path('factory_edit', {'id': factory.id}) }}">{{'edit' | trans}}</a>
+    <a class="btn btn-warning" href="{{ path('factory_edit', {'id': factory.id}) }}">{{'edit' | trans}}</a>
 
     {{ include('factory/_delete_form.html.twig') }}
 {% endblock %}

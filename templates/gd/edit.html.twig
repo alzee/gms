@@ -7,7 +7,7 @@
 
     {{ include('gd/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('gd_index') }}">{{'back to list' | trans}}</a>
+    <a class="btn btn-primary" href="{{ path('gd_index') }}">{{'back to list' | trans}}</a>
 
     {{ include('gd/_delete_form.html.twig') }}
 {% endblock %}

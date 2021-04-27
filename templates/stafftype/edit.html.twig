@@ -7,7 +7,7 @@
 
     {{ include('stafftype/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('stafftype_index') }}">{{'back to list' | trans}}</a>
+    <a class="btn btn-primary" href="{{ path('stafftype_index') }}">{{'back to list' | trans}}</a>
 
     {{ include('stafftype/_delete_form.html.twig') }}
 {% endblock %}

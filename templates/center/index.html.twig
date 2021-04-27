@@ -19,8 +19,8 @@
                 <td>{{ center.id }}</td>
                 <td>{{ center.date ? center.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('center_show', {'id': center.id}) }}">{{'show' | trans}}</a>
-                    <a href="{{ path('center_edit', {'id': center.id}) }}">{{'edit' | trans}}</a>
+                    <a class="btn btn-primary" href="{{ path('center_show', {'id': center.id}) }}">{{'show' | trans}}</a>
+                    <a class="btn btn-warning" href="{{ path('center_edit', {'id': center.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('center_new') }}">{{'Create new' | trans}}</a>
+    <a class="btn btn-success" href="{{ path('center_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}

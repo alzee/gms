@@ -19,8 +19,8 @@
                 <td>{{ own.id }}</td>
                 <td>{{ own.date ? own.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('own_show', {'id': own.id}) }}">{{'show' | trans}}</a>
-                    <a href="{{ path('own_edit', {'id': own.id}) }}">{{'edit' | trans}}</a>
+                    <a class="btn btn-primary" href="{{ path('own_show', {'id': own.id}) }}">{{'show' | trans}}</a>
+                    <a class="btn btn-warning" href="{{ path('own_edit', {'id': own.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('own_new') }}">{{'Create new' | trans}}</a>
+    <a class="btn btn-success" href="{{ path('own_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}

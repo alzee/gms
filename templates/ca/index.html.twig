@@ -17,8 +17,8 @@
             <tr>
                 <td>{{ ca.id }}</td>
                 <td>
-                    <a href="{{ path('ca_show', {'id': ca.id}) }}">{{'show' | trans}}</a>
-                    <a href="{{ path('ca_edit', {'id': ca.id}) }}">{{'edit' | trans}}</a>
+                    <a class="btn btn-primary" href="{{ path('ca_show', {'id': ca.id}) }}">{{'show' | trans}}</a>
+                    <a class="btn btn-warning" href="{{ path('ca_edit', {'id': ca.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
@@ -29,5 +29,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('ca_new') }}">{{'Create new' | trans}}</a>
+    <a class="btn btn-success" href="{{ path('ca_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}

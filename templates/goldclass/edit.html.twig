@@ -7,7 +7,7 @@
 
     {{ include('goldclass/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('goldclass_index') }}">{{'back to list' | trans}}</a>
+    <a class="btn btn-primary" href="{{ path('goldclass_index') }}">{{'back to list' | trans}}</a>
 
     {{ include('goldclass/_delete_form.html.twig') }}
 {% endblock %}

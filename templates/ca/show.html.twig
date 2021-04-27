@@ -14,9 +14,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('ca_index') }}">{{'back to list' | trans}}</a>
+    <a class="btn btn-primary" href="{{ path('ca_index') }}">{{'back to list' | trans}}</a>
 
-    <a href="{{ path('ca_edit', {'id': ca.id}) }}">{{'edit' | trans}}</a>
+    <a class="btn btn-warning" href="{{ path('ca_edit', {'id': ca.id}) }}">{{'edit' | trans}}</a>
 
     {{ include('ca/_delete_form.html.twig') }}
 {% endblock %}

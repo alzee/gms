@@ -7,7 +7,7 @@
 
     {{ include('line/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('line_index') }}">{{'back to list' | trans}}</a>
+    <a class="btn btn-primary" href="{{ path('line_index') }}">{{'back to list' | trans}}</a>
 
     {{ include('line/_delete_form.html.twig') }}
 {% endblock %}

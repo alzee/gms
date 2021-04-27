@@ -19,8 +19,8 @@
                 <td>{{ granule.id }}</td>
                 <td>{{ granule.name }}</td>
                 <td>
-                    <a href="{{ path('granule_show', {'id': granule.id}) }}">{{'show' | trans}}</a>
-                    <a href="{{ path('granule_edit', {'id': granule.id}) }}">{{'edit' | trans}}</a>
+                    <a class="btn btn-primary" href="{{ path('granule_show', {'id': granule.id}) }}">{{'show' | trans}}</a>
+                    <a class="btn btn-warning" href="{{ path('granule_edit', {'id': granule.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('granule_new') }}">{{'Create new' | trans}}</a>
+    <a class="btn btn-success" href="{{ path('granule_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}

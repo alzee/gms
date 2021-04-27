@@ -7,7 +7,7 @@
 
     {{ include('lossrate/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('lossrate_index') }}">{{'back to list' | trans}}</a>
+    <a class="btn btn-primary" href="{{ path('lossrate_index') }}">{{'back to list' | trans}}</a>
 
     {{ include('lossrate/_delete_form.html.twig') }}
 {% endblock %}

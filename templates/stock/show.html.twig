@@ -18,9 +18,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('stock_index') }}">{{'back to list' | trans}}</a>
+    <a class="btn btn-primary" href="{{ path('stock_index') }}">{{'back to list' | trans}}</a>
 
-    <a href="{{ path('stock_edit', {'id': stock.id}) }}">{{'edit' | trans}}</a>
+    <a class="btn btn-warning" href="{{ path('stock_edit', {'id': stock.id}) }}">{{'edit' | trans}}</a>
 
     {{ include('stock/_delete_form.html.twig') }}
 {% endblock %}

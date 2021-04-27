@@ -19,8 +19,8 @@
                 <td>{{ seq.id }}</td>
                 <td>{{ seq.name }}</td>
                 <td>
-                    <a href="{{ path('seq_show', {'id': seq.id}) }}">{{'show' | trans}}</a>
-                    <a href="{{ path('seq_edit', {'id': seq.id}) }}">{{'edit' | trans}}</a>
+                    <a class="btn btn-primary" href="{{ path('seq_show', {'id': seq.id}) }}">{{'show' | trans}}</a>
+                    <a class="btn btn-warning" href="{{ path('seq_edit', {'id': seq.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('seq_new') }}">{{'Create new' | trans}}</a>
+    <a class="btn btn-success" href="{{ path('seq_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}

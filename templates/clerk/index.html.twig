@@ -19,8 +19,8 @@
                 <td>{{ clerk.id }}</td>
                 <td>{{ clerk.name }}</td>
                 <td>
-                    <a href="{{ path('clerk_show', {'id': clerk.id}) }}">{{'show' | trans}}</a>
-                    <a href="{{ path('clerk_edit', {'id': clerk.id}) }}">{{'edit' | trans}}</a>
+                    <a class="btn btn-primary" href="{{ path('clerk_show', {'id': clerk.id}) }}">{{'show' | trans}}</a>
+                    <a class="btn btn-warning" href="{{ path('clerk_edit', {'id': clerk.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('clerk_new') }}">{{'Create new' | trans}}</a>
+    <a class="btn btn-success" href="{{ path('clerk_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}

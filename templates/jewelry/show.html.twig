@@ -18,9 +18,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('jewelry_index') }}">{{'back to list' | trans}}</a>
+    <a class="btn btn-primary" href="{{ path('jewelry_index') }}">{{'back to list' | trans}}</a>
 
-    <a href="{{ path('jewelry_edit', {'id': jewelry.id}) }}">{{'edit' | trans}}</a>
+    <a class="btn btn-warning" href="{{ path('jewelry_edit', {'id': jewelry.id}) }}">{{'edit' | trans}}</a>
 
     {{ include('jewelry/_delete_form.html.twig') }}
 {% endblock %}

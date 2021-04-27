@@ -19,8 +19,8 @@
                 <td>{{ gb.id }}</td>
                 <td>{{ gb.date ? gb.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('gb_show', {'id': gb.id}) }}">{{'show' | trans}}</a>
-                    <a href="{{ path('gb_edit', {'id': gb.id}) }}">{{'edit' | trans}}</a>
+                    <a class="btn btn-primary" href="{{ path('gb_show', {'id': gb.id}) }}">{{'show' | trans}}</a>
+                    <a class="btn btn-warning" href="{{ path('gb_edit', {'id': gb.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('gb_new') }}">{{'Create new' | trans}}</a>
+    <a class="btn btn-success" href="{{ path('gb_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}

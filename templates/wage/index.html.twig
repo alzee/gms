@@ -19,8 +19,8 @@
                 <td>{{ wage.id }}</td>
                 <td>{{ wage.name }}</td>
                 <td>
-                    <a href="{{ path('wage_show', {'id': wage.id}) }}">{{'show' | trans}}</a>
-                    <a href="{{ path('wage_edit', {'id': wage.id}) }}">{{'edit' | trans}}</a>
+                    <a class="btn btn-primary" href="{{ path('wage_show', {'id': wage.id}) }}">{{'show' | trans}}</a>
+                    <a class="btn btn-warning" href="{{ path('wage_edit', {'id': wage.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('wage_new') }}">{{'Create new' | trans}}</a>
+    <a class="btn btn-success" href="{{ path('wage_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}

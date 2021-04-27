@@ -18,9 +18,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('attach_index') }}">{{'back to list' | trans}}</a>
+    <a class="btn btn-primary" href="{{ path('attach_index') }}">{{'back to list' | trans}}</a>
 
-    <a href="{{ path('attach_edit', {'id': attach.id}) }}">{{'edit' | trans}}</a>
+    <a class="btn btn-warning" href="{{ path('attach_edit', {'id': attach.id}) }}">{{'edit' | trans}}</a>
 
     {{ include('attach/_delete_form.html.twig') }}
 {% endblock %}

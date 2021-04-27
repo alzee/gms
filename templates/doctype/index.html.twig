@@ -19,8 +19,8 @@
                 <td>{{ doctype.id }}</td>
                 <td>{{ doctype.name }}</td>
                 <td>
-                    <a href="{{ path('doctype_show', {'id': doctype.id}) }}">{{'show' | trans}}</a>
-                    <a href="{{ path('doctype_edit', {'id': doctype.id}) }}">{{'edit' | trans}}</a>
+                    <a class="btn btn-primary" href="{{ path('doctype_show', {'id': doctype.id}) }}">{{'show' | trans}}</a>
+                    <a class="btn btn-warning" href="{{ path('doctype_edit', {'id': doctype.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('doctype_new') }}">{{'Create new' | trans}}</a>
+    <a class="btn btn-success" href="{{ path('doctype_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}
