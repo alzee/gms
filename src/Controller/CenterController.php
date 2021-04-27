@@ -91,4 +91,12 @@ class CenterController extends AbstractController
 
         return $this->redirectToRoute('center_index');
     }
+
+    /**
+     * @Route("/import/new", name="center_import", methods={"GET"})
+     */
+    public function import(): Response
+    {
+        return $this->render('center/import.html.twig');
+    }
 }
