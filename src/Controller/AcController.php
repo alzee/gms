@@ -31,6 +31,7 @@ class AcController extends AbstractController
     public function new(Request $request): Response
     {
         $ac = new Ac();
+        $ac->setDate(new \DateTimeImmutable());
         $form = $this->createForm(AcType::class, $ac);
         $form->handleRequest($request);
 

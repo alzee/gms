@@ -22,6 +22,11 @@ class Center
      */
     private $date;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +40,18 @@ class Center
     public function setDate(\DateTimeImmutable $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }
