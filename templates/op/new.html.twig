@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Op{% endblock %}
+
+{% block body %}
+    <h1>Create new Op</h1>
+
+    {{ include('op/_form.html.twig') }}
+
+    <a href="{{ path('op_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Op index{% endblock %}
+
+{% block body %}
+    <h1>Op index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for op in ops %}
+            <tr>
+                <td>{{ op.id }}</td>
+                <td>{{ op.name }}</td>
+                <td>
+                    <a href="{{ path('op_show', {'id': op.id}) }}">show</a>
+                    <a href="{{ path('op_edit', {'id': op.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('op_new') }}">Create new</a>
+{% endblock %}
