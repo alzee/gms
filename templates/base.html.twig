@@ -250,15 +250,22 @@
                             <li><a href="/settle">结存查询</a></li>
                         </ul>
                     </li>
-                    <li class="nav-label">单据</li>
+                    <li class="nav-label">业务</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-film menu-icon"></i> <span class="nav-text">流转</span>
+                            <i class="icon-film menu-icon"></i> <span class="nav-text">发单</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="/central">中央单</a></li>
                             <li><a href="/self">自发单</a></li>
                             <li><a href="/child">子单</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-film menu-icon"></i> <span class="nav-text">运作</span>
+                        </a>
+                        <ul aria-expanded="false">
                             <li><a href="{{path('ca_index')}}">职员交工匠</a></li>
                             <li><a href="{{path('ac_index')}}">职员收工匠</a></li>
                             <li><a href="/stock">出入库</a></li>
@@ -266,18 +273,33 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-pin menu-icon"></i> <span class="nav-text">其它</span>
+                            <i class="icon-film menu-icon"></i> <span class="nav-text">金原料</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="/doctype">单据类型</a></li>
-                            <li><a href="/cotype">合作方式</a></li>
-                            <li><a href="/factory">工厂</a></li>
+                            <li><a href="/central">加金入单</a></li>
+                            <li><a href="/self">文员加金入单</a></li>
+                            <li><a href="/child">职员间交金</a></li>
+                            <li><a href="{{path('ca_index')}}">职员间收金</a></li>
+                            <li><a href="{{path('ac_index')}}">文员交工匠</a></li>
+                            <li><a href="{{path('ac_index')}}">文员收工匠</a></li>
+                            <li><a href="{{path('ac_index')}}">加金入金箱</a></li>
+                            <li><a href="{{path('ac_index')}}">减金出金箱</a></li>
                         </ul>
                     </li>
-                    <li class="nav-label">架构</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-grid menu-icon"></i><span class="nav-text">组织</span>
+                            <i class="icon-film menu-icon"></i> <span class="nav-text">石原料</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="#1">子菜单1</a></li>
+                            <li><a href="#2">子菜单2</a></li>
+                            <li><a href="#3">子菜单3</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-label">资料维护</li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-grid menu-icon"></i><span class="nav-text">组织架构</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="/department">部门</a></li>
@@ -296,7 +318,6 @@
                             <li><a href="/stafftype">员工性质</a></li>
                         </ul>
                     </li>
-                    <li class="nav-label">流程</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-magic-wand menu-icon"></i><span class="nav-text">工艺</span>
@@ -325,6 +346,16 @@
                             <li><a href="/wagetype">工费</a></li>
                             <li><a href="/lossrate">耗率</a></li>
                             <li><a href="/lishu">粒数</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-pin menu-icon"></i> <span class="nav-text">其它</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="/doctype">单据类型</a></li>
+                            <li><a href="/cotype">合作方式</a></li>
+                            <li><a href="/factory">工厂</a></li>
                         </ul>
                     </li>
                 </ul>
