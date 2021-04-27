@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Gca{% endblock %}
+
+{% block body %}
+    <h1>Create new Gca</h1>
+
+    {{ include('gca/_form.html.twig') }}
+
+    <a href="{{ path('gca_index') }}">back to list</a>
+{% endblock %}

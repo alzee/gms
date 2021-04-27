@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gca{% endblock %}
+
+{% block body %}
+    <h1>Gca</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ gca.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ gca.date ? gca.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('gca_index') }}">back to list</a>
+
+    <a href="{{ path('gca_edit', {'id': gca.id}) }}">edit</a>
+
+    {{ include('gca/_delete_form.html.twig') }}
+{% endblock %}
