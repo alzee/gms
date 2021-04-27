@@ -11,9 +11,9 @@ class CenterType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        // $builder
-            // ->add('date')
-        // ;
+        $builder
+            ->add('name')
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

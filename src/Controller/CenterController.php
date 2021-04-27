@@ -31,6 +31,7 @@ class CenterController extends AbstractController
     public function new(Request $request): Response
     {
         $center = new Center();
+        $center->setDate(new \DateTimeImmutable);
         $form = $this->createForm(CenterType::class, $center);
         $form->handleRequest($request);
 
