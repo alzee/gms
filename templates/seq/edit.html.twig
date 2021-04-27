@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Seq{% endblock %}
+
+{% block body %}
+    <h1>Edit Seq</h1>
+
+    {{ include('seq/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('seq_index') }}">back to list</a>
+
+    {{ include('seq/_delete_form.html.twig') }}
+{% endblock %}

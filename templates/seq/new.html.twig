@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Seq{% endblock %}
+
+{% block body %}
+    <h1>Create new Seq</h1>
+
+    {{ include('seq/_form.html.twig') }}
+
+    <a href="{{ path('seq_index') }}">back to list</a>
+{% endblock %}
