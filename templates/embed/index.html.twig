@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Embed index{% endblock %}
+
+{% block body %}
+    <h1>Embed index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for embed in embeds %}
+            <tr>
+                <td>{{ embed.id }}</td>
+                <td>{{ embed.name }}</td>
+                <td>
+                    <a href="{{ path('embed_show', {'id': embed.id}) }}">show</a>
+                    <a href="{{ path('embed_edit', {'id': embed.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('embed_new') }}">Create new</a>
+{% endblock %}

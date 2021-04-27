@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Embed{% endblock %}
+
+{% block body %}
+    <h1>Create new Embed</h1>
+
+    {{ include('embed/_form.html.twig') }}
+
+    <a href="{{ path('embed_index') }}">back to list</a>
+{% endblock %}
