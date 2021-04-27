@@ -3,9 +3,9 @@
 {% block title %}New Op{% endblock %}
 
 {% block body %}
-    <h1>Create new Op</h1>
+    <h1>{{'Create new Op' | trans}}</h1>
 
     {{ include('op/_form.html.twig') }}
 
-    <a href="{{ path('op_index') }}">back to list</a>
+    <a href="{{ path('op_index') }}">{{'back to list' | trans}}</a>
 {% endblock %}

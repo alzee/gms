@@ -3,24 +3,24 @@
 {% block title %}Gd{% endblock %}
 
 {% block body %}
-    <h1>Gd</h1>
+    <h1>{{'Gd' | trans}}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{'Id' | trans}}</th>
                 <td>{{ gd.id }}</td>
             </tr>
             <tr>
-                <th>Date</th>
+                <th>{{'Date' | trans}}</th>
                 <td>{{ gd.date ? gd.date|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('gd_index') }}">back to list</a>
+    <a href="{{ path('gd_index') }}">{{'back to list' | trans}}</a>
 
-    <a href="{{ path('gd_edit', {'id': gd.id}) }}">edit</a>
+    <a href="{{ path('gd_edit', {'id': gd.id}) }}">{{'edit' | trans}}</a>
 
     {{ include('gd/_delete_form.html.twig') }}
 {% endblock %}

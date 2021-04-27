@@ -3,9 +3,9 @@
 {% block title %}New Stafftype{% endblock %}
 
 {% block body %}
-    <h1>Create new Stafftype</h1>
+    <h1>{{'Create new Stafftype' | trans}}</h1>
 
     {{ include('stafftype/_form.html.twig') }}
 
-    <a href="{{ path('stafftype_index') }}">back to list</a>
+    <a href="{{ path('stafftype_index') }}">{{'back to list' | trans}}</a>
 {% endblock %}

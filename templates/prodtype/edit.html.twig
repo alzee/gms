@@ -3,11 +3,11 @@
 {% block title %}Edit Prodtype{% endblock %}
 
 {% block body %}
-    <h1>Edit Prodtype</h1>
+    <h1>{{'Edit Prodtype' | trans}}</h1>
 
     {{ include('prodtype/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('prodtype_index') }}">back to list</a>
+    <a href="{{ path('prodtype_index') }}">{{'back to list' | trans}}</a>
 
     {{ include('prodtype/_delete_form.html.twig') }}
 {% endblock %}

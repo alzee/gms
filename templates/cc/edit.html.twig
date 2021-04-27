@@ -3,11 +3,11 @@
 {% block title %}Edit Cc{% endblock %}
 
 {% block body %}
-    <h1>Edit Cc</h1>
+    <h1>{{'Edit Cc' | trans}}</h1>
 
     {{ include('cc/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('cc_index') }}">back to list</a>
+    <a href="{{ path('cc_index') }}">{{'back to list' | trans}}</a>
 
     {{ include('cc/_delete_form.html.twig') }}
 {% endblock %}

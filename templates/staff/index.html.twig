@@ -3,14 +3,14 @@
 {% block title %}Staff index{% endblock %}
 
 {% block body %}
-    <h1>Staff index</h1>
+    <h1>{{'Staff index' | trans}}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>{{'Id' | trans}}</th>
+                <th>{{'Name' | trans}}</th>
+                <th>{{'actions' | trans}}</th>
             </tr>
         </thead>
         <tbody>
@@ -19,17 +19,17 @@
                 <td>{{ staff.id }}</td>
                 <td>{{ staff.name }}</td>
                 <td>
-                    <a href="{{ path('staff_show', {'id': staff.id}) }}">show</a>
-                    <a href="{{ path('staff_edit', {'id': staff.id}) }}">edit</a>
+                    <a href="{{ path('staff_show', {'id': staff.id}) }}">{{'show' | trans}}</a>
+                    <a href="{{ path('staff_edit', {'id': staff.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">{{'no records found' | trans}}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('staff_new') }}">Create new</a>
+    <a href="{{ path('staff_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}

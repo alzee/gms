@@ -3,11 +3,11 @@
 {% block title %}Edit Stafftype{% endblock %}
 
 {% block body %}
-    <h1>Edit Stafftype</h1>
+    <h1>{{'Edit Stafftype' | trans}}</h1>
 
     {{ include('stafftype/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('stafftype_index') }}">back to list</a>
+    <a href="{{ path('stafftype_index') }}">{{'back to list' | trans}}</a>
 
     {{ include('stafftype/_delete_form.html.twig') }}
 {% endblock %}

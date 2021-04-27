@@ -3,11 +3,11 @@
 {% block title %}Edit Ca{% endblock %}
 
 {% block body %}
-    <h1>Edit Ca</h1>
+    <h1>{{'Edit Ca' | trans}}</h1>
 
     {{ include('ca/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('ca_index') }}">back to list</a>
+    <a href="{{ path('ca_index') }}">{{'back to list' | trans}}</a>
 
     {{ include('ca/_delete_form.html.twig') }}
 {% endblock %}

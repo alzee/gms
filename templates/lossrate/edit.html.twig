@@ -3,11 +3,11 @@
 {% block title %}Edit Lossrate{% endblock %}
 
 {% block body %}
-    <h1>Edit Lossrate</h1>
+    <h1>{{'Edit Lossrate' | trans}}</h1>
 
     {{ include('lossrate/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('lossrate_index') }}">back to list</a>
+    <a href="{{ path('lossrate_index') }}">{{'back to list' | trans}}</a>
 
     {{ include('lossrate/_delete_form.html.twig') }}
 {% endblock %}

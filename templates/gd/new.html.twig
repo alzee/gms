@@ -3,9 +3,9 @@
 {% block title %}New Gd{% endblock %}
 
 {% block body %}
-    <h1>Create new Gd</h1>
+    <h1>{{'Create new Gd' | trans}}</h1>
 
     {{ include('gd/_form.html.twig') }}
 
-    <a href="{{ path('gd_index') }}">back to list</a>
+    <a href="{{ path('gd_index') }}">{{'back to list' | trans}}</a>
 {% endblock %}

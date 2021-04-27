@@ -3,9 +3,9 @@
 {% block title %}New Gb{% endblock %}
 
 {% block body %}
-    <h1>Create new Gb</h1>
+    <h1>{{'Create new Gb' | trans}}</h1>
 
     {{ include('gb/_form.html.twig') }}
 
-    <a href="{{ path('gb_index') }}">back to list</a>
+    <a href="{{ path('gb_index') }}">{{'back to list' | trans}}</a>
 {% endblock %}

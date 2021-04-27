@@ -3,9 +3,9 @@
 {% block title %}New Artisan{% endblock %}
 
 {% block body %}
-    <h1>Create new Artisan</h1>
+    <h1>{{'Create new Artisan' | trans}}</h1>
 
     {{ include('artisan/_form.html.twig') }}
 
-    <a href="{{ path('artisan_index') }}">back to list</a>
+    <a href="{{ path('artisan_index') }}">{{'back to list' | trans}}</a>
 {% endblock %}

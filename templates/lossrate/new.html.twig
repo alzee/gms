@@ -3,9 +3,9 @@
 {% block title %}New Lossrate{% endblock %}
 
 {% block body %}
-    <h1>Create new Lossrate</h1>
+    <h1>{{'Create new Lossrate' | trans}}</h1>
 
     {{ include('lossrate/_form.html.twig') }}
 
-    <a href="{{ path('lossrate_index') }}">back to list</a>
+    <a href="{{ path('lossrate_index') }}">{{'back to list' | trans}}</a>
 {% endblock %}

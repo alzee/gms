@@ -3,14 +3,14 @@
 {% block title %}Office index{% endblock %}
 
 {% block body %}
-    <h1>Office index</h1>
+    <h1>{{'Office index' | trans}}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>{{'Id' | trans}}</th>
+                <th>{{'Name' | trans}}</th>
+                <th>{{'actions' | trans}}</th>
             </tr>
         </thead>
         <tbody>
@@ -19,17 +19,17 @@
                 <td>{{ office.id }}</td>
                 <td>{{ office.name }}</td>
                 <td>
-                    <a href="{{ path('office_show', {'id': office.id}) }}">show</a>
-                    <a href="{{ path('office_edit', {'id': office.id}) }}">edit</a>
+                    <a href="{{ path('office_show', {'id': office.id}) }}">{{'show' | trans}}</a>
+                    <a href="{{ path('office_edit', {'id': office.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">{{'no records found' | trans}}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('office_new') }}">Create new</a>
+    <a href="{{ path('office_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}

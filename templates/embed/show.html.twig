@@ -3,24 +3,24 @@
 {% block title %}Embed{% endblock %}
 
 {% block body %}
-    <h1>Embed</h1>
+    <h1>{{'Embed' | trans}}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{'Id' | trans}}</th>
                 <td>{{ embed.id }}</td>
             </tr>
             <tr>
-                <th>Name</th>
+                <th>{{'Name' | trans}}</th>
                 <td>{{ embed.name }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('embed_index') }}">back to list</a>
+    <a href="{{ path('embed_index') }}">{{'back to list' | trans}}</a>
 
-    <a href="{{ path('embed_edit', {'id': embed.id}) }}">edit</a>
+    <a href="{{ path('embed_edit', {'id': embed.id}) }}">{{'edit' | trans}}</a>
 
     {{ include('embed/_delete_form.html.twig') }}
 {% endblock %}

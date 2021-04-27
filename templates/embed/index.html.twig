@@ -3,14 +3,14 @@
 {% block title %}Embed index{% endblock %}
 
 {% block body %}
-    <h1>Embed index</h1>
+    <h1>{{'Embed index' | trans}}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>{{'Id' | trans}}</th>
+                <th>{{'Name' | trans}}</th>
+                <th>{{'actions' | trans}}</th>
             </tr>
         </thead>
         <tbody>
@@ -19,17 +19,17 @@
                 <td>{{ embed.id }}</td>
                 <td>{{ embed.name }}</td>
                 <td>
-                    <a href="{{ path('embed_show', {'id': embed.id}) }}">show</a>
-                    <a href="{{ path('embed_edit', {'id': embed.id}) }}">edit</a>
+                    <a href="{{ path('embed_show', {'id': embed.id}) }}">{{'show' | trans}}</a>
+                    <a href="{{ path('embed_edit', {'id': embed.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">{{'no records found' | trans}}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('embed_new') }}">Create new</a>
+    <a href="{{ path('embed_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}

@@ -3,11 +3,11 @@
 {% block title %}Edit Division{% endblock %}
 
 {% block body %}
-    <h1>Edit Division</h1>
+    <h1>{{'Edit Division' | trans}}</h1>
 
     {{ include('division/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('division_index') }}">back to list</a>
+    <a href="{{ path('division_index') }}">{{'back to list' | trans}}</a>
 
     {{ include('division/_delete_form.html.twig') }}
 {% endblock %}

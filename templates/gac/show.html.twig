@@ -3,24 +3,24 @@
 {% block title %}Gac{% endblock %}
 
 {% block body %}
-    <h1>Gac</h1>
+    <h1>{{'Gac' | trans}}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{'Id' | trans}}</th>
                 <td>{{ gac.id }}</td>
             </tr>
             <tr>
-                <th>Date</th>
+                <th>{{'Date' | trans}}</th>
                 <td>{{ gac.date ? gac.date|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('gac_index') }}">back to list</a>
+    <a href="{{ path('gac_index') }}">{{'back to list' | trans}}</a>
 
-    <a href="{{ path('gac_edit', {'id': gac.id}) }}">edit</a>
+    <a href="{{ path('gac_edit', {'id': gac.id}) }}">{{'edit' | trans}}</a>
 
     {{ include('gac/_delete_form.html.twig') }}
 {% endblock %}

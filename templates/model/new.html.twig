@@ -3,9 +3,9 @@
 {% block title %}New Model{% endblock %}
 
 {% block body %}
-    <h1>Create new Model</h1>
+    <h1>{{'Create new Model' | trans}}</h1>
 
     {{ include('model/_form.html.twig') }}
 
-    <a href="{{ path('model_index') }}">back to list</a>
+    <a href="{{ path('model_index') }}">{{'back to list' | trans}}</a>
 {% endblock %}

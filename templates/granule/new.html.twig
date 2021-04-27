@@ -3,9 +3,9 @@
 {% block title %}New Granule{% endblock %}
 
 {% block body %}
-    <h1>Create new Granule</h1>
+    <h1>{{'Create new Granule' | trans}}</h1>
 
     {{ include('granule/_form.html.twig') }}
 
-    <a href="{{ path('granule_index') }}">back to list</a>
+    <a href="{{ path('granule_index') }}">{{'back to list' | trans}}</a>
 {% endblock %}

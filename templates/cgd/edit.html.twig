@@ -3,11 +3,11 @@
 {% block title %}Edit Cgd{% endblock %}
 
 {% block body %}
-    <h1>Edit Cgd</h1>
+    <h1>{{'Edit Cgd' | trans}}</h1>
 
     {{ include('cgd/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('cgd_index') }}">back to list</a>
+    <a href="{{ path('cgd_index') }}">{{'back to list' | trans}}</a>
 
     {{ include('cgd/_delete_form.html.twig') }}
 {% endblock %}

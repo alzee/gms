@@ -3,24 +3,24 @@
 {% block title %}Center{% endblock %}
 
 {% block body %}
-    <h1>Center</h1>
+    <h1>{{'Center' | trans}}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{'Id' | trans}}</th>
                 <td>{{ center.id }}</td>
             </tr>
             <tr>
-                <th>Date</th>
+                <th>{{'Date' | trans}}</th>
                 <td>{{ center.date ? center.date|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('center_index') }}">back to list</a>
+    <a href="{{ path('center_index') }}">{{'back to list' | trans}}</a>
 
-    <a href="{{ path('center_edit', {'id': center.id}) }}">edit</a>
+    <a href="{{ path('center_edit', {'id': center.id}) }}">{{'edit' | trans}}</a>
 
     {{ include('center/_delete_form.html.twig') }}
 {% endblock %}

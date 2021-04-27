@@ -3,9 +3,9 @@
 {% block title %}New Series{% endblock %}
 
 {% block body %}
-    <h1>Create new Series</h1>
+    <h1>{{'Create new Series' | trans}}</h1>
 
     {{ include('series/_form.html.twig') }}
 
-    <a href="{{ path('series_index') }}">back to list</a>
+    <a href="{{ path('series_index') }}">{{'back to list' | trans}}</a>
 {% endblock %}

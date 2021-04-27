@@ -3,14 +3,14 @@
 {% block title %}Child index{% endblock %}
 
 {% block body %}
-    <h1>Child index</h1>
+    <h1>{{'Child index' | trans}}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Date</th>
-                <th>actions</th>
+                <th>{{'Id' | trans}}</th>
+                <th>{{'Date' | trans}}</th>
+                <th>{{'actions' | trans}}</th>
             </tr>
         </thead>
         <tbody>
@@ -19,17 +19,17 @@
                 <td>{{ child.id }}</td>
                 <td>{{ child.date ? child.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('child_show', {'id': child.id}) }}">show</a>
-                    <a href="{{ path('child_edit', {'id': child.id}) }}">edit</a>
+                    <a href="{{ path('child_show', {'id': child.id}) }}">{{'show' | trans}}</a>
+                    <a href="{{ path('child_edit', {'id': child.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">{{'no records found' | trans}}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('child_new') }}">Create new</a>
+    <a href="{{ path('child_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}

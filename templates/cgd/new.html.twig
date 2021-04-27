@@ -3,9 +3,9 @@
 {% block title %}New Cgd{% endblock %}
 
 {% block body %}
-    <h1>Create new Cgd</h1>
+    <h1>{{'Create new Cgd' | trans}}</h1>
 
     {{ include('cgd/_form.html.twig') }}
 
-    <a href="{{ path('cgd_index') }}">back to list</a>
+    <a href="{{ path('cgd_index') }}">{{'back to list' | trans}}</a>
 {% endblock %}

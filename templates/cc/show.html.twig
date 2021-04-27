@@ -3,24 +3,24 @@
 {% block title %}Cc{% endblock %}
 
 {% block body %}
-    <h1>Cc</h1>
+    <h1>{{'Cc' | trans}}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{'Id' | trans}}</th>
                 <td>{{ cc.id }}</td>
             </tr>
             <tr>
-                <th>Date</th>
+                <th>{{'Date' | trans}}</th>
                 <td>{{ cc.date ? cc.date|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('cc_index') }}">back to list</a>
+    <a href="{{ path('cc_index') }}">{{'back to list' | trans}}</a>
 
-    <a href="{{ path('cc_edit', {'id': cc.id}) }}">edit</a>
+    <a href="{{ path('cc_edit', {'id': cc.id}) }}">{{'edit' | trans}}</a>
 
     {{ include('cc/_delete_form.html.twig') }}
 {% endblock %}

@@ -3,14 +3,14 @@
 {% block title %}Factory index{% endblock %}
 
 {% block body %}
-    <h1>Factory index</h1>
+    <h1>{{'Factory index' | trans}}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>{{'Id' | trans}}</th>
+                <th>{{'Name' | trans}}</th>
+                <th>{{'actions' | trans}}</th>
             </tr>
         </thead>
         <tbody>
@@ -19,17 +19,17 @@
                 <td>{{ factory.id }}</td>
                 <td>{{ factory.name }}</td>
                 <td>
-                    <a href="{{ path('factory_show', {'id': factory.id}) }}">show</a>
-                    <a href="{{ path('factory_edit', {'id': factory.id}) }}">edit</a>
+                    <a href="{{ path('factory_show', {'id': factory.id}) }}">{{'show' | trans}}</a>
+                    <a href="{{ path('factory_edit', {'id': factory.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">{{'no records found' | trans}}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('factory_new') }}">Create new</a>
+    <a href="{{ path('factory_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}

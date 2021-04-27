@@ -3,14 +3,14 @@
 {% block title %}Op index{% endblock %}
 
 {% block body %}
-    <h1>Op index</h1>
+    <h1>{{'Op index' | trans}}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>{{'Id' | trans}}</th>
+                <th>{{'Name' | trans}}</th>
+                <th>{{'actions' | trans}}</th>
             </tr>
         </thead>
         <tbody>
@@ -19,17 +19,17 @@
                 <td>{{ op.id }}</td>
                 <td>{{ op.name }}</td>
                 <td>
-                    <a href="{{ path('op_show', {'id': op.id}) }}">show</a>
-                    <a href="{{ path('op_edit', {'id': op.id}) }}">edit</a>
+                    <a href="{{ path('op_show', {'id': op.id}) }}">{{'show' | trans}}</a>
+                    <a href="{{ path('op_edit', {'id': op.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">{{'no records found' | trans}}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('op_new') }}">Create new</a>
+    <a href="{{ path('op_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}

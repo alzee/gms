@@ -3,14 +3,14 @@
 {% block title %}Gb index{% endblock %}
 
 {% block body %}
-    <h1>Gb index</h1>
+    <h1>{{'Gb index' | trans}}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Date</th>
-                <th>actions</th>
+                <th>{{'Id' | trans}}</th>
+                <th>{{'Date' | trans}}</th>
+                <th>{{'actions' | trans}}</th>
             </tr>
         </thead>
         <tbody>
@@ -19,17 +19,17 @@
                 <td>{{ gb.id }}</td>
                 <td>{{ gb.date ? gb.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('gb_show', {'id': gb.id}) }}">show</a>
-                    <a href="{{ path('gb_edit', {'id': gb.id}) }}">edit</a>
+                    <a href="{{ path('gb_show', {'id': gb.id}) }}">{{'show' | trans}}</a>
+                    <a href="{{ path('gb_edit', {'id': gb.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">{{'no records found' | trans}}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('gb_new') }}">Create new</a>
+    <a href="{{ path('gb_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}

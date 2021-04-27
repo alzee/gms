@@ -3,11 +3,11 @@
 {% block title %}Edit Embed{% endblock %}
 
 {% block body %}
-    <h1>Edit Embed</h1>
+    <h1>{{'Edit Embed' | trans}}</h1>
 
     {{ include('embed/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('embed_index') }}">back to list</a>
+    <a href="{{ path('embed_index') }}">{{'back to list' | trans}}</a>
 
     {{ include('embed/_delete_form.html.twig') }}
 {% endblock %}

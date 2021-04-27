@@ -3,14 +3,14 @@
 {% block title %}Attach index{% endblock %}
 
 {% block body %}
-    <h1>Attach index</h1>
+    <h1>{{'Attach index' | trans}}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>{{'Id' | trans}}</th>
+                <th>{{'Name' | trans}}</th>
+                <th>{{'actions' | trans}}</th>
             </tr>
         </thead>
         <tbody>
@@ -19,17 +19,17 @@
                 <td>{{ attach.id }}</td>
                 <td>{{ attach.name }}</td>
                 <td>
-                    <a href="{{ path('attach_show', {'id': attach.id}) }}">show</a>
-                    <a href="{{ path('attach_edit', {'id': attach.id}) }}">edit</a>
+                    <a href="{{ path('attach_show', {'id': attach.id}) }}">{{'show' | trans}}</a>
+                    <a href="{{ path('attach_edit', {'id': attach.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">{{'no records found' | trans}}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('attach_new') }}">Create new</a>
+    <a href="{{ path('attach_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}

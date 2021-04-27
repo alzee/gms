@@ -3,14 +3,14 @@
 {% block title %}Cotype index{% endblock %}
 
 {% block body %}
-    <h1>Cotype index</h1>
+    <h1>{{'Cotype index' | trans}}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>{{'Id' | trans}}</th>
+                <th>{{'Name' | trans}}</th>
+                <th>{{'actions' | trans}}</th>
             </tr>
         </thead>
         <tbody>
@@ -19,17 +19,17 @@
                 <td>{{ cotype.id }}</td>
                 <td>{{ cotype.name }}</td>
                 <td>
-                    <a href="{{ path('cotype_show', {'id': cotype.id}) }}">show</a>
-                    <a href="{{ path('cotype_edit', {'id': cotype.id}) }}">edit</a>
+                    <a href="{{ path('cotype_show', {'id': cotype.id}) }}">{{'show' | trans}}</a>
+                    <a href="{{ path('cotype_edit', {'id': cotype.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">{{'no records found' | trans}}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('cotype_new') }}">Create new</a>
+    <a href="{{ path('cotype_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}

@@ -3,9 +3,9 @@
 {% block title %}New Division{% endblock %}
 
 {% block body %}
-    <h1>Create new Division</h1>
+    <h1>{{'Create new Division' | trans}}</h1>
 
     {{ include('division/_form.html.twig') }}
 
-    <a href="{{ path('division_index') }}">back to list</a>
+    <a href="{{ path('division_index') }}">{{'back to list' | trans}}</a>
 {% endblock %}

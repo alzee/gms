@@ -3,14 +3,14 @@
 {% block title %}Position index{% endblock %}
 
 {% block body %}
-    <h1>Position index</h1>
+    <h1>{{'Position index' | trans}}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>{{'Id' | trans}}</th>
+                <th>{{'Name' | trans}}</th>
+                <th>{{'actions' | trans}}</th>
             </tr>
         </thead>
         <tbody>
@@ -19,17 +19,17 @@
                 <td>{{ position.id }}</td>
                 <td>{{ position.name }}</td>
                 <td>
-                    <a href="{{ path('position_show', {'id': position.id}) }}">show</a>
-                    <a href="{{ path('position_edit', {'id': position.id}) }}">edit</a>
+                    <a href="{{ path('position_show', {'id': position.id}) }}">{{'show' | trans}}</a>
+                    <a href="{{ path('position_edit', {'id': position.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">{{'no records found' | trans}}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('position_new') }}">Create new</a>
+    <a href="{{ path('position_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}
