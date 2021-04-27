@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gd index{% endblock %}
+
+{% block body %}
+    <h1>Gd index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gd in gds %}
+            <tr>
+                <td>{{ gd.id }}</td>
+                <td>{{ gd.date ? gd.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('gd_show', {'id': gd.id}) }}">show</a>
+                    <a href="{{ path('gd_edit', {'id': gd.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('gd_new') }}">Create new</a>
+{% endblock %}
