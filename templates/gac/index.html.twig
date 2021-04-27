@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gac index{% endblock %}
+
+{% block body %}
+    <h1>Gac index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gac in gacs %}
+            <tr>
+                <td>{{ gac.id }}</td>
+                <td>{{ gac.date ? gac.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('gac_show', {'id': gac.id}) }}">show</a>
+                    <a href="{{ path('gac_edit', {'id': gac.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('gac_new') }}">Create new</a>
+{% endblock %}
