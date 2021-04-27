@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Ac{% endblock %}
+
+{% block body %}
+    <h1>Create new Ac</h1>
+
+    {{ include('ac/_form.html.twig') }}
+
+    <a href="{{ path('ac_index') }}">back to list</a>
+{% endblock %}
