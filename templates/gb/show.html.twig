@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gb{% endblock %}
+
+{% block body %}
+    <h1>Gb</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ gb.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ gb.date ? gb.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('gb_index') }}">back to list</a>
+
+    <a href="{{ path('gb_edit', {'id': gb.id}) }}">edit</a>
+
+    {{ include('gb/_delete_form.html.twig') }}
+{% endblock %}
