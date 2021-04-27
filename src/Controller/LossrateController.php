@@ -2,12 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Lossrate;
+use App\Form\Lossrate2Type;
+use App\Repository\LossrateRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Lossrate;
-use App\Form\LossrateType;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/lossrate")
@@ -15,38 +16,79 @@ use Symfony\Component\HttpFoundation\Request;
 class LossrateController extends AbstractController
 {
     /**
-     * @Route("/", name="lossrate")
+     * @Route("/", name="lossrate_index", methods={"GET"})
      */
-    public function index(): Response
+    public function index(LossrateRepository $lossrateRepository): Response
     {
         return $this->render('lossrate/index.html.twig', [
-            'controller_name' => 'LossrateController',
+            'lossrates' => $lossrateRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/new", name="lossrate_new")
+     * @Route("/new", name="lossrate_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
-        $l = new Lossrate();
-        $form = $this->createForm(LossrateType::class, $l);
+        $lossrate = new Lossrate();
+        $form = $this->createForm(Lossrate2Type::class, $lossrate);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
-            // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
-            $l = $form->getData();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($lossrate);
+            $entityManager->flush();
 
-            // ... perform some action, such as saving the task to the database
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($l);
-            $em->flush();
-
-            return $this->redirectToRoute('lossrate');
+            return $this->redirectToRoute('lossrate_index');
         }
 
         return $this->render('lossrate/new.html.twig', [
-            'form' => $form->createView()
+            'lossrate' => $lossrate,
+            'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/{id}", name="lossrate_show", methods={"GET"})
+     */
+    public function show(Lossrate $lossrate): Response
+    {
+        return $this->render('lossrate/show.html.twig', [
+            'lossrate' => $lossrate,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/edit", name="lossrate_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Lossrate $lossrate): Response
+    {
+        $form = $this->createForm(Lossrate2Type::class, $lossrate);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('lossrate_index');
+        }
+
+        return $this->render('lossrate/edit.html.twig', [
+            'lossrate' => $lossrate,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="lossrate_delete", methods={"POST"})
+     */
+    public function delete(Request $request, Lossrate $lossrate): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$lossrate->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($lossrate);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('lossrate_index');
     }
 }

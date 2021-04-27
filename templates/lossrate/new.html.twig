@@ -1,13 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}交收明细{% endblock %}
+{% block title %}New Lossrate{% endblock %}
 
-{% block content %}
-{{ form(form) }}
-{% endblock %}
+{% block body %}
+    <h1>Create new Lossrate</h1>
 
-{% block javascript %}
-<script src="/plugins/tables/js/jquery.dataTables.min.js"></script>
-<script src="/plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
-<script src="/plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
+    {{ include('lossrate/_form.html.twig') }}
+
+    <a href="{{ path('lossrate_index') }}">back to list</a>
 {% endblock %}

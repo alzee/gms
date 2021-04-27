@@ -20,8 +20,6 @@
         <link href="/css/style.css" rel="stylesheet">
     </head>
     <body>
-        {% block body %}
-
         {% block preloader %}
       <div id="preloader">
           <div class="loader">
@@ -335,7 +333,7 @@
 
         <div class="content-body">
         <div class="container-fluid mt-3">
-        {% block content %}
+        {% block body %}
         {% endblock %}
         </div>
         </div>
@@ -349,7 +347,6 @@
         {% endblock %}
       </div>
 
-        {% endblock %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
