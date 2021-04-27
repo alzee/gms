@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Granule{% endblock %}
+
+{% block body %}
+    <h1>Create new Granule</h1>
+
+    {{ include('granule/_form.html.twig') }}
+
+    <a href="{{ path('granule_index') }}">back to list</a>
+{% endblock %}

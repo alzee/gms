@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Granule{% endblock %}
+
+{% block body %}
+    <h1>Edit Granule</h1>
+
+    {{ include('granule/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('granule_index') }}">back to list</a>
+
+    {{ include('granule/_delete_form.html.twig') }}
+{% endblock %}

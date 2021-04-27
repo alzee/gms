@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Granule index{% endblock %}
+
+{% block body %}
+    <h1>Granule index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for granule in granules %}
+            <tr>
+                <td>{{ granule.id }}</td>
+                <td>{{ granule.name }}</td>
+                <td>
+                    <a href="{{ path('granule_show', {'id': granule.id}) }}">show</a>
+                    <a href="{{ path('granule_edit', {'id': granule.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('granule_new') }}">Create new</a>
+{% endblock %}
