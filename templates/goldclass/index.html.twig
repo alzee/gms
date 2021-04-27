@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Goldclass index{% endblock %}
+
+{% block body %}
+    <h1>Goldclass index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for goldclass in goldclasses %}
+            <tr>
+                <td>{{ goldclass.id }}</td>
+                <td>{{ goldclass.name }}</td>
+                <td>
+                    <a href="{{ path('goldclass_show', {'id': goldclass.id}) }}">show</a>
+                    <a href="{{ path('goldclass_edit', {'id': goldclass.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('goldclass_new') }}">Create new</a>
+{% endblock %}
