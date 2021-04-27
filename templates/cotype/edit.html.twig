@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Cotype{% endblock %}
+
+{% block body %}
+    <h1>Edit Cotype</h1>
+
+    {{ include('cotype/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('cotype_index') }}">back to list</a>
+
+    {{ include('cotype/_delete_form.html.twig') }}
+{% endblock %}
