@@ -19,7 +19,7 @@
                 <td>{{ goldclass.id }}</td>
                 <td>{{ goldclass.name }}</td>
                 <td>
-                    <a href="{{ path('goldclass_show', {'id': goldclass.id}) }}">show</a>
+                    <a href="{{ path('goldclass_show', {'id': goldclass.id}) }}">{{ 'show' | trans}}</a>
                     <a href="{{ path('goldclass_edit', {'id': goldclass.id}) }}">edit</a>
                 </td>
             </tr>
