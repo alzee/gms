@@ -19,8 +19,8 @@
                 <td>{{ lossrate.id }}</td>
                 <td>{{ lossrate.rate }}</td>
                 <td>
-                    <a class="btn btn-success" href="{{ path('lossrate_show', {'id': lossrate.id}) }}">{{'show' | trans}}</a>
-                    <a class="btn btn-info" href="{{ path('lossrate_edit', {'id': lossrate.id}) }}">{{'edit' | trans}}</a>
+                    <a href="{{ path('lossrate_show', {'id': lossrate.id}) }}">{{'show' | trans}}</a>
+                    <a href="{{ path('lossrate_edit', {'id': lossrate.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +31,5 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{ path('lossrate_new') }}">{{'Create new' | trans}}</a>
+    <a href="{{ path('lossrate_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}
