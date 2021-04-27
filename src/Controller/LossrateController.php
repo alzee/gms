@@ -42,7 +42,7 @@ class LossrateController extends AbstractController
             $em->persist($l);
             $em->flush();
 
-            // return $this->redirectToRoute('task_success');
+            return $this->redirectToRoute('lossrate');
         }
 
         return $this->render('lossrate/new.html.twig', [
