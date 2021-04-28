@@ -9,6 +9,12 @@
         <thead>
             <tr>
                 <th>{{'Id' | trans}}</th>
+                <th>{{'team' | trans}}</th>
+                <th>{{'recipient' | trans}}</th>
+                <th>{{'goldclass' | trans}}</th>
+                <th>{{'position' | trans}}</th>
+                <th>{{'weight' | trans}}</th>
+                <th>{{'status' | trans}}</th>
                 <th>{{'Date' | trans}}</th>
                 <th>{{'actions' | trans}}</th>
             </tr>
@@ -17,6 +23,12 @@
         {% for cc in ccs %}
             <tr>
                 <td>{{ cc.id }}</td>
+                <td>{{ cc.team }}</td>
+                <td>{{ cc.recipient }}</td>
+                <td>{{ cc.goldclass }}</td>
+                <td>{{ cc.position }}</td>
+                <td>{{ cc.weight }}</td>
+                <td>{{ cc.status }}</td>
                 <td>{{ cc.date ? cc.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ path('cc_show', {'id': cc.id}) }}">{{'show' | trans}}</a>

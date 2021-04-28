@@ -54,7 +54,7 @@ class Cc
     /**
      * @ORM\Column(type="smallint")
      */
-    private $status;
+    private $status = 0;
 
     public function getId(): ?int
     {

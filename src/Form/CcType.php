@@ -12,7 +12,11 @@ class CcType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
+            ->add('team')
+            ->add('recipient')
+            ->add('goldclass')
+            ->add('position')
+            ->add('weight')
         ;
     }
 
