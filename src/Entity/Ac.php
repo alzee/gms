@@ -49,6 +49,12 @@ class Ac
      */
     private $date;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Craft::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $craft;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -122,6 +128,18 @@ class Ac
     public function setDate(\DateTimeImmutable $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getCraft(): ?Craft
+    {
+        return $this->craft;
+    }
+
+    public function setCraft(?Craft $craft): self
+    {
+        $this->craft = $craft;
 
         return $this;
     }
