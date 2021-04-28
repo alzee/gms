@@ -17,6 +17,7 @@ class AcType extends AbstractType
             ->add('weightGold')
             ->add('weightAttach')
             ->add('weight')
+            ->add('craft')
         ;
     }
 
