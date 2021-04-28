@@ -5,11 +5,39 @@
 {% block body %}
     <h1>{{'Ac' | trans}}</h1>
 
-    <table class="table">
+    <table class="table table-striped table-hover">
         <tbody>
             <tr>
                 <th>{{'Id' | trans}}</th>
                 <td>{{ ac.id }}</td>
+            </tr>
+            <tr>
+                <th>{{'maindoc' | trans}}</th>
+                <td>{{ ac.maindoc }}</td>
+            </tr>
+            <tr>
+                <th>{{'weightGold' | trans}}</th>
+                <td>{{ ac.weightGold }}</td>
+            </tr>
+            <tr>
+                <th>{{'maindoc' | trans}}</th>
+                <td>{{ ac.weightAttach }}</td>
+            </tr>
+            <tr>
+                <th>{{'weight' | trans}}</th>
+                <td>{{ ac.weight }}</td>
+            </tr>
+            <tr>
+                <th>{{'craft' | trans}}</th>
+                <td>{{ ac.craft }}</td>
+            </tr>
+            <tr>
+                <th>{{'artisan' | trans}}</th>
+                <td>{{ ac.artisan }}</td>
+            </tr>
+            <tr>
+                <th>{{'artisan' | trans}}</th>
+                <td>{{ ac.date|date("Y-m-d") }}</td>
             </tr>
         </tbody>
     </table>
