@@ -31,6 +31,7 @@ class GdController extends AbstractController
     public function new(Request $request): Response
     {
         $gd = new Gd();
+        $gd->setDate(new \DateTimeImmutable());
         $form = $this->createForm(GdType::class, $gd);
         $form->handleRequest($request);
 

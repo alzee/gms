@@ -12,7 +12,12 @@ class GdType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
+            ->add('maindoc')
+            ->add('team')
+            ->add('artisan')
+            ->add('goldclass')
+            ->add('position')
+            ->add('weight')
         ;
     }
 

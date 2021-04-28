@@ -9,7 +9,13 @@
         <thead>
             <tr>
                 <th>{{'Id' | trans}}</th>
-                <th>{{'Date' | trans}}</th>
+                <th>{{'maindoc' | trans}}</th>
+                <th>{{'team' | trans}}</th>
+                <th>{{'artisan' | trans}}</th>
+                <th>{{'goldclass' | trans}}</th>
+                <th>{{'position' | trans}}</th>
+                <th>{{'weight' | trans}}</th>
+                <th>{{'date' | trans}}</th>
                 <th>{{'actions' | trans}}</th>
             </tr>
         </thead>
@@ -17,6 +23,12 @@
         {% for gd in gds %}
             <tr>
                 <td>{{ gd.id }}</td>
+                <td>{{ gd.maindoc}}</td>
+                <td>{{ gd.team }}</td>
+                <td>{{ gd.artisan }}</td>
+                <td>{{ gd.goldclass }}</td>
+                <td>{{ gd.position }}</td>
+                <td>{{ gd.weight }}</td>
                 <td>{{ gd.date ? gd.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ path('gd_show', {'id': gd.id}) }}">{{'show' | trans}}</a>
