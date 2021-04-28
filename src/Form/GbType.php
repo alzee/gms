@@ -12,7 +12,15 @@ class GbType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
+            ->add('company')
+            ->add('goldclass')
+            ->add('position')
+            ->add('addtype')
+            ->add('addreason')
+            ->add('weightBooked')
+            ->add('weight')
+            ->add('short')
+            ->add('note')
         ;
     }
 

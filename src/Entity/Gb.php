@@ -40,6 +40,38 @@ class Gb
      */
     private $position;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Addtype::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $addtype;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Addreason::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $addreason;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $weightBooked;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $weight;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $short;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $note;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +121,78 @@ class Gb
     public function setPosition(?Position $position): self
     {
         $this->position = $position;
+
+        return $this;
+    }
+
+    public function getAddtype(): ?Addtype
+    {
+        return $this->addtype;
+    }
+
+    public function setAddtype(?Addtype $addtype): self
+    {
+        $this->addtype = $addtype;
+
+        return $this;
+    }
+
+    public function getAddreason(): ?Addreason
+    {
+        return $this->addreason;
+    }
+
+    public function setAddreason(?Addreason $addreason): self
+    {
+        $this->addreason = $addreason;
+
+        return $this;
+    }
+
+    public function getWeightBooked(): ?float
+    {
+        return $this->weightBooked;
+    }
+
+    public function setWeightBooked(float $weightBooked): self
+    {
+        $this->weightBooked = $weightBooked;
+
+        return $this;
+    }
+
+    public function getWeight(): ?float
+    {
+        return $this->weight;
+    }
+
+    public function setWeight(float $weight): self
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    public function getShort(): ?float
+    {
+        return $this->short;
+    }
+
+    public function setShort(float $short): self
+    {
+        $this->short = $short;
+
+        return $this;
+    }
+
+    public function getNote(): ?string
+    {
+        return $this->note;
+    }
+
+    public function setNote(?string $note): self
+    {
+        $this->note = $note;
 
         return $this;
     }

@@ -9,6 +9,15 @@
         <thead>
             <tr>
                 <th>{{'Id' | trans}}</th>
+                <th>{{'company' | trans}}</th>
+                <th>{{'goldclass' | trans}}</th>
+                <th>{{'position' | trans}}</th>
+                <th>{{'addtype' | trans}}</th>
+                <th>{{'addreason' | trans}}</th>
+                <th>{{'weightBooked' | trans}}</th>
+                <th>{{'weight' | trans}}</th>
+                <th>{{'short' | trans}}</th>
+                <th>{{'note' | trans}}</th>
                 <th>{{'Date' | trans}}</th>
                 <th>{{'actions' | trans}}</th>
             </tr>
@@ -17,6 +26,15 @@
         {% for gb in gbs %}
             <tr>
                 <td>{{ gb.id }}</td>
+                <td>{{ gb.company }}</td>
+                <td>{{ gb.goldclass }}</td>
+                <td>{{ gb.position }}</td>
+                <td>{{ gb.addtype }}</td>
+                <td>{{ gb.addreason }}</td>
+                <td>{{ gb.weightBooked }}</td>
+                <td>{{ gb.weight }}</td>
+                <td>{{ gb.short }}</td>
+                <td>{{ gb.note }}</td>
                 <td>{{ gb.date ? gb.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ path('gb_show', {'id': gb.id}) }}">{{'show' | trans}}</a>

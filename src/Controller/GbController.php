@@ -31,6 +31,7 @@ class GbController extends AbstractController
     public function new(Request $request): Response
     {
         $gb = new Gb();
+        $gb->setDate(new \DateTimeImmutable());
         $form = $this->createForm(GbType::class, $gb);
         $form->handleRequest($request);
 
