@@ -31,6 +31,7 @@ class CaController extends AbstractController
     public function new(Request $request): Response
     {
         $ca = new Ca();
+        $ca->setDate(new \DateTimeImmutable());
         $form = $this->createForm(CaType::class, $ca);
         $form->handleRequest($request);
 

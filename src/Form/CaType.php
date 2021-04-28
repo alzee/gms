@@ -12,6 +12,12 @@ class CaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('maindoc')
+            ->add('artisan')
+            ->add('weightGold')
+            ->add('weightAttach')
+            ->add('weight')
+            ->add('craft')
         ;
     }
 
