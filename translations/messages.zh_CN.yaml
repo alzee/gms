@@ -164,3 +164,24 @@ Edit Granule: 粒数 编辑
 Edit Doctype: 单据类型 编辑
 Edit Cotype: 合作方式 编辑
 Edit Factory: 工厂 编辑
+
+maindoc: 主单号
+weightGold: 金重
+weightAttach: 附件重
+weight: 总重
+craft: 工艺
+artisan: 工匠
+date: 日期
+team: 组别
+goldclass: 金类
+position: 位置
+note: 备注
+recipient: 接收人
+status: 状态
+company: 公司
+addtype: 加金类型
+addreason: 加金原因
+weightBooked: 账面金重
+short: 磅差
+Rate: 耗率
+
