@@ -9,6 +9,13 @@
         <thead>
             <tr>
                 <th>{{'Id' | trans}}</th>
+                <th>{{'maindoc' | trans}}</th>
+                <th>{{'weightGold' | trans}}</th>
+                <th>{{'weightAttach' | trans}}</th>
+                <th>{{'weight' | trans}}</th>
+                <th>{{'craft' | trans}}</th>
+                <th>{{'artisan' | trans}}</th>
+                <th>{{'date' | trans}}</th>
                 <th>{{'actions' | trans}}</th>
             </tr>
         </thead>
@@ -16,6 +23,13 @@
         {% for ac in acs %}
             <tr>
                 <td>{{ ac.id }}</td>
+                <td>{{ ac.maindoc }}</td>
+                <td>{{ ac.weightGold }}</td>
+                <td>{{ ac.weightAttach }}</td>
+                <td>{{ ac.weight }}</td>
+                <td>{{ ac.craft }}</td>
+                <td>{{ ac.artisan }}</td>
+                <td>{{ ac.date|date("Y-m-d") }}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ path('ac_show', {'id': ac.id}) }}">{{'show' | trans}}</a>
                     <a class="btn btn-warning" href="{{ path('ac_edit', {'id': ac.id}) }}">{{'edit' | trans}}</a>
