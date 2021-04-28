@@ -31,6 +31,7 @@ class CgdController extends AbstractController
     public function new(Request $request): Response
     {
         $cgd = new Cgd();
+        $cgd->setDate(new \DateTimeImmutable());
         $form = $this->createForm(CgdType::class, $cgd);
         $form->handleRequest($request);
 

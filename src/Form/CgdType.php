@@ -12,7 +12,11 @@ class CgdType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
+            ->add('maindoc')
+            ->add('goldclass')
+            ->add('position')
+            ->add('weight')
+            ->add('note')
         ;
     }
 
