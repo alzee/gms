@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Addreason index{% endblock %}
+
+{% block body %}
+    <h1>Addreason index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for addreason in addreasons %}
+            <tr>
+                <td>{{ addreason.id }}</td>
+                <td>{{ addreason.name }}</td>
+                <td>
+                    <a href="{{ path('addreason_show', {'id': addreason.id}) }}">show</a>
+                    <a href="{{ path('addreason_edit', {'id': addreason.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('addreason_new') }}">Create new</a>
+{% endblock %}

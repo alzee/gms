@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Addtype{% endblock %}
+
+{% block body %}
+    <h1>Edit Addtype</h1>
+
+    {{ include('addtype/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('addtype_index') }}">back to list</a>
+
+    {{ include('addtype/_delete_form.html.twig') }}
+{% endblock %}
