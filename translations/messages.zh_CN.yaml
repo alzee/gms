@@ -10,16 +10,50 @@ back to list: 返回
 Delete: 删除
 Update: 保存
 Date: 日期
-Center index: 中央单
-Create new Center: 中央单 新增
-Own index: 自发单
-Create new Own: 自发单 新增
-Ac index: 职员收工匠
-Ca index: 职员交工匠
-Create new Ac: 职员收工匠 新增
-Create new Ca: 职员交工匠 新增
-Stock index: 库存
 Import: 导入
 Center import: 导入中央单
+
+Center index: 中央单
+Own index: 自发单
+Ac index: 职员收工匠
+Ca index: 职员交工匠
+Stock index: 库存
 Craft index: 工艺科室
+
+Create new Center: 中央单 新增
+Create new Own: 自发单 新增
+Create new Child: 子单 新增
+Create new Ca: 职员交工匠 新增
+Create new Ac: 职员收工匠 新增
+Create new Stock: 库存 新增
+Create new Gd: 加金入单 新增
+Create new Cgd: 文员加金入单 新增
+Create new Cc: 职员间交金 新增
+Create new Gca: 文员交工匠 新增
+Create new Gac: 文员收工匠 新增
+Create new Gb: 加金入箱子 新增
+Create new Division: 部门 新增
 Create new Craft: 工艺科室 新增
+Create new Team: 组别 新增
+Create new Clerk: 文员 新增
+Create new Artisan: 工匠 新增
+Create new Staff: 员工管理
+Create new Stafftype: 员工性质 新增
+Create new Process: 工序 新增
+Create new Model: 模号类型 新增
+Create new Seq: 处理次序 新增
+Create new Op: 操作类型 新增
+Create new Position: 位置 新增
+Create new Goldclass: 金类 新增
+Create new Jewelry: 首饰类别 新增
+Create new Prodtype: 货类 新增
+Create new Line: 专线类型 新增
+Create new Series: 产品系列 新增
+Create new Embed: 镶嵌原料 新增
+Create new Attach: 附件 新增
+Create new Wage: 工费 新增
+Create new Lossrate: 耗率 新增
+Create new Granule: 粒数 新增
+Create new Doctype: 单据类型 新增
+Create new Cotype: 合作方式 新增
+Create new Factory: 工厂 新增
