@@ -3,9 +3,9 @@
 {% block title %}New Craft{% endblock %}
 
 {% block body %}
-    <h1>Create new Craft</h1>
+    <h1>{{ 'Create new Craft' | trans }}</h1>
 
     {{ include('craft/_form.html.twig') }}
 
-    <a href="{{ path('craft_index') }}">back to list</a>
+    <a class="btn btn-primary" href="{{ path('craft_index') }}">{{'back to list' | trans}}</a>
 {% endblock %}
