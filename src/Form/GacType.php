@@ -12,7 +12,12 @@ class GacType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
+            ->add('team')
+            ->add('artisan')
+            ->add('goldclass')
+            ->add('position')
+            ->add('weight')
+            ->add('note')
         ;
     }
 

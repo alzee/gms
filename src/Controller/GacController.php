@@ -31,6 +31,7 @@ class GacController extends AbstractController
     public function new(Request $request): Response
     {
         $gac = new Gac();
+        $gac->setDate(new \DateTimeImmutable());
         $form = $this->createForm(GacType::class, $gac);
         $form->handleRequest($request);
 

@@ -9,6 +9,12 @@
         <thead>
             <tr>
                 <th>{{'Id' | trans}}</th>
+                <th>{{'team' | trans}}</th>
+                <th>{{'artisan' | trans}}</th>
+                <th>{{'goldclass' | trans}}</th>
+                <th>{{'position' | trans}}</th>
+                <th>{{'weight' | trans}}</th>
+                <th>{{'note' | trans}}</th>
                 <th>{{'Date' | trans}}</th>
                 <th>{{'actions' | trans}}</th>
             </tr>
@@ -17,6 +23,12 @@
         {% for gac in gacs %}
             <tr>
                 <td>{{ gac.id }}</td>
+                <td>{{ gac.team }}</td>
+                <td>{{ gac.artisan }}</td>
+                <td>{{ gac.goldclass }}</td>
+                <td>{{ gac.position }}</td>
+                <td>{{ gac.weight }}</td>
+                <td>{{ gac.note }}</td>
                 <td>{{ gac.date ? gac.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ path('gac_show', {'id': gac.id}) }}">{{'show' | trans}}</a>
