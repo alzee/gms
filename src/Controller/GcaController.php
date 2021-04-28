@@ -31,6 +31,7 @@ class GcaController extends AbstractController
     public function new(Request $request): Response
     {
         $gca = new Gca();
+        $gca->setDate(new \DateTimeImmutable());
         $form = $this->createForm(GcaType::class, $gca);
         $form->handleRequest($request);
 

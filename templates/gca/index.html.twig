@@ -9,6 +9,12 @@
         <thead>
             <tr>
                 <th>{{'Id' | trans}}</th>
+                <th>{{'team' | trans}}</th>
+                <th>{{'artisan' | trans}}</th>
+                <th>{{'goldclass' | trans}}</th>
+                <th>{{'position' | trans}}</th>
+                <th>{{'weight' | trans}}</th>
+                <th>{{'note' | trans}}</th>
                 <th>{{'Date' | trans}}</th>
                 <th>{{'actions' | trans}}</th>
             </tr>
@@ -17,6 +23,12 @@
         {% for gca in gcas %}
             <tr>
                 <td>{{ gca.id }}</td>
+                <td>{{ gca.team }}</td>
+                <td>{{ gca.artisan }}</td>
+                <td>{{ gca.goldclass }}</td>
+                <td>{{ gca.position }}</td>
+                <td>{{ gca.weight }}</td>
+                <td>{{ gca.note }}</td>
                 <td>{{ gca.date ? gca.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ path('gca_show', {'id': gca.id}) }}">{{'show' | trans}}</a>
