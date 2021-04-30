@@ -201,7 +201,10 @@
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a href="app-profile.html"><i class="icon-user"></i> <span>我</span></a>
+                                            <a href="app-profile.html"><i class="icon-user"></i> <span>{{app.user.username}}</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="app-profile.html"><i class="icon-user"></i> <span>{{app.user.roles[0]}}</span></a>
                                         </li>
                                         <li>
                                             <a href="javascript:void()">
@@ -213,7 +216,7 @@
                                         <li>
                                             <a href="page-lock.html"><i class="icon-lock"></i> <span>锁屏</span></a>
                                         </li>
-                                        <li><a href="page-login.html"><i class="icon-key"></i> <span>退出</span></a></li>
+                                        <li><a href="/logout"><i class="icon-key"></i> <span>退出</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -367,12 +370,14 @@
         </div>
         {% endblock %}
 
+        {% block body0 %}
         <div class="content-body">
         <div class="container-fluid mt-3">
         {% block body %}
         {% endblock %}
         </div>
         </div>
+        {% endblock %}
 
         {% block footer %}
         <div class="footer">
