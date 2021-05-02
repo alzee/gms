@@ -3,64 +3,64 @@
 {% block title %}Main{% endblock %}
 
 {% block body %}
-    <h1>Main</h1>
+    <h1>{{'Main' | trans}}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{'Id' | trans}}</th>
                 <td>{{ main.id }}</td>
             </tr>
             <tr>
-                <th>Date</th>
+                <th>{{'Date' | trans}}</th>
                 <td>{{ main.date ? main.date|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Name</th>
+                <th>{{'Name' | trans}}</th>
                 <td>{{ main.name }}</td>
             </tr>
             <tr>
-                <th>CountChild</th>
+                <th>{{'CountChild' | trans}}</th>
                 <td>{{ main.countChild }}</td>
             </tr>
             <tr>
-                <th>Sn</th>
+                <th>{{'Sn' | trans}}</th>
                 <td>{{ main.sn }}</td>
             </tr>
             <tr>
-                <th>PerWeight</th>
+                <th>{{'PerWeight' | trans}}</th>
                 <td>{{ main.perWeight }}</td>
             </tr>
             <tr>
-                <th>TotalWeight</th>
+                <th>{{'TotalWeight' | trans}}</th>
                 <td>{{ main.totalWeight }}</td>
             </tr>
             <tr>
-                <th>UpstreamDoc</th>
+                <th>{{'UpstreamDoc' | trans}}</th>
                 <td>{{ main.upstreamDoc }}</td>
             </tr>
             <tr>
-                <th>Length</th>
+                <th>{{'Length' | trans}}</th>
                 <td>{{ main.length }}</td>
             </tr>
             <tr>
-                <th>Width</th>
+                <th>{{'Width' | trans}}</th>
                 <td>{{ main.width }}</td>
             </tr>
             <tr>
-                <th>Height</th>
+                <th>{{'Height' | trans}}</th>
                 <td>{{ main.height }}</td>
             </tr>
             <tr>
-                <th>Note</th>
+                <th>{{'Note' | trans}}</th>
                 <td>{{ main.note }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('main_index') }}">back to list</a>
+    <a href="{{ path('main_index') }}">{{'back to list' | trans}}</a>
 
-    <a href="{{ path('main_edit', {'id': main.id}) }}">edit</a>
+    <a href="{{ path('main_edit', {'id': main.id}) }}">{{'edit' | trans}}</a>
 
     {{ include('main/_delete_form.html.twig') }}
 {% endblock %}
