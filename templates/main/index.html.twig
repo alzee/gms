@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Main index{% endblock %}
+
+{% block body %}
+    <h1>Main index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Name</th>
+                <th>CountChild</th>
+                <th>Sn</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for main in mains %}
+            <tr>
+                <td>{{ main.id }}</td>
+                <td>{{ main.date ? main.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ main.name }}</td>
+                <td>{{ main.countChild }}</td>
+                <td>{{ main.sn }}</td>
+                <td>
+                    <a href="{{ path('main_show', {'id': main.id}) }}">show</a>
+                    <a href="{{ path('main_edit', {'id': main.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('main_new') }}">Create new</a>
+{% endblock %}
