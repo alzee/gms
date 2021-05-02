@@ -31,7 +31,6 @@ class MainController extends AbstractController
     public function new(Request $request, MainRepository $mainRepository): Response
     {
         $main = new Main();
-        $main->setDate(new \DateTimeImmutable());
         $form = $this->createForm(MainType::class, $main);
         $form->handleRequest($request);
 

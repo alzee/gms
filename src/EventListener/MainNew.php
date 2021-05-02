@@ -37,10 +37,18 @@ class MainNew
     public function postPersist(Main $main, LifecycleEventArgs $event): void
     {
         $em = $event->getEntityManager();
+        $mainSn = $main->getSn();
+        $goldclass= $main->getGoldclass();
         $count = $main->getCountChild();
-        for ($i = 0; $i < $count; $i++) {
+        $weight = $main->getPerWeight();
+        for ($i = 1; $i <= $count; $i++) {
+            $child = new Child();
+            $child->setSn($mainSn . str_pad($i, 3, '0', STR_PAD_LEFT));
+            $child->setGoldclass($goldclass);
+            $child->setWeight($weight);
+            $child->setMain($main);
+            $em->persist($child);
         }
-        $em->persist($main);
         $em->flush();
     }
 }
