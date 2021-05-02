@@ -19,6 +19,24 @@ class MainRepository extends ServiceEntityRepository
         parent::__construct($registry, Main::class);
     }
 
+    public function getIndex(): ?Main
+    {
+        $date = new \DateTime('now');
+        $year = $date->format('Y');
+        $month = $date->format('m');
+        $day = $date->format('d');
+        return $this->createQueryBuilder('m')
+            ->where('YEAR(m.date) = :year')
+            ->andWhere('MONTH(m.date) = :month')
+            ->andWhere('DAY(m.date) = :day')
+            ->setParameter('year', $year)
+            ->setParameter('month', $month)
+            ->setParameter('day', $day)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
     // /**
     //  * @return Main[] Returns an array of Main objects
     //  */
