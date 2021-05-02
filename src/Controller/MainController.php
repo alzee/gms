@@ -31,13 +31,11 @@ class MainController extends AbstractController
     public function new(Request $request, MainRepository $mainRepository): Response
     {
         $main = new Main();
-        $date = new \DateTimeImmutable;
-        $main->setDate($date);
+        $main->setDate(new \DateTimeImmutable());
         $form = $this->createForm(MainType::class, $main);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $sn = $date->format('Ymd') . 0 . $request->request->get('main')['doctype'] . str_pad(1, 4, '0', STR_PAD_LEFT);;
             $main->setSn('');
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($main);
