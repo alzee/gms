@@ -16,7 +16,20 @@ class MainType extends AbstractType
             ->add('name')
             ->add('countChild')
             ->add('sn')
+            ->add('perWeight')
+            ->add('totalWeight')
+            ->add('upstreamDoc')
+            ->add('length')
+            ->add('width')
+            ->add('height')
+            ->add('note')
             ->add('doctype')
+            ->add('prodtype')
+            ->add('goldclass')
+            ->add('cotype')
+            ->add('model')
+            ->add('lossRate')
+            ->add('factory')
         ;
     }
 

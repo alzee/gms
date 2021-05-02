@@ -13,6 +13,13 @@
                 <th>Name</th>
                 <th>CountChild</th>
                 <th>Sn</th>
+                <th>PerWeight</th>
+                <th>TotalWeight</th>
+                <th>UpstreamDoc</th>
+                <th>Length</th>
+                <th>Width</th>
+                <th>Height</th>
+                <th>Note</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -24,6 +31,13 @@
                 <td>{{ main.name }}</td>
                 <td>{{ main.countChild }}</td>
                 <td>{{ main.sn }}</td>
+                <td>{{ main.perWeight }}</td>
+                <td>{{ main.totalWeight }}</td>
+                <td>{{ main.upstreamDoc }}</td>
+                <td>{{ main.length }}</td>
+                <td>{{ main.width }}</td>
+                <td>{{ main.height }}</td>
+                <td>{{ main.note }}</td>
                 <td>
                     <a href="{{ path('main_show', {'id': main.id}) }}">show</a>
                     <a href="{{ path('main_edit', {'id': main.id}) }}">edit</a>
@@ -31,7 +45,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="13">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
