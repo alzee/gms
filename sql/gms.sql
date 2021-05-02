@@ -148,6 +148,30 @@ INSERT INTO `attach` VALUES (1,'附件1'),(2,'附件2'),(3,'附件');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `branch`
+--
+
+DROP TABLE IF EXISTS `branch`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `branch` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `branch`
+--
+
+LOCK TABLES `branch` WRITE;
+/*!40000 ALTER TABLE `branch` DISABLE KEYS */;
+INSERT INTO `branch` VALUES (1,'中央足金营销部'),(2,'地区订单综合仓');
+/*!40000 ALTER TABLE `branch` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ca`
 --
 
@@ -256,16 +280,16 @@ DROP TABLE IF EXISTS `cgd`;
 CREATE TABLE `cgd` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
-  `maindoc_id` int(11) NOT NULL,
+  `main_id` int(11) NOT NULL,
   `goldclass_id` int(11) NOT NULL,
   `position_id` int(11) NOT NULL,
   `weight` double NOT NULL,
   `note` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `IDX_D5B3F44AA0321766` (`maindoc_id`),
   KEY `IDX_D5B3F44AA145C139` (`goldclass_id`),
   KEY `IDX_D5B3F44ADD842E46` (`position_id`),
-  CONSTRAINT `FK_D5B3F44AA0321766` FOREIGN KEY (`maindoc_id`) REFERENCES `center` (`id`),
+  KEY `IDX_D5B3F44A627EA78A` (`main_id`),
+  CONSTRAINT `FK_D5B3F44A627EA78A` FOREIGN KEY (`main_id`) REFERENCES `main` (`id`),
   CONSTRAINT `FK_D5B3F44AA145C139` FOREIGN KEY (`goldclass_id`) REFERENCES `goldclass` (`id`),
   CONSTRAINT `FK_D5B3F44ADD842E46` FOREIGN KEY (`position_id`) REFERENCES `position` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -277,7 +301,6 @@ CREATE TABLE `cgd` (
 
 LOCK TABLES `cgd` WRITE;
 /*!40000 ALTER TABLE `cgd` DISABLE KEYS */;
-INSERT INTO `cgd` VALUES (1,'2021-04-28 01:44:50',1,1,1,1,'这是备注');
 /*!40000 ALTER TABLE `cgd` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -291,8 +314,18 @@ DROP TABLE IF EXISTS `child`;
 CREATE TABLE `child` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `goldclass_id` int(11) NOT NULL,
+  `main_id` int(11) NOT NULL,
+  `weight` double NOT NULL,
+  `note` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sn` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `count_piece` smallint(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_22B35429A145C139` (`goldclass_id`),
+  KEY `IDX_22B35429627EA78A` (`main_id`),
+  CONSTRAINT `FK_22B35429627EA78A` FOREIGN KEY (`main_id`) REFERENCES `main` (`id`),
+  CONSTRAINT `FK_22B35429A145C139` FOREIGN KEY (`goldclass_id`) REFERENCES `goldclass` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -301,6 +334,7 @@ CREATE TABLE `child` (
 
 LOCK TABLES `child` WRITE;
 /*!40000 ALTER TABLE `child` DISABLE KEYS */;
+INSERT INTO `child` VALUES (1,'2021-05-02 06:07:21',1,32,1.2,NULL,'20210502010004001',0),(2,'2021-05-02 06:07:21',1,32,1.2,NULL,'20210502010004002',0),(3,'2021-05-02 06:07:21',1,32,1.2,NULL,'20210502010004003',0),(4,'2021-05-02 06:07:21',1,32,1.2,NULL,'20210502010004004',0),(5,'2021-05-02 06:07:21',1,32,1.2,NULL,'20210502010004005',0),(6,'2021-05-02 09:44:06',2,33,1,NULL,'20210502020005001',0),(7,'2021-05-02 09:44:06',2,33,1,NULL,'20210502020005002',0),(8,'2021-05-02 09:44:06',2,33,1,NULL,'20210502020005003',0),(9,'2021-05-02 09:44:06',2,33,1,NULL,'20210502020005004',0),(10,'2021-05-02 09:44:06',2,33,1,NULL,'20210502020005005',0),(11,'2021-05-02 09:44:06',2,33,1,NULL,'20210502020005006',0),(12,'2021-05-02 09:44:06',2,33,1,NULL,'20210502020005007',0),(13,'2021-05-02 09:44:06',2,33,1,NULL,'20210502020005008',0),(14,'2021-05-02 09:44:06',2,33,1,NULL,'20210502020005009',0),(15,'2021-05-02 09:44:06',2,33,1,NULL,'20210502020005010',0),(16,'2021-05-02 10:03:40',1,34,1,NULL,'20210502010006001',10),(17,'2021-05-02 10:03:40',1,34,1,NULL,'20210502010006002',10),(18,'2021-05-02 10:03:40',1,34,1,NULL,'20210502010006003',10),(19,'2021-05-02 10:03:40',1,34,1,NULL,'20210502010006004',10),(20,'2021-05-02 10:03:40',1,34,1,NULL,'20210502010006005',10);
 /*!40000 ALTER TABLE `child` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -372,7 +406,7 @@ CREATE TABLE `cotype` (
 
 LOCK TABLES `cotype` WRITE;
 /*!40000 ALTER TABLE `cotype` DISABLE KEYS */;
-INSERT INTO `cotype` VALUES (1,'合作方式1'),(2,'合作方式2'),(3,'合作方式3');
+INSERT INTO `cotype` VALUES (1,'入账-半成品购入'),(2,'入账-委托加工新货'),(3,'合作方式3');
 /*!40000 ALTER TABLE `cotype` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -445,7 +479,7 @@ CREATE TABLE `doctrine_migration_versions` (
 
 LOCK TABLES `doctrine_migration_versions` WRITE;
 /*!40000 ALTER TABLE `doctrine_migration_versions` DISABLE KEYS */;
-INSERT INTO `doctrine_migration_versions` VALUES ('DoctrineMigrations\\Version20210421021409','2021-04-27 11:31:38',53),('DoctrineMigrations\\Version20210427113148','2021-04-27 11:32:04',108),('DoctrineMigrations\\Version20210427113315','2021-04-27 11:33:18',74),('DoctrineMigrations\\Version20210427113507','2021-04-27 11:35:15',71),('DoctrineMigrations\\Version20210427113654','2021-04-27 11:36:57',82),('DoctrineMigrations\\Version20210427113926','2021-04-27 11:39:29',76),('DoctrineMigrations\\Version20210427151758','2021-04-27 15:18:02',70),('DoctrineMigrations\\Version20210427151957','2021-04-27 15:20:00',96),('DoctrineMigrations\\Version20210427153404','2021-04-27 15:34:08',69),('DoctrineMigrations\\Version20210427153446','2021-04-27 15:34:49',53),('DoctrineMigrations\\Version20210427170832','2021-04-27 17:08:36',77),('DoctrineMigrations\\Version20210427171019','2021-04-27 17:10:22',72),('DoctrineMigrations\\Version20210427172324','2021-04-27 17:23:30',135),('DoctrineMigrations\\Version20210427172602','2021-04-27 17:26:12',91),('DoctrineMigrations\\Version20210427173110','2021-04-27 17:31:13',90),('DoctrineMigrations\\Version20210427173610','2021-04-27 17:36:13',34),('DoctrineMigrations\\Version20210427174307','2021-04-27 17:43:10',90),('DoctrineMigrations\\Version20210427174555','2021-04-27 17:45:58',110),('DoctrineMigrations\\Version20210427174754','2021-04-27 17:47:57',62),('DoctrineMigrations\\Version20210427180400','2021-04-27 18:04:03',83),('DoctrineMigrations\\Version20210427181148','2021-04-27 18:11:50',111),('DoctrineMigrations\\Version20210427181304','2021-04-27 18:13:06',62),('DoctrineMigrations\\Version20210427181404','2021-04-27 18:14:06',87),('DoctrineMigrations\\Version20210427181452','2021-04-27 18:14:54',139),('DoctrineMigrations\\Version20210427181557','2021-04-27 18:15:58',96),('DoctrineMigrations\\Version20210427181857','2021-04-27 18:18:58',83),('DoctrineMigrations\\Version20210427182156','2021-04-27 18:21:57',87),('DoctrineMigrations\\Version20210427182442','2021-04-27 18:24:44',116),('DoctrineMigrations\\Version20210427182934','2021-04-27 18:29:36',116),('DoctrineMigrations\\Version20210427184404','2021-04-27 18:44:04',146),('DoctrineMigrations\\Version20210427184500','2021-04-27 18:45:01',150),('DoctrineMigrations\\Version20210427184607','2021-04-27 18:46:08',146),('DoctrineMigrations\\Version20210427184734','2021-04-27 18:47:35',165),('DoctrineMigrations\\Version20210427184849','2021-04-27 18:48:50',95),('DoctrineMigrations\\Version20210427184932','2021-04-27 18:49:34',81),('DoctrineMigrations\\Version20210427185108','2021-04-27 18:51:09',98),('DoctrineMigrations\\Version20210427185337','2021-04-27 18:53:38',192),('DoctrineMigrations\\Version20210427185440','2021-04-27 18:54:41',99),('DoctrineMigrations\\Version20210427185536','2021-04-27 18:55:36',100),('DoctrineMigrations\\Version20210427232249','2021-04-27 23:22:50',334),('DoctrineMigrations\\Version20210427233431','2021-04-27 23:34:33',31),('DoctrineMigrations\\Version20210428000352','2021-04-28 00:03:53',234),('DoctrineMigrations\\Version20210428000448','2021-04-28 00:05:51',106),('DoctrineMigrations\\Version20210428000546','2021-04-28 00:05:51',36),('DoctrineMigrations\\Version20210428011835','2021-04-28 01:18:37',362),('DoctrineMigrations\\Version20210428012811','2021-04-28 01:28:12',622),('DoctrineMigrations\\Version20210428014204','2021-04-28 01:42:05',405),('DoctrineMigrations\\Version20210428015334','2021-04-28 01:53:35',474),('DoctrineMigrations\\Version20210428020431','2021-04-28 02:04:32',560),('DoctrineMigrations\\Version20210428021633','2021-04-28 02:16:34',617),('DoctrineMigrations\\Version20210428021832','2021-04-28 02:18:35',75),('DoctrineMigrations\\Version20210428022351','2021-04-28 02:23:52',621),('DoctrineMigrations\\Version20210428022921','2021-04-28 02:29:23',461);
+INSERT INTO `doctrine_migration_versions` VALUES ('DoctrineMigrations\\Version20210421021409','2021-04-27 11:31:38',53),('DoctrineMigrations\\Version20210427113148','2021-04-27 11:32:04',108),('DoctrineMigrations\\Version20210427113315','2021-04-27 11:33:18',74),('DoctrineMigrations\\Version20210427113507','2021-04-27 11:35:15',71),('DoctrineMigrations\\Version20210427113654','2021-04-27 11:36:57',82),('DoctrineMigrations\\Version20210427113926','2021-04-27 11:39:29',76),('DoctrineMigrations\\Version20210427151758','2021-04-27 15:18:02',70),('DoctrineMigrations\\Version20210427151957','2021-04-27 15:20:00',96),('DoctrineMigrations\\Version20210427153404','2021-04-27 15:34:08',69),('DoctrineMigrations\\Version20210427153446','2021-04-27 15:34:49',53),('DoctrineMigrations\\Version20210427170832','2021-04-27 17:08:36',77),('DoctrineMigrations\\Version20210427171019','2021-04-27 17:10:22',72),('DoctrineMigrations\\Version20210427172324','2021-04-27 17:23:30',135),('DoctrineMigrations\\Version20210427172602','2021-04-27 17:26:12',91),('DoctrineMigrations\\Version20210427173110','2021-04-27 17:31:13',90),('DoctrineMigrations\\Version20210427173610','2021-04-27 17:36:13',34),('DoctrineMigrations\\Version20210427174307','2021-04-27 17:43:10',90),('DoctrineMigrations\\Version20210427174555','2021-04-27 17:45:58',110),('DoctrineMigrations\\Version20210427174754','2021-04-27 17:47:57',62),('DoctrineMigrations\\Version20210427180400','2021-04-27 18:04:03',83),('DoctrineMigrations\\Version20210427181148','2021-04-27 18:11:50',111),('DoctrineMigrations\\Version20210427181304','2021-04-27 18:13:06',62),('DoctrineMigrations\\Version20210427181404','2021-04-27 18:14:06',87),('DoctrineMigrations\\Version20210427181452','2021-04-27 18:14:54',139),('DoctrineMigrations\\Version20210427181557','2021-04-27 18:15:58',96),('DoctrineMigrations\\Version20210427181857','2021-04-27 18:18:58',83),('DoctrineMigrations\\Version20210427182156','2021-04-27 18:21:57',87),('DoctrineMigrations\\Version20210427182442','2021-04-27 18:24:44',116),('DoctrineMigrations\\Version20210427182934','2021-04-27 18:29:36',116),('DoctrineMigrations\\Version20210427184404','2021-04-27 18:44:04',146),('DoctrineMigrations\\Version20210427184500','2021-04-27 18:45:01',150),('DoctrineMigrations\\Version20210427184607','2021-04-27 18:46:08',146),('DoctrineMigrations\\Version20210427184734','2021-04-27 18:47:35',165),('DoctrineMigrations\\Version20210427184849','2021-04-27 18:48:50',95),('DoctrineMigrations\\Version20210427184932','2021-04-27 18:49:34',81),('DoctrineMigrations\\Version20210427185108','2021-04-27 18:51:09',98),('DoctrineMigrations\\Version20210427185337','2021-04-27 18:53:38',192),('DoctrineMigrations\\Version20210427185440','2021-04-27 18:54:41',99),('DoctrineMigrations\\Version20210427185536','2021-04-27 18:55:36',100),('DoctrineMigrations\\Version20210427232249','2021-04-27 23:22:50',334),('DoctrineMigrations\\Version20210427233431','2021-04-27 23:34:33',31),('DoctrineMigrations\\Version20210428000352','2021-04-28 00:03:53',234),('DoctrineMigrations\\Version20210428000448','2021-04-28 00:05:51',106),('DoctrineMigrations\\Version20210428000546','2021-04-28 00:05:51',36),('DoctrineMigrations\\Version20210428011835','2021-04-28 01:18:37',362),('DoctrineMigrations\\Version20210428012811','2021-04-28 01:28:12',622),('DoctrineMigrations\\Version20210428014204','2021-04-28 01:42:05',405),('DoctrineMigrations\\Version20210428015334','2021-04-28 01:53:35',474),('DoctrineMigrations\\Version20210428020431','2021-04-28 02:04:32',560),('DoctrineMigrations\\Version20210428021633','2021-04-28 02:16:34',617),('DoctrineMigrations\\Version20210428021832','2021-04-28 02:18:35',75),('DoctrineMigrations\\Version20210428022351','2021-04-28 02:23:52',621),('DoctrineMigrations\\Version20210428022921','2021-04-28 02:29:23',461),('DoctrineMigrations\\Version20210502022502','2021-05-02 02:25:04',352),('DoctrineMigrations\\Version20210502025642','2021-05-02 02:56:44',2096),('DoctrineMigrations\\Version20210502030459','2021-05-02 03:05:02',94),('DoctrineMigrations\\Version20210502031110','2021-05-02 03:11:11',421),('DoctrineMigrations\\Version20210502055926','2021-05-02 05:59:28',681),('DoctrineMigrations\\Version20210502094800','2021-05-02 09:48:01',53),('DoctrineMigrations\\Version20210502095014','2021-05-02 09:50:15',115),('DoctrineMigrations\\Version20210502095051','2021-05-02 09:50:53',53),('DoctrineMigrations\\Version20210502101033','2021-05-02 10:10:35',499);
 /*!40000 ALTER TABLE `doctrine_migration_versions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -469,7 +503,7 @@ CREATE TABLE `doctype` (
 
 LOCK TABLES `doctype` WRITE;
 /*!40000 ALTER TABLE `doctype` DISABLE KEYS */;
-INSERT INTO `doctype` VALUES (1,'单据类型1'),(2,'单据类型2'),(3,'单据类型3');
+INSERT INTO `doctype` VALUES (1,'中央单'),(2,'自发单');
 /*!40000 ALTER TABLE `doctype` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -517,7 +551,7 @@ CREATE TABLE `factory` (
 
 LOCK TABLES `factory` WRITE;
 /*!40000 ALTER TABLE `factory` DISABLE KEYS */;
-INSERT INTO `factory` VALUES (1,'工厂1'),(2,'工厂2'),(3,'工厂3');
+INSERT INTO `factory` VALUES (1,'武汉工厂'),(2,'工厂2'),(3,'工厂3');
 /*!40000 ALTER TABLE `factory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -801,6 +835,65 @@ INSERT INTO `lossrate` VALUES (1,1.1),(2,1.1),(3,1.1),(4,1.1),(5,111),(6,111),(7
 UNLOCK TABLES;
 
 --
+-- Table structure for table `main`
+--
+
+DROP TABLE IF EXISTS `main`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `main` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `doctype_id` int(11) NOT NULL,
+  `date` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `count_child` smallint(6) NOT NULL,
+  `sn` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prodtype_id` int(11) NOT NULL,
+  `goldclass_id` int(11) NOT NULL,
+  `cotype_id` int(11) NOT NULL,
+  `model_id` int(11) NOT NULL,
+  `loss_rate_id` int(11) NOT NULL,
+  `factory_id` int(11) NOT NULL,
+  `per_weight` double NOT NULL,
+  `total_weight` double NOT NULL,
+  `upstream_doc` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `length` double DEFAULT NULL,
+  `width` double DEFAULT NULL,
+  `height` double DEFAULT NULL,
+  `note` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `branch_id` int(11) NOT NULL,
+  `count_piece` smallint(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_BF28CD64BE1876BC` (`doctype_id`),
+  KEY `IDX_BF28CD64E8420563` (`prodtype_id`),
+  KEY `IDX_BF28CD64A145C139` (`goldclass_id`),
+  KEY `IDX_BF28CD64D20C4835` (`cotype_id`),
+  KEY `IDX_BF28CD647975B7E7` (`model_id`),
+  KEY `IDX_BF28CD64EC02E518` (`loss_rate_id`),
+  KEY `IDX_BF28CD64C7AF27D2` (`factory_id`),
+  KEY `IDX_BF28CD64DCD6CC49` (`branch_id`),
+  CONSTRAINT `FK_BF28CD647975B7E7` FOREIGN KEY (`model_id`) REFERENCES `model` (`id`),
+  CONSTRAINT `FK_BF28CD64A145C139` FOREIGN KEY (`goldclass_id`) REFERENCES `goldclass` (`id`),
+  CONSTRAINT `FK_BF28CD64BE1876BC` FOREIGN KEY (`doctype_id`) REFERENCES `doctype` (`id`),
+  CONSTRAINT `FK_BF28CD64C7AF27D2` FOREIGN KEY (`factory_id`) REFERENCES `factory` (`id`),
+  CONSTRAINT `FK_BF28CD64D20C4835` FOREIGN KEY (`cotype_id`) REFERENCES `cotype` (`id`),
+  CONSTRAINT `FK_BF28CD64DCD6CC49` FOREIGN KEY (`branch_id`) REFERENCES `branch` (`id`),
+  CONSTRAINT `FK_BF28CD64E8420563` FOREIGN KEY (`prodtype_id`) REFERENCES `prodtype` (`id`),
+  CONSTRAINT `FK_BF28CD64EC02E518` FOREIGN KEY (`loss_rate_id`) REFERENCES `lossrate` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `main`
+--
+
+LOCK TABLES `main` WRITE;
+/*!40000 ALTER TABLE `main` DISABLE KEYS */;
+INSERT INTO `main` VALUES (32,1,'2021-05-02 06:07:21','t',5,'20210502010004',1,1,1,1,1,1,1.2,10,'11',1,1,1,'11',1,0),(33,2,'2021-05-02 09:44:06','name',10,'20210502020005',2,2,1,3,1,2,1,10,'5555',3,2,1,'ttt',2,0),(34,1,'2021-05-02 10:03:40','t1',5,'20210502010006',1,1,1,1,1,1,1,50,'11',1,1,1,'tt',1,50);
+/*!40000 ALTER TABLE `main` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `model`
 --
 
@@ -891,7 +984,7 @@ CREATE TABLE `position` (
 
 LOCK TABLES `position` WRITE;
 /*!40000 ALTER TABLE `position` DISABLE KEYS */;
-INSERT INTO `position` VALUES (1,'位置1'),(2,'位置2'),(3,'位置3');
+INSERT INTO `position` VALUES (1,'金原料'),(2,'单');
 /*!40000 ALTER TABLE `position` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -939,7 +1032,7 @@ CREATE TABLE `prodtype` (
 
 LOCK TABLES `prodtype` WRITE;
 /*!40000 ALTER TABLE `prodtype` DISABLE KEYS */;
-INSERT INTO `prodtype` VALUES (1,'货类1'),(2,'货类2'),(3,'货类3');
+INSERT INTO `prodtype` VALUES (1,'钻石戒指'),(2,'足金金条'),(3,'货类3');
 /*!40000 ALTER TABLE `prodtype` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1122,7 +1215,7 @@ CREATE TABLE `user` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_8D93D649F85E0677` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1131,7 +1224,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'aaaaaaa','[]','$argon2id$v=19$m=65536,t=4,p=1$bfdXnQShTgqjs8W4kyMEPw$eop1Ym6Ufp2MYr4tixw5nE5IKHsNEn6DvLSaZebnTrk');
+INSERT INTO `user` VALUES (1,'aaaaaaa','[]','$argon2id$v=19$m=65536,t=4,p=1$bfdXnQShTgqjs8W4kyMEPw$eop1Ym6Ufp2MYr4tixw5nE5IKHsNEn6DvLSaZebnTrk'),(2,'aaa','[\"ROLE_CLERK\"]','$argon2id$v=19$m=65536,t=4,p=1$ynL+It5vprLYm7/ATckeDA$qygEd+TK+HyG8kivWcWYCd6OE9Niv3Ifv5yuyD+ITaM');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1191,4 +1284,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-28 10:55:29
+-- Dump completed on 2021-05-03  0:44:24
