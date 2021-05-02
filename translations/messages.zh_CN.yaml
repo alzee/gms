@@ -15,9 +15,20 @@ Center import: 导入中央单
 Register: 注册
 Username: 用户名
 Password: 密码
+Count child: 子单数量
+Per weight: 单件重量
+Total weight: 预计用金
+Upstream doc: 上层单号
+Length: 长
+Width: 宽
+Height: 高
+Note: 备注
+Loss rate: 耗率
+Branch: 发单分行
 
 Create new Center: 中央单 新增
 Create new Own: 自发单 新增
+Create new Main: 主单 新增
 Create new Child: 子单 新增
 Create new Ca: 职员交工匠 新增
 Create new Ac: 职员收工匠 新增
@@ -56,6 +67,7 @@ Create new Factory: 工厂 新增
 
 Center index: 中央单
 Own index: 自发单
+Main index: 主单
 Child index: 子单
 Ca index: 职员交工匠
 Ac index: 职员收工匠
@@ -94,6 +106,7 @@ Factory index: 工厂
 
 Center: 中央单
 Own: 自发单
+Main: 主单
 Child: 子单
 Ca: 职员交工匠
 Ac: 职员收工匠
@@ -132,6 +145,7 @@ Factory: 工厂
 
 Edit Center: 中央单 编辑
 Edit Own: 自发单 编辑
+Edit Main: 主单 编辑
 Edit Child: 子单 编辑
 Edit Ca: 职员交工匠 编辑
 Edit Ac: 职员收工匠 编辑

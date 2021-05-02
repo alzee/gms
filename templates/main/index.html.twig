@@ -8,11 +8,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Sn</th>
                 <th>Date</th>
                 <th>Name</th>
                 <th>CountChild</th>
-                <th>Sn</th>
                 <th>PerWeight</th>
                 <th>TotalWeight</th>
                 <th>UpstreamDoc</th>
@@ -26,11 +25,10 @@
         <tbody>
         {% for main in mains %}
             <tr>
-                <td>{{ main.id }}</td>
+                <td>{{ main.sn }}</td>
                 <td>{{ main.date ? main.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ main.name }}</td>
                 <td>{{ main.countChild }}</td>
-                <td>{{ main.sn }}</td>
                 <td>{{ main.perWeight }}</td>
                 <td>{{ main.totalWeight }}</td>
                 <td>{{ main.upstreamDoc }}</td>

@@ -12,17 +12,14 @@ class MainType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
             ->add('name')
             ->add('countChild')
-            ->add('sn')
             ->add('perWeight')
             ->add('totalWeight')
             ->add('upstreamDoc')
             ->add('length')
             ->add('width')
             ->add('height')
-            ->add('note')
             ->add('doctype')
             ->add('prodtype')
             ->add('goldclass')
@@ -30,6 +27,8 @@ class MainType extends AbstractType
             ->add('model')
             ->add('lossRate')
             ->add('factory')
+            ->add('branch')
+            ->add('note')
         ;
     }
 
