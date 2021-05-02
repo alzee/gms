@@ -37,6 +37,9 @@ Count piece: 生产单件数
 CountPiece: 生产单件数
 countPiece: 件数
 child.countPiece: 件数
+factory: 工厂
+branch: 发单分行
+LossRate: 耗率
 
 Create new Center: 中央单 新增
 Create new Own: 自发单 新增
