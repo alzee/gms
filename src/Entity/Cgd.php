@@ -23,10 +23,10 @@ class Cgd
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Center::class)
+     * @ORM\ManyToOne(targetEntity=Main::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $maindoc;
+    private $main;
 
     /**
      * @ORM\ManyToOne(targetEntity=Goldclass::class)
@@ -67,14 +67,14 @@ class Cgd
         return $this;
     }
 
-    public function getMaindoc(): ?Center
+    public function getMain(): ?Center
     {
-        return $this->maindoc;
+        return $this->main;
     }
 
-    public function setMaindoc(?Center $maindoc): self
+    public function setMain(?Center $main): self
     {
-        $this->maindoc = $maindoc;
+        $this->main = $main;
 
         return $this;
     }
