@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use App\Entity\Main;
+use App\Entity\Child;
 
 class MainNew
 {
@@ -35,9 +36,12 @@ class MainNew
 
     public function postPersist(Main $main, LifecycleEventArgs $event): void
     {
-        // $em = $event->getEntityManager();
-        // $em->persist($main);
-        // $em->flush();
+        $em = $event->getEntityManager();
+        $count = $main->getCountChild();
+        for ($i = 0; $i < $count; $i++) {
+        }
+        $em->persist($main);
+        $em->flush();
     }
 }
 
