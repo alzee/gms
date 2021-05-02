@@ -12,7 +12,10 @@ class ChildType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
+            ->add('main')
+            ->add('goldclass')
+            ->add('weight')
+            ->add('note')
         ;
     }
 

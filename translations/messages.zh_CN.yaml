@@ -26,6 +26,9 @@ Note: 备注
 Loss rate: 耗率
 Branch: 发单分行
 Sn: 单号
+sn: 单号
+main: 主单
+Weight: 重量
 CountChild: 子单数量
 PerWeight: 子单重量
 TotalWeight: 预计重量

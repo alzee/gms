@@ -151,7 +151,7 @@ class Main
 
     public function __toString(): string
     {
-        return $this->name;
+        return $this->sn;
     }
 
     public function getCountChild(): ?int
