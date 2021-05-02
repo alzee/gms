@@ -6,6 +6,7 @@ use App\Entity\Child;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class ChildType extends AbstractType
 {
@@ -13,6 +14,7 @@ class ChildType extends AbstractType
     {
         $builder
             ->add('main')
+            ->add('countPiece', IntegerType::class,  ['label' => 'child.countPiece'])
             ->add('goldclass')
             ->add('weight')
             ->add('note')

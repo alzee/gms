@@ -40,6 +40,7 @@ class MainNew
         $mainSn = $main->getSn();
         $goldclass= $main->getGoldclass();
         $count = $main->getCountChild();
+        $countPiece = $main->getCountPiece() / $count;
         $weight = $main->getPerWeight();
         for ($i = 1; $i <= $count; $i++) {
             $child = new Child();
@@ -47,6 +48,7 @@ class MainNew
             $child->setGoldclass($goldclass);
             $child->setWeight($weight);
             $child->setMain($main);
+            $child->setCountPiece($countPiece);
             $em->persist($child);
         }
         $em->flush();

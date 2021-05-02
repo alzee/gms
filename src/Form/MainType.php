@@ -13,6 +13,7 @@ class MainType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('countPiece')
             ->add('countChild')
             ->add('perWeight')
             ->add('totalWeight')
