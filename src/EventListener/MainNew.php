@@ -15,16 +15,29 @@ use App\Entity\Main;
 
 class MainNew
 {
-    public function postPersist(Main $main, LifecycleEventArgs $event): void
+    public function prePersist(Main $main, LifecycleEventArgs $event): void
     {
         $date = new \DateTime('now');
-        $doctype = $main->getDoctype();
+        $dateString = $date->format('Ymd');
         $id = $main->getId();
-        $sn = $date->format('Ymd') . 0 . $doctype->getId() . str_pad($id, 4, '0', STR_PAD_LEFT);
+        $doctype = $main->getDoctype();
         $em = $event->getEntityManager();
+        $latest = $em->getRepository(Main::class)->getLatest();
+        if ($dateString == substr($latest->getSn(), 0, 8)) {
+            $snId = substr($latest->getSn(), -4) + 1;
+            $sn = $dateString . str_pad($doctype->getId(), 2, '0', STR_PAD_LEFT) . str_pad($snId, 4, '0', STR_PAD_LEFT);
+        }
+        else {
+            $sn = $dateString . str_pad($doctype->getId(), 2, '0', STR_PAD_LEFT) . '0001';
+        }
         $main->setSn($sn);
-        $em->persist($main);
-        $em->flush();
+    }
+
+    public function postPersist(Main $main, LifecycleEventArgs $event): void
+    {
+        // $em = $event->getEntityManager();
+        // $em->persist($main);
+        // $em->flush();
     }
 }
 

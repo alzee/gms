@@ -37,6 +37,16 @@ class MainRepository extends ServiceEntityRepository
         ;
     }
 
+    public function getLatest(): ?Main
+    {
+        return $this->createQueryBuilder('m')
+            ->orderBy('m.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
     // /**
     //  * @return Main[] Returns an array of Main objects
     //  */

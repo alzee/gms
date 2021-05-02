@@ -36,7 +36,6 @@ class MainController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $main->setSn('');
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($main);
             $entityManager->flush();
