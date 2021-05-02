@@ -120,6 +120,11 @@ class Main
      */
     private $branch;
 
+    /**
+     * @ORM\Column(type="smallint")
+     */
+    private $countPiece;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -361,5 +366,17 @@ class Main
     public function __construct()
     {
         $this->date = new \DateTimeImmutable();
+    }
+
+    public function getCountPiece(): ?int
+    {
+        return $this->countPiece;
+    }
+
+    public function setCountPiece(int $countPiece): self
+    {
+        $this->countPiece = $countPiece;
+
+        return $this;
     }
 }
