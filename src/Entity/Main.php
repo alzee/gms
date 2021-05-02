@@ -114,6 +114,12 @@ class Main
      */
     private $note;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Branch::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $branch;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -336,6 +342,18 @@ class Main
     public function setNote(?string $note): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    public function getBranch(): ?Branch
+    {
+        return $this->branch;
+    }
+
+    public function setBranch(?Branch $branch): self
+    {
+        $this->branch = $branch;
 
         return $this;
     }
