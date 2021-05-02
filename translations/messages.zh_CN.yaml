@@ -24,11 +24,13 @@ Width: 宽
 Height: 高
 Note: 备注
 Loss rate: 耗率
+Lossrate: 耗率
 Branch: 发单分行
 Sn: 单号
 CountChild: 子单数量
 PerWeight: 子单重量
 TotalWeight: 预计重量
+UpstreamDoc: 上层单号
 
 Create new Center: 中央单 新增
 Create new Own: 自发单 新增
