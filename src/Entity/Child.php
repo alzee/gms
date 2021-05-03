@@ -54,6 +54,11 @@ class Child
      */
     private $countPiece;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $box = 0;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -144,6 +149,18 @@ class Child
     public function setCountPiece(int $countPiece): self
     {
         $this->countPiece = $countPiece;
+
+        return $this;
+    }
+
+    public function getBox(): ?float
+    {
+        return $this->box;
+    }
+
+    public function setBox(float $box): self
+    {
+        $this->box = $box;
 
         return $this;
     }
