@@ -22,6 +22,11 @@ class Artisan
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $box = 0;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -42,5 +47,17 @@ class Artisan
     public function __toString(): string
     {
         return $this->name;
+    }
+
+    public function getBox(): ?float
+    {
+        return $this->box;
+    }
+
+    public function setBox(float $box): self
+    {
+        $this->box = $box;
+
+        return $this;
     }
 }
