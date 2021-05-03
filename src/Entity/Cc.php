@@ -62,6 +62,11 @@ class Cc
      */
     private $sender;
 
+    /**
+     * @ORM\Column(type="datetime_immutable", nullable=true)
+     */
+    private $date1;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -159,6 +164,18 @@ class Cc
     public function setSender(?User $sender): self
     {
         $this->sender = $sender;
+
+        return $this;
+    }
+
+    public function getDate1(): ?\DateTimeImmutable
+    {
+        return $this->date1;
+    }
+
+    public function setDate1(?\DateTimeImmutable $date1): self
+    {
+        $this->date1 = $date1;
 
         return $this;
     }
