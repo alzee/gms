@@ -19,21 +19,36 @@ class CcUpdate
     {
         $em = $event->getEntityManager();
         if ($cc->getStatus() == 2) {
+            $sender = $cc->getSender();
             $recipient = $cc->getRecipient();
-            // add to box
             $weight = $cc->getWeight();
             $goldclass = $cc->getGoldclass();
-            $box = $em->getRepository(Box::class)->findOneBy(['clerk' => $recipient , 'goldclass' => $goldclass]);
-            if (is_null($box)) {
-                $box = new Box();
-                $box->setClerk($recipient);
-                $box->setGoldclass($goldclass);
-                $box->setWeight($weight);
+
+            // subtract from sender box
+            $senderBox= $em->getRepository(Box::class)->findOneBy(['clerk' => $sender, 'goldclass' => $goldclass]);
+            if (is_null($senderBox)) {
+                $senderBox = new Box();
+                $senderBox->setClerk($sender);
+                $senderBox->setGoldclass($goldclass);
+                $senderBox->setWeight(0 - $weight);
             }
             else {
-                $box->setWeight($box->getWeight() + $weight);
+                $senderBox->setWeight($senderBox->getWeight() - $weight);
             }
-            $em->persist($box);
+            $em->persist($senderBox);
+
+            // add to recipient box
+            $recipientBox = $em->getRepository(Box::class)->findOneBy(['clerk' => $recipient , 'goldclass' => $goldclass]);
+            if (is_null($recipientBox)) {
+                $recipientBox = new Box();
+                $recipientBox->setClerk($recipient);
+                $recipientBox->setGoldclass($goldclass);
+                $recipientBox->setWeight($weight);
+            }
+            else {
+                $recipientBox->setWeight($recipientBox->getWeight() + $weight);
+            }
+            $em->persist($recipientBox);
             $em->flush();
         }
     }
