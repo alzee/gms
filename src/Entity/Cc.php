@@ -29,7 +29,7 @@ class Cc
     private $team;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Clerk::class)
+     * @ORM\ManyToOne(targetEntity=User::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $recipient;
@@ -85,12 +85,12 @@ class Cc
         return $this;
     }
 
-    public function getRecipient(): ?Clerk
+    public function getRecipient(): ?User
     {
         return $this->recipient;
     }
 
-    public function setRecipient(?Clerk $recipient): self
+    public function setRecipient(?User $recipient): self
     {
         $this->recipient = $recipient;
 
