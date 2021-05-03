@@ -36,6 +36,11 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $box = 0;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -110,5 +115,17 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getBox(): ?float
+    {
+        return $this->box;
+    }
+
+    public function setBox(float $box): self
+    {
+        $this->box = $box;
+
+        return $this;
     }
 }
