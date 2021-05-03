@@ -73,12 +73,12 @@ class Cgd
         return $this;
     }
 
-    public function getMain(): ?Center
+    public function getMain(): ?Main
     {
         return $this->main;
     }
 
-    public function setMain(?Center $main): self
+    public function setMain(?Main $main): self
     {
         $this->main = $main;
 

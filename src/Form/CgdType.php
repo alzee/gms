@@ -13,6 +13,7 @@ class CgdType extends AbstractType
     {
         $builder
             ->add('main')
+            ->add('child')
             ->add('goldclass')
             ->add('position')
             ->add('weight')
