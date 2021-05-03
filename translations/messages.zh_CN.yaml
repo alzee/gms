@@ -40,6 +40,7 @@ child.countPiece: 件数
 factory: 工厂
 branch: 发单分行
 LossRate: 耗率
+box: 现重
 
 Create new Center: 中央单 新增
 Create new Own: 自发单 新增
