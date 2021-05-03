@@ -40,9 +40,21 @@ class CcController extends AbstractController
      */
     public function got(CcRepository $ccRepository): Response
     {
-        return $this->render('cc/index.html.twig', [
+        return $this->render('cc/got.html.twig', [
             'ccs' => $ccRepository->toMe($this->getUser()),
         ]);
+    }
+
+    /**
+     * @Route("/confirm/{id}", name="cc_confirm", methods={"GET"})
+     */
+    public function confirm(Cc $cc): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $cc->setStatus(2);
+        $em->persist($cc);
+        $em->flush();
+        return $this->redirectToRoute('cc_got');
     }
 
     /**
