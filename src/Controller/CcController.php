@@ -26,6 +26,26 @@ class CcController extends AbstractController
     }
 
     /**
+     * @Route("/sent", name="cc_sent", methods={"GET"})
+     */
+    public function sent(CcRepository $ccRepository): Response
+    {
+        return $this->render('cc/index.html.twig', [
+            'ccs' => $ccRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/got", name="cc_got", methods={"GET"})
+     */
+    public function got(CcRepository $ccRepository): Response
+    {
+        return $this->render('cc/index.html.twig', [
+            'ccs' => $ccRepository->toMe($this->getUser()),
+        ]);
+    }
+
+    /**
      * @Route("/new", name="cc_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response

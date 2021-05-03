@@ -19,6 +19,18 @@ class CcRepository extends ServiceEntityRepository
         parent::__construct($registry, Cc::class);
     }
 
+    public function toMe($clerk)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.recipient = :val')
+            ->setParameter('val', $clerk)
+            ->orderBy('c.id', 'DESC')
+            ->setMaxResults(50)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Cc[] Returns an array of Cc objects
     //  */
