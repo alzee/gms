@@ -23,15 +23,18 @@ class MainNew
         $id = $main->getId();
         $doctype = $main->getDoctype();
         $em = $event->getEntityManager();
-        $latest = $em->getRepository(Main::class)->getLatest();
-        if ($dateString == substr($latest->getSn(), 0, 8)) {
-            $snId = substr($latest->getSn(), -4) + 1;
-            $sn = $dateString . str_pad($doctype->getId(), 2, '0', STR_PAD_LEFT) . str_pad($snId, 4, '0', STR_PAD_LEFT);
+        $sn = $main->getSn();
+        if (is_null($sn)) {
+            $latest = $em->getRepository(Main::class)->getLatest();
+            if ($dateString == substr($latest->getSn(), 0, 8)) {
+                $snId = substr($latest->getSn(), -4) + 1;
+                $sn = $dateString . str_pad($doctype->getId(), 2, '0', STR_PAD_LEFT) . str_pad($snId, 4, '0', STR_PAD_LEFT);
+            }
+            else {
+                $sn = $dateString . str_pad($doctype->getId(), 2, '0', STR_PAD_LEFT) . '0001';
+            }
+            $main->setSn($sn);
         }
-        else {
-            $sn = $dateString . str_pad($doctype->getId(), 2, '0', STR_PAD_LEFT) . '0001';
-        }
-        $main->setSn($sn);
     }
 
     public function postPersist(Main $main, LifecycleEventArgs $event): void

@@ -6,6 +6,7 @@ use App\Entity\Main;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class MainType extends AbstractType
 {
@@ -13,6 +14,7 @@ class MainType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('sn', TextType::class , ['required' => false])
             ->add('countPiece')
             ->add('countChild')
             ->add('perWeight')
