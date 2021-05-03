@@ -25,7 +25,7 @@ class UserNew
 
     public function prePersist(User $user, LifecycleEventArgs $event): void
     {
-        $user->setPassword($this->encoder->encodePassword($user, $user->plainPassword));
+        $user->setPassword($this->encoder->encodePassword($user, $user->getPlainPassword()));
     }
 }
 
