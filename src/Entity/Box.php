@@ -36,7 +36,7 @@ class Box
     /**
      * @ORM\Column(type="float")
      */
-    private $weight;
+    private $weight = 0;
 
     public function getId(): ?int
     {
