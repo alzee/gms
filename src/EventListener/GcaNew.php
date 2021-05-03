@@ -39,7 +39,7 @@ class GcaNew
         $em->persist($clerkBox);
 
         // add to artisan box
-        $artisanBox = $em->getRepository(Box::class)->findOneBy(['clerk' => $artisan, 'goldclass' => $goldclass]);
+        $artisanBox = $em->getRepository(Box::class)->findOneBy(['artisan' => $artisan, 'goldclass' => $goldclass]);
         if (is_null($artisanBox)) {
             $artisanBox = new Box();
             $artisanBox->setArtisan($artisan);
