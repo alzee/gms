@@ -50,6 +50,12 @@ class Cgd
      */
     private $note;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Child::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $child;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -123,6 +129,18 @@ class Cgd
     public function setNote(string $note): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    public function getChild(): ?Child
+    {
+        return $this->child;
+    }
+
+    public function setChild(?Child $child): self
+    {
+        $this->child = $child;
 
         return $this;
     }
