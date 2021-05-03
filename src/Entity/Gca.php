@@ -56,6 +56,12 @@ class Gca
      */
     private $weight;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $clerk;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -141,6 +147,18 @@ class Gca
     public function setWeight(float $weight): self
     {
         $this->weight = $weight;
+
+        return $this;
+    }
+
+    public function getClerk(): ?User
+    {
+        return $this->clerk;
+    }
+
+    public function setClerk(?User $clerk): self
+    {
+        $this->clerk = $clerk;
 
         return $this;
     }
