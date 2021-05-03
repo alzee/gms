@@ -17,6 +17,7 @@
                 <th>{{'weight' | trans}}</th>
                 <th>{{'status' | trans}}</th>
                 <th>{{'Date' | trans}}</th>
+                <th>{{'Date1' | trans}}</th>
                 <th>{{'actions' | trans}}</th>
             </tr>
         </thead>
@@ -32,6 +33,7 @@
                 <td>{{ cc.weight }}</td>
                 <td>{{ cc.status }}</td>
                 <td>{{ cc.date ? cc.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ cc.date1 ? cc.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ path('cc_show', {'id': cc.id}) }}">{{'show' | trans}}</a>
                     <a class="btn btn-warning" href="{{ path('cc_edit', {'id': cc.id}) }}">{{'edit' | trans}}</a>

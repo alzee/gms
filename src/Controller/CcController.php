@@ -52,6 +52,7 @@ class CcController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $cc->setStatus(2);
+        $cc->setDate1(new \DateTimeImmutable());
         $em->persist($cc);
         $em->flush();
         return $this->redirectToRoute('cc_got');
