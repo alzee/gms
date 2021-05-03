@@ -59,6 +59,12 @@ class Child
      */
     private $box = 0;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Artisan::class)
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $artisan;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -168,5 +174,17 @@ class Child
     public function __toString(): string
     {
         return $this->sn;
+    }
+
+    public function getArtisan(): ?Artisan
+    {
+        return $this->artisan;
+    }
+
+    public function setArtisan(?Artisan $artisan): self
+    {
+        $this->artisan = $artisan;
+
+        return $this;
     }
 }
