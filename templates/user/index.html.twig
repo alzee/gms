@@ -10,6 +10,7 @@
             <tr>
                 <th>Id</th>
                 <th>Username</th>
+                <th>name</th>
                 <th>Roles</th>
                 <th>Box</th>
                 <th>actions</th>
@@ -20,6 +21,7 @@
             <tr>
                 <td>{{ user.id }}</td>
                 <td>{{ user.username }}</td>
+                <td>{{ user.name }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 <td>{{ user.box }}</td>
                 <td>

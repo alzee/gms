@@ -6,6 +6,6 @@ if (i) {
 
 function t() {
     console.log(i);
-    let w = document.querySelector('#cgd_weight');
+    let w = document.querySelector('[id$=_weight]');
     w.value = +(1 + Math.random()).toFixed(2);
 }
