@@ -17,7 +17,6 @@ class CcType extends AbstractType
             ->add('goldclass')
             ->add('position')
             ->add('weight')
-            ->add('status')
         ;
     }
 

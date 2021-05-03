@@ -31,7 +31,11 @@
                 <td>{{ cc.status }}</td>
                 <td>{{ cc.date ? cc.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
+                {% if cc.status == 2 %}
+                    <a class="btn btn-warning disabled" href="{{ path('cc_confirm', {'id': cc.id}) }}">{{'confirmed' | trans}}</a>
+                {% else %}
                     <a class="btn btn-warning" href="{{ path('cc_confirm', {'id': cc.id}) }}">{{'confirm' | trans}}</a>
+                {% endif %}
                 </td>
             </tr>
         {% else %}
