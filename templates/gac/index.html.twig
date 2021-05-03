@@ -9,8 +9,9 @@
         <thead>
             <tr>
                 <th>{{'Id' | trans}}</th>
-                <th>{{'team' | trans}}</th>
+                <th>{{'clerk' | trans}}</th>
                 <th>{{'artisan' | trans}}</th>
+                <th>{{'team' | trans}}</th>
                 <th>{{'goldclass' | trans}}</th>
                 <th>{{'position' | trans}}</th>
                 <th>{{'weight' | trans}}</th>
@@ -23,8 +24,9 @@
         {% for gac in gacs %}
             <tr>
                 <td>{{ gac.id }}</td>
-                <td>{{ gac.team }}</td>
+                <td>{{ gac.clerk }}</td>
                 <td>{{ gac.artisan }}</td>
+                <td>{{ gac.team }}</td>
                 <td>{{ gac.goldclass }}</td>
                 <td>{{ gac.position }}</td>
                 <td>{{ gac.weight }}</td>
