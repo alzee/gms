@@ -56,6 +56,12 @@ class Cc
      */
     private $status = 0;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $sender;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -141,6 +147,18 @@ class Cc
     public function setStatus(int $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getSender(): ?User
+    {
+        return $this->sender;
+    }
+
+    public function setSender(?User $sender): self
+    {
+        $this->sender = $sender;
 
         return $this;
     }
