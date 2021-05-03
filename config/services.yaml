@@ -61,3 +61,17 @@ services:
                 name: 'doctrine.orm.entity_listener'
                 event: 'postUpdate'
                 entity: 'App\Entity\Cc'
+
+    App\EventListener\GcaNew:
+        tags:
+            -
+                name: 'doctrine.orm.entity_listener'
+                event: 'prePersist'
+                entity: 'App\Entity\Gca'
+
+    App\EventListener\GacNew:
+        tags:
+            -
+                name: 'doctrine.orm.entity_listener'
+                event: 'prePersist'
+                entity: 'App\Entity\Gac'
