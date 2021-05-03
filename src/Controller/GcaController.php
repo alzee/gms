@@ -32,6 +32,7 @@ class GcaController extends AbstractController
     {
         $gca = new Gca();
         $gca->setDate(new \DateTimeImmutable());
+        $gca->setClerk($this->getUser());
         $form = $this->createForm(GcaType::class, $gca);
         $form->handleRequest($request);
 
