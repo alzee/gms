@@ -10,6 +10,7 @@ namespace App\EventListener;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Cc;
+use App\Entity\Box;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
 
 class CcUpdate
@@ -17,12 +18,12 @@ class CcUpdate
     public function postUpdate(Cc $cc, LifecycleEventArgs $event): void
     {
         $em = $event->getEntityManager();
-        if ($cc->getStatus()->getId() == 2) {
+        if ($cc->getStatus() == 2) {
             $recipient = $cc->getRecipient();
             // add to box
             $weight = $cc->getWeight();
             $goldclass = $cc->getGoldclass();
-            $box = $event->getReposity(Box::class)->findOneBy(['clerk' => $recipient , 'goldclass' => $goldclass]);
+            $box = $em->getRepository(Box::class)->findOneBy(['clerk' => $recipient , 'goldclass' => $goldclass]);
             if (is_null($box)) {
                 $box = new Box();
                 $box->setClerk($recipient);

@@ -18,7 +18,7 @@ class Box
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Clerk::class)
+     * @ORM\ManyToOne(targetEntity=User::class)
      */
     private $clerk;
 
@@ -43,12 +43,12 @@ class Box
         return $this->id;
     }
 
-    public function getClerk(): ?Clerk
+    public function getClerk(): ?User
     {
         return $this->clerk;
     }
 
-    public function setClerk(?Clerk $clerk): self
+    public function setClerk(?User $clerk): self
     {
         $this->clerk = $clerk;
 
