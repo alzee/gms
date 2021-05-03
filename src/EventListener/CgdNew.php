@@ -20,6 +20,8 @@ class CgdNew
     {
         $weight = $cgd->getWeight();
         $child = $cgd->getChild();
+        $main = $child->getMain();
+        $cgd->setMain($main);
         $child->setBox($child->getBox() + $weight);
     }
 }

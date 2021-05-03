@@ -42,6 +42,7 @@ branch: 发单分行
 LossRate: 耗率
 box: 现重
 child: 子单
+weighing: 称重
 
 Create new Center: 中央单 新增
 Create new Own: 自发单 新增
