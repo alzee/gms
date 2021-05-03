@@ -64,6 +64,7 @@ class CcController extends AbstractController
     {
         $cc = new Cc();
         $cc->setDate(new \DateTimeImmutable());
+        $cc->setSender($this->getUser());
         $form = $this->createForm(CcType::class, $cc);
         $form->handleRequest($request);
 
