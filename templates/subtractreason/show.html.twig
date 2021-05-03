@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Subtractreason{% endblock %}
+
+{% block body %}
+    <h1>Subtractreason</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ subtractreason.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ subtractreason.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('subtractreason_index') }}">back to list</a>
+
+    <a href="{{ path('subtractreason_edit', {'id': subtractreason.id}) }}">edit</a>
+
+    {{ include('subtractreason/_delete_form.html.twig') }}
+{% endblock %}
