@@ -41,16 +41,16 @@ class Gbs
     private $position;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Addtype::class)
+     * @ORM\ManyToOne(targetEntity=Subtracttype::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $addtype;
+    private $subtracttype;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Addreason::class)
+     * @ORM\ManyToOne(targetEntity=Subtractreason::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $addreason;
+    private $subtractreason;
 
     /**
      * @ORM\Column(type="float")
@@ -115,26 +115,26 @@ class Gbs
         return $this;
     }
 
-    public function getAddtype(): ?Addtype
+    public function getSubtracttype(): ?Subtracttype
     {
-        return $this->addtype;
+        return $this->subtracttype;
     }
 
-    public function setAddtype(?Addtype $addtype): self
+    public function setSubtracttype(?Subtracttype $subtracttype): self
     {
-        $this->addtype = $addtype;
+        $this->subtracttype = $subtracttype;
 
         return $this;
     }
 
-    public function getAddreason(): ?Addreason
+    public function getSubtractreason(): ?Subtractreason
     {
-        return $this->addreason;
+        return $this->subtractreason;
     }
 
-    public function setAddreason(?Addreason $addreason): self
+    public function setSubtractreason(?Subtractreason $subtractreason): self
     {
-        $this->addreason = $addreason;
+        $this->subtractreason = $subtractreason;
 
         return $this;
     }
