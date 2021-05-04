@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ca{% endblock %}
+
+{% block body %}
+    <h1>{{'Ca' | trans}}</h1>
+
+    <table class="table table-striped table-hover">
+        <tbody>
+            <tr>
+                <th>{{'Id' | trans}}</th>
+                <td>{{ ca.id }}</td>
+            </tr>
+            <tr>
+                <th>{{'child' | trans}}</th>
+                <td>{{ ca.child }}</td>
+            </tr>
+            <tr>
+                <th>{{'clerk' | trans}}</th>
+                <td>{{ ca.clerk }}</td>
+            </tr>
+            <tr>
+                <th>{{'weightGold' | trans}}</th>
+                <td>{{ ca.weightGold }}</td>
+            </tr>
+            <tr>
+                <th>{{'weightAttach' | trans}}</th>
+                <td>{{ ca.weightAttach }}</td>
+            </tr>
+            <tr>
+                <th>{{'craft' | trans}}</th>
+                <td>{{ ca.craft }}</td>
+            </tr>
+            <tr>
+                <th>{{'artisan' | trans}}</th>
+                <td>{{ ca.artisan }}</td>
+            </tr>
+            <tr>
+                <th>{{'date' | trans}}</th>
+                <td>{{ ca.date ? ca.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('ca_index') }}">{{'back to list' | trans}}</a>
+
+    <a class="btn btn-warning" href="{{ path('ca_edit', {'id': ca.id}) }}">{{'edit' | trans}}</a>
+
+    {{ include('ca/_delete_form.html.twig') }}
+{% endblock %}

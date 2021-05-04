@@ -26,6 +26,26 @@ class CaController extends AbstractController
     }
 
     /**
+     * @Route("/back", name="ca_back", methods={"GET"})
+     */
+    public function back(CaRepository $caRepository): Response
+    {
+        return $this->render('ca/back.html.twig', [
+            'cas' => $caRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/receive/{id}", name="ca_receive", methods={"GET"})
+     */
+    public function receive(Ca $ca): Response
+    {
+        return $this->render('ca/receive.html.twig', [
+            'ca' => $ca,
+        ]);
+    }
+
+    /**
      * @Route("/new", name="ca_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
