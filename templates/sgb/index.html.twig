@@ -8,23 +8,33 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Date</th>
-                <th>Weight</th>
-                <th>Note</th>
-                <th>actions</th>
+                <th>{{ 'Id' | trans}}</th>
+                <th>{{ 'company' | trans}}</th>
+                <th>{{ 'goldclass' | trans}}</th>
+                <th>{{ 'position' | trans}}</th>
+                <th>{{ 'subtracttype' | trans}}</th>
+                <th>{{ 'subtractreason' | trans}}</th>
+                <th>{{ 'Weight' | trans}}</th>
+                <th>{{ 'Note' | trans}}</th>
+                <th>{{ 'Date' | trans}}</th>
+                <th>{{ 'actions' | trans}}</th>
             </tr>
         </thead>
         <tbody>
         {% for sgb in sgbs %}
             <tr>
                 <td>{{ sgb.id }}</td>
-                <td>{{ sgb.date ? sgb.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ sgb.company }}</td>
+                <td>{{ sgb.goldclass }}</td>
+                <td>{{ sgb.position }}</td>
+                <td>{{ sgb.subtracttype }}</td>
+                <td>{{ sgb.subtractreason }}</td>
                 <td>{{ sgb.weight }}</td>
                 <td>{{ sgb.note }}</td>
+                <td>{{ sgb.date ? sgb.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('sgb_show', {'id': sgb.id}) }}">show</a>
-                    <a href="{{ path('sgb_edit', {'id': sgb.id}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('sgb_show', {'id': sgb.id}) }}">{{ 'show' | trans}}</a>
+                    <a class="btn btn-warning" href="{{ path('sgb_edit', {'id': sgb.id}) }}">{{ 'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +45,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('sgb_new') }}">Create new</a>
+    <a class="btn btn-success" href="{{ path('sgb_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}
