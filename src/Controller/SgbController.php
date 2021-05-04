@@ -31,6 +31,7 @@ class SgbController extends AbstractController
     public function new(Request $request): Response
     {
         $sgb = new Sgb();
+        $sgb->setDate(new \DateTimeImmutable());
         $form = $this->createForm(SgbType::class, $sgb);
         $form->handleRequest($request);
 
