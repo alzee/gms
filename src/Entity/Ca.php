@@ -61,6 +61,11 @@ class Ca
      */
     private $clerk;
 
+    /**
+     * @ORM\Column(type="smallint")
+     */
+    private $status = 0;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -158,6 +163,18 @@ class Ca
     public function setClerk(?User $clerk): self
     {
         $this->clerk = $clerk;
+
+        return $this;
+    }
+
+    public function getStatus(): ?int
+    {
+        return $this->status;
+    }
+
+    public function setStatus(int $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }
