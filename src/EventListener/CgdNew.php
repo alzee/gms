@@ -18,11 +18,35 @@ class CgdNew
 {
     public function prePersist(Cgd $cgd, LifecycleEventArgs $event): void
     {
+        $em = $event->getEntityManager();
         $weight = $cgd->getWeight();
-        $child = $cgd->getChild();
-        $main = $child->getMain();
-        $cgd->setMain($main);
-        $child->setBox($child->getBox() + $weight);
+        $main = $cgd->getMain();
+        $goldclass = $cgd->getGoldclass();
+        $position = $cgd->getPosition();
+        if (!is_null($main)) {
+            $children = $em->getRepository(Child::class)->findBy(['main' => $main]);
+            $perWeight = $weight / $main->getCountChild();
+            foreach ($children as $child) {
+                $cgd = new Cgd();
+                $cgd->setMain(null);
+                $cgd->setChild($child);
+                $cgd->setGoldclass($goldclass);
+                $cgd->setPosition($position);
+                $cgd->setWeight($perWeight);
+                $cgd->setDate(new \DateTimeImmutable());
+                $child->setBox($child->getBox() + $perWeight);
+                $em->persist($cgd);
+            }
+        }
+        else {
+            $child = $cgd->getChild();
+            if (!is_null($child)) {
+                $main = $child->getMain();
+                $cgd->setMain($main);
+                $child->setBox($child->getBox() + $weight);
+            }
+        }
+
     }
 }
 
