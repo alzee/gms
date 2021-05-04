@@ -9,7 +9,7 @@
         <thead>
             <tr>
                 <th>{{'Id' | trans}}</th>
-                <th>{{'maindoc' | trans}}</th>
+                <th>{{'child' | trans}}</th>
                 <th>{{'weightGold' | trans}}</th>
                 <th>{{'weightAttach' | trans}}</th>
                 <th>{{'weight' | trans}}</th>
@@ -23,7 +23,7 @@
         {% for ac in acs %}
             <tr>
                 <td>{{ ac.id }}</td>
-                <td>{{ ac.maindoc }}</td>
+                <td>{{ ac.child }}</td>
                 <td>{{ ac.weightGold }}</td>
                 <td>{{ ac.weightAttach }}</td>
                 <td>{{ ac.weight }}</td>

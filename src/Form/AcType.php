@@ -12,7 +12,7 @@ class AcType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('maindoc')
+            ->add('child')
             ->add('artisan')
             ->add('weightGold')
             ->add('weightAttach')
