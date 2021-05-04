@@ -23,11 +23,6 @@ class Main
     private $date;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $name;
-
-    /**
      * @ORM\Column(type="smallint")
      */
     private $countChild;
@@ -138,18 +133,6 @@ class Main
     public function setDate(\DateTimeImmutable $date): self
     {
         $this->date = $date;
-
-        return $this;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
 
         return $this;
     }
