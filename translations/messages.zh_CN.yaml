@@ -49,6 +49,8 @@ sender: 发送人
 Sender: 发送人
 Date1: 接收日期
 clerk: 文员
+subtracttype: 减金类型
+subtractreason: 减金原因
 
 Create new Center: 中央单 新增
 Create new Own: 自发单 新增

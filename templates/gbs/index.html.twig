@@ -3,37 +3,41 @@
 {% block title %}Gbs index{% endblock %}
 
 {% block body %}
-    <h1>Gbs index</h1>
+    <h1>{{'Gbs index' | trans}}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Date</th>
-                <th>Weight</th>
-                <th>Note</th>
-                <th>actions</th>
+                <th>{{ 'Id' | trans}}</th>
+                <th>{{ 'subtracttype' | trans}}</th>
+                <th>{{ 'subtractreason' | trans}}</th>
+                <th>{{ 'Weight' | trans}}</th>
+                <th>{{ 'Note' | trans}}</th>
+                <th>{{ 'Date' | trans}}</th>
+                <th>{{ 'actions' | trans}}</th>
             </tr>
         </thead>
         <tbody>
         {% for gb in gbs %}
             <tr>
                 <td>{{ gb.id }}</td>
-                <td>{{ gb.date ? gb.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ gb.subtracttype }}</td>
+                <td>{{ gb.subtractreason }}</td>
                 <td>{{ gb.weight }}</td>
                 <td>{{ gb.note }}</td>
+                <td>{{ gb.date ? gb.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('gbs_show', {'id': gb.id}) }}">show</a>
-                    <a href="{{ path('gbs_edit', {'id': gb.id}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('gbs_show', {'id': gb.id}) }}">{{'show' | trans}}</a>
+                    <a class="btn btn-warning" href="{{ path('gbs_edit', {'id': gb.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">{{'no records found' | trans}}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('gbs_new') }}">Create new</a>
+    <a class="btn btn-success" href="{{ path('gbs_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}
