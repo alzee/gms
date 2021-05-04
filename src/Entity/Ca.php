@@ -55,6 +55,12 @@ class Ca
      */
     private $child;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Clerk::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $clerk;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -140,6 +146,18 @@ class Ca
     public function setChild(?Child $child): self
     {
         $this->child = $child;
+
+        return $this;
+    }
+
+    public function getClerk(): ?Clerk
+    {
+        return $this->clerk;
+    }
+
+    public function setClerk(?Clerk $clerk): self
+    {
+        $this->clerk = $clerk;
 
         return $this;
     }
