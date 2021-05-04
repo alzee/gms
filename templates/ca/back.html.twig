@@ -33,7 +33,7 @@
                 <td>{{ ca.craft }}</td>
                 <td>{{ ca.artisan }}</td>
                 <td>{{ ca.date|date("Y-m-d H:i:s") }}</td>
-                <td>{{ ca.date1|date1("Y-m-d H:i:s") }}</td>
+                <td>{{ ca.date1 ? ca.date1|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                 {% if ca.status == 2 %}
                     <a class="btn btn-primary disabled" href="{{ path('ca_receive', {'id': ca.id}) }}">{{'received' | trans}}</a>
