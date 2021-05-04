@@ -48,6 +48,6 @@
     </div>
 <div class="row w-50">
     <a class="col-4 btn btn-primary mr-3" href="{{ path('ca_back') }}">{{'back to list' | trans}}</a>
-    <button class="col-4 btn btn-success">确认收单</button>
+    <a class="col-4 btn btn-success" href="{{ path('ca_confirm', {'id': ca.id}) }}">确认收单</a>
     </div>
 {% endblock %}
