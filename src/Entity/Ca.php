@@ -56,7 +56,7 @@ class Ca
     private $child;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Clerk::class)
+     * @ORM\ManyToOne(targetEntity=User::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $clerk;
@@ -150,12 +150,12 @@ class Ca
         return $this;
     }
 
-    public function getClerk(): ?Clerk
+    public function getClerk(): ?User
     {
         return $this->clerk;
     }
 
-    public function setClerk(?Clerk $clerk): self
+    public function setClerk(?User $clerk): self
     {
         $this->clerk = $clerk;
 
