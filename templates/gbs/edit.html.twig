@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Gbs{% endblock %}
+
+{% block body %}
+    <h1>Edit Gbs</h1>
+
+    {{ include('gbs/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('gbs_index') }}">back to list</a>
+
+    {{ include('gbs/_delete_form.html.twig') }}
+{% endblock %}
