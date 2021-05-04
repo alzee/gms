@@ -36,6 +36,19 @@ class CaController extends AbstractController
     }
 
     /**
+     * @Route("/confirm/{id}", name="ca_confirm", methods={"GET"})
+     */
+    public function confirm(Ca $ca): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $ca->setStatus(2);
+        $ca->setDate1(new \DateTimeImmutable());
+        $em->persist($ca);
+        $em->flush();
+        return $this->redirectToRoute('ca_back');
+    }
+
+    /**
      * @Route("/receive/{id}", name="ca_receive", methods={"GET"})
      */
     public function receive(Ca $ca): Response
