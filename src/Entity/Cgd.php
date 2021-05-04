@@ -24,7 +24,7 @@ class Cgd
 
     /**
      * @ORM\ManyToOne(targetEntity=Main::class)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $main;
 
@@ -52,7 +52,7 @@ class Cgd
 
     /**
      * @ORM\ManyToOne(targetEntity=Child::class)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $child;
 
