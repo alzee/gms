@@ -32,6 +32,8 @@ class GbController extends AbstractController
     {
         $gb = new Gb();
         $gb->setDate(new \DateTimeImmutable());
+        $gb->setWeightBooked(0);
+        $gb->setShort(0);
         $form = $this->createForm(GbType::class, $gb);
         $form->handleRequest($request);
 

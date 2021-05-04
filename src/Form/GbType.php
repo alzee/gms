@@ -17,9 +17,9 @@ class GbType extends AbstractType
             ->add('position')
             ->add('addtype')
             ->add('addreason')
-            ->add('weightBooked')
             ->add('weight')
-            ->add('short')
+            // ->add('weightBooked')
+            // ->add('short')
             ->add('note')
         ;
     }
