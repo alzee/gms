@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\GbsRepository;
+use App\Repository\SgbRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=GbsRepository::class)
+ * @ORM\Entity(repositoryClass=SgbRepository::class)
  */
-class Gbs
+class Sgb
 {
     /**
      * @ORM\Id

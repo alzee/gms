@@ -83,9 +83,9 @@ services:
                 event: 'prePersist'
                 entity: 'App\Entity\Gb'
 
-    App\EventListener\GbsNew:
+    App\EventListener\SgbNew:
         tags:
             -
                 name: 'doctrine.orm.entity_listener'
                 event: 'prePersist'
-                entity: 'App\Entity\Gbs'
+                entity: 'App\Entity\Sgb'

@@ -12,16 +12,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use App\Entity\Gbs;
+use App\Entity\Sgb;
 use App\Entity\Box;
 
-class GbsNew
+class SgbNew
 {
-    public function prePersist(Gbs $gbs, LifecycleEventArgs $event): void
+    public function prePersist(Sgb $sgb, LifecycleEventArgs $event): void
     {
         $em = $event->getEntityManager();
-        $goldclass = $gbs->getGoldclass();
-        $weight = $gbs->getWeight();
+        $goldclass = $sgb->getGoldclass();
+        $weight = $sgb->getWeight();
 
         // subtract from box
         $box= $em->getRepository(Box::class)->findOneBy(['clerk' => null, 'artisan' => null, 'goldclass' => $goldclass]);
