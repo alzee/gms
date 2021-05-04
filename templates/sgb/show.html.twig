@@ -3,32 +3,62 @@
 {% block title %}Sgb{% endblock %}
 
 {% block body %}
-    <h1>Sgb</h1>
+    <h1>{{'Sgb' | trans}}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{'Id' | trans}}</th>
                 <td>{{ sgb.id }}</td>
             </tr>
             <tr>
-                <th>Date</th>
-                <td>{{ sgb.date ? sgb.date|date('Y-m-d H:i:s') : '' }}</td>
+                <th>{{'company' | trans}}</th>
+                <td>{{ sgb.company }}</td>
             </tr>
             <tr>
-                <th>Weight</th>
+                <th>{{'goldclass' | trans}}</th>
+                <td>{{ sgb.goldclass }}</td>
+            </tr>
+            <tr>
+                <th>{{'position' | trans}}</th>
+                <td>{{ sgb.position }}</td>
+            </tr>
+            <tr>
+                <th>{{'subtracttype' | trans}}</th>
+                <td>{{ sgb.subtracttype }}</td>
+            </tr>
+            <tr>
+                <th>{{'subtractreason' | trans}}</th>
+                <td>{{ sgb.subtractreason }}</td>
+            </tr>
+            <tr>
+                <th>{{'weight' | trans}}</th>
                 <td>{{ sgb.weight }}</td>
             </tr>
+            {#
             <tr>
-                <th>Note</th>
+                <th>{{'weightBooked' | trans}}</th>
+                <td>{{ sgb.weightBooked }}</td>
+            </tr>
+            <tr>
+                <th>{{'short' | trans}}</th>
+                <td>{{ sgb.short }}</td>
+            </tr>
+            #}
+            <tr>
+                <th>{{'note' | trans}}</th>
                 <td>{{ sgb.note }}</td>
+            </tr>
+            <tr>
+                <th>{{'Date' | trans}}</th>
+                <td>{{ sgb.date ? sgb.date|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('sgb_index') }}">back to list</a>
+    <a class="btn btn-primary" href="{{ path('sgb_index') }}">{{'back to list' | trans}}</a>
 
-    <a href="{{ path('sgb_edit', {'id': sgb.id}) }}">edit</a>
+    <a class="btn btn-warning" href="{{ path('sgb_edit', {'id': sgb.id}) }}">{{'edit' | trans}}</a>
 
     {{ include('sgb/_delete_form.html.twig') }}
 {% endblock %}
