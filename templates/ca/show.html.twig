@@ -11,6 +11,30 @@
                 <th>{{'Id' | trans}}</th>
                 <td>{{ ca.id }}</td>
             </tr>
+            <tr>
+                <th>{{'child' | trans}}</th>
+                <td>{{ ca.child }}</td>
+            </tr>
+            <tr>
+                <th>{{'weightGold' | trans}}</th>
+                <td>{{ ca.weightGold }}</td>
+            </tr>
+            <tr>
+                <th>{{'weightAttach' | trans}}</th>
+                <td>{{ ca.weightAttach }}</td>
+            </tr>
+            <tr>
+                <th>{{'craft' | trans}}</th>
+                <td>{{ ca.craft }}</td>
+            </tr>
+            <tr>
+                <th>{{'artisan' | trans}}</th>
+                <td>{{ ca.artisan }}</td>
+            </tr>
+            <tr>
+                <th>{{'date' | trans}}</th>
+                <td>{{ ca.date ? ca.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
         </tbody>
     </table>
 

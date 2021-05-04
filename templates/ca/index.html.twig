@@ -9,7 +9,7 @@
         <thead>
             <tr>
                 <th>{{'Id' | trans}}</th>
-                <th>{{'maindoc' | trans}}</th>
+                <th>{{'child' | trans}}</th>
                 <th>{{'weightGold' | trans}}</th>
                 <th>{{'weightAttach' | trans}}</th>
                 <th>{{'weight' | trans}}</th>
@@ -23,13 +23,13 @@
         {% for ca in cas %}
             <tr>
                 <td>{{ ca.id }}</td>
-                <td>{{ ca.maindoc }}</td>
+                <td>{{ ca.child }}</td>
                 <td>{{ ca.weightGold }}</td>
                 <td>{{ ca.weightAttach }}</td>
                 <td>{{ ca.weight }}</td>
                 <td>{{ ca.craft }}</td>
                 <td>{{ ca.artisan }}</td>
-                <td>{{ ca.date|date("Y-m-d") }}</td>
+                <td>{{ ca.date|date("Y-m-d H:i:s") }}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ path('ca_show', {'id': ca.id}) }}">{{'show' | trans}}</a>
                     <a class="btn btn-warning" href="{{ path('ca_edit', {'id': ca.id}) }}">{{'edit' | trans}}</a>
