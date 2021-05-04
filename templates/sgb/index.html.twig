@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sgb index{% endblock %}
+
+{% block body %}
+    <h1>Sgb index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Weight</th>
+                <th>Note</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sgb in sgbs %}
+            <tr>
+                <td>{{ sgb.id }}</td>
+                <td>{{ sgb.date ? sgb.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ sgb.weight }}</td>
+                <td>{{ sgb.note }}</td>
+                <td>
+                    <a href="{{ path('sgb_show', {'id': sgb.id}) }}">show</a>
+                    <a href="{{ path('sgb_edit', {'id': sgb.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('sgb_new') }}">Create new</a>
+{% endblock %}

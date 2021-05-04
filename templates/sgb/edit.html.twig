@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Sgb{% endblock %}
+
+{% block body %}
+    <h1>Edit Sgb</h1>
+
+    {{ include('sgb/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('sgb_index') }}">back to list</a>
+
+    {{ include('sgb/_delete_form.html.twig') }}
+{% endblock %}
