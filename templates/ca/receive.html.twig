@@ -42,9 +42,8 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{ path('ca_index') }}">{{'back to list' | trans}}</a>
-
-    <a class="btn btn-warning" href="{{ path('ca_edit', {'id': ca.id}) }}">{{'edit' | trans}}</a>
-
-    {{ include('ca/_delete_form.html.twig') }}
+    <a class="btn btn-primary" href="{{ path('ca_back') }}">{{'back to list' | trans}}</a>
+    <button class="btn btn-success">计耗计工费</button>
+    <button class="btn btn-warning">无耗计工费</button>
+    <button class="btn btn-warning">确认收单</button>
 {% endblock %}
