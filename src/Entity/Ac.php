@@ -18,12 +18,6 @@ class Ac
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Center::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $maindoc;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Artisan::class)
      * @ORM\JoinColumn(nullable=false)
      */
@@ -55,21 +49,15 @@ class Ac
      */
     private $craft;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Child::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $child;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getMaindoc(): ?Center
-    {
-        return $this->maindoc;
-    }
-
-    public function setMaindoc(?Center $maindoc): self
-    {
-        $this->maindoc = $maindoc;
-
-        return $this;
     }
 
     public function getArtisan(): ?Artisan
@@ -140,6 +128,18 @@ class Ac
     public function setCraft(?Craft $craft): self
     {
         $this->craft = $craft;
+
+        return $this;
+    }
+
+    public function getChild(): ?Child
+    {
+        return $this->child;
+    }
+
+    public function setChild(?Child $child): self
+    {
+        $this->child = $child;
 
         return $this;
     }
