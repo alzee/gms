@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `ac`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ac` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `maindoc_id` int(11) NOT NULL,
+  `child_id` int(11) NOT NULL,
   `artisan_id` int(11) NOT NULL,
   `weight` double NOT NULL,
   `weight_attach` double NOT NULL,
@@ -32,11 +32,11 @@ CREATE TABLE `ac` (
   `date` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
   `craft_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `IDX_E98478FBA0321766` (`maindoc_id`),
   KEY `IDX_E98478FB5ED3C7B7` (`artisan_id`),
   KEY `IDX_E98478FBE836CCC8` (`craft_id`),
+  KEY `IDX_E98478FBDD62C21B` (`child_id`),
   CONSTRAINT `FK_E98478FB5ED3C7B7` FOREIGN KEY (`artisan_id`) REFERENCES `artisan` (`id`),
-  CONSTRAINT `FK_E98478FBA0321766` FOREIGN KEY (`maindoc_id`) REFERENCES `center` (`id`),
+  CONSTRAINT `FK_E98478FBDD62C21B` FOREIGN KEY (`child_id`) REFERENCES `child` (`id`),
   CONSTRAINT `FK_E98478FBE836CCC8` FOREIGN KEY (`craft_id`) REFERENCES `craft` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -214,21 +214,26 @@ DROP TABLE IF EXISTS `ca`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ca` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `maindoc_id` int(11) NOT NULL,
+  `child_id` int(11) NOT NULL,
   `artisan_id` int(11) NOT NULL,
   `craft_id` int(11) NOT NULL,
   `weight` double NOT NULL,
   `weight_attach` double NOT NULL,
   `weight_gold` double NOT NULL,
   `date` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
+  `clerk_id` int(11) NOT NULL,
+  `status` smallint(6) NOT NULL,
+  `date1` datetime DEFAULT NULL COMMENT '(DC2Type:datetime_immutable)',
   PRIMARY KEY (`id`),
-  KEY `IDX_35BC7B55A0321766` (`maindoc_id`),
   KEY `IDX_35BC7B555ED3C7B7` (`artisan_id`),
   KEY `IDX_35BC7B55E836CCC8` (`craft_id`),
+  KEY `IDX_35BC7B55DD62C21B` (`child_id`),
+  KEY `IDX_35BC7B55D95C1FC6` (`clerk_id`),
   CONSTRAINT `FK_35BC7B555ED3C7B7` FOREIGN KEY (`artisan_id`) REFERENCES `artisan` (`id`),
-  CONSTRAINT `FK_35BC7B55A0321766` FOREIGN KEY (`maindoc_id`) REFERENCES `center` (`id`),
+  CONSTRAINT `FK_35BC7B55D95C1FC6` FOREIGN KEY (`clerk_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `FK_35BC7B55DD62C21B` FOREIGN KEY (`child_id`) REFERENCES `child` (`id`),
   CONSTRAINT `FK_35BC7B55E836CCC8` FOREIGN KEY (`craft_id`) REFERENCES `craft` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -237,7 +242,7 @@ CREATE TABLE `ca` (
 
 LOCK TABLES `ca` WRITE;
 /*!40000 ALTER TABLE `ca` DISABLE KEYS */;
-INSERT INTO `ca` VALUES (1,1,3,2,3,2,1,'2021-04-28 01:22:16'),(2,1,2,3,3,2,1,'2021-04-28 01:22:59');
+INSERT INTO `ca` VALUES (1,1,1,1,3,2,1,'2021-05-04 10:03:40',2,0,NULL);
 /*!40000 ALTER TABLE `ca` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -525,7 +530,7 @@ CREATE TABLE `doctrine_migration_versions` (
 
 LOCK TABLES `doctrine_migration_versions` WRITE;
 /*!40000 ALTER TABLE `doctrine_migration_versions` DISABLE KEYS */;
-INSERT INTO `doctrine_migration_versions` VALUES ('DoctrineMigrations\\Version20210421021409','2021-04-27 11:31:38',53),('DoctrineMigrations\\Version20210427113148','2021-04-27 11:32:04',108),('DoctrineMigrations\\Version20210427113315','2021-04-27 11:33:18',74),('DoctrineMigrations\\Version20210427113507','2021-04-27 11:35:15',71),('DoctrineMigrations\\Version20210427113654','2021-04-27 11:36:57',82),('DoctrineMigrations\\Version20210427113926','2021-04-27 11:39:29',76),('DoctrineMigrations\\Version20210427151758','2021-04-27 15:18:02',70),('DoctrineMigrations\\Version20210427151957','2021-04-27 15:20:00',96),('DoctrineMigrations\\Version20210427153404','2021-04-27 15:34:08',69),('DoctrineMigrations\\Version20210427153446','2021-04-27 15:34:49',53),('DoctrineMigrations\\Version20210427170832','2021-04-27 17:08:36',77),('DoctrineMigrations\\Version20210427171019','2021-04-27 17:10:22',72),('DoctrineMigrations\\Version20210427172324','2021-04-27 17:23:30',135),('DoctrineMigrations\\Version20210427172602','2021-04-27 17:26:12',91),('DoctrineMigrations\\Version20210427173110','2021-04-27 17:31:13',90),('DoctrineMigrations\\Version20210427173610','2021-04-27 17:36:13',34),('DoctrineMigrations\\Version20210427174307','2021-04-27 17:43:10',90),('DoctrineMigrations\\Version20210427174555','2021-04-27 17:45:58',110),('DoctrineMigrations\\Version20210427174754','2021-04-27 17:47:57',62),('DoctrineMigrations\\Version20210427180400','2021-04-27 18:04:03',83),('DoctrineMigrations\\Version20210427181148','2021-04-27 18:11:50',111),('DoctrineMigrations\\Version20210427181304','2021-04-27 18:13:06',62),('DoctrineMigrations\\Version20210427181404','2021-04-27 18:14:06',87),('DoctrineMigrations\\Version20210427181452','2021-04-27 18:14:54',139),('DoctrineMigrations\\Version20210427181557','2021-04-27 18:15:58',96),('DoctrineMigrations\\Version20210427181857','2021-04-27 18:18:58',83),('DoctrineMigrations\\Version20210427182156','2021-04-27 18:21:57',87),('DoctrineMigrations\\Version20210427182442','2021-04-27 18:24:44',116),('DoctrineMigrations\\Version20210427182934','2021-04-27 18:29:36',116),('DoctrineMigrations\\Version20210427184404','2021-04-27 18:44:04',146),('DoctrineMigrations\\Version20210427184500','2021-04-27 18:45:01',150),('DoctrineMigrations\\Version20210427184607','2021-04-27 18:46:08',146),('DoctrineMigrations\\Version20210427184734','2021-04-27 18:47:35',165),('DoctrineMigrations\\Version20210427184849','2021-04-27 18:48:50',95),('DoctrineMigrations\\Version20210427184932','2021-04-27 18:49:34',81),('DoctrineMigrations\\Version20210427185108','2021-04-27 18:51:09',98),('DoctrineMigrations\\Version20210427185337','2021-04-27 18:53:38',192),('DoctrineMigrations\\Version20210427185440','2021-04-27 18:54:41',99),('DoctrineMigrations\\Version20210427185536','2021-04-27 18:55:36',100),('DoctrineMigrations\\Version20210427232249','2021-04-27 23:22:50',334),('DoctrineMigrations\\Version20210427233431','2021-04-27 23:34:33',31),('DoctrineMigrations\\Version20210428000352','2021-04-28 00:03:53',234),('DoctrineMigrations\\Version20210428000448','2021-04-28 00:05:51',106),('DoctrineMigrations\\Version20210428000546','2021-04-28 00:05:51',36),('DoctrineMigrations\\Version20210428011835','2021-04-28 01:18:37',362),('DoctrineMigrations\\Version20210428012811','2021-04-28 01:28:12',622),('DoctrineMigrations\\Version20210428014204','2021-04-28 01:42:05',405),('DoctrineMigrations\\Version20210428015334','2021-04-28 01:53:35',474),('DoctrineMigrations\\Version20210428020431','2021-04-28 02:04:32',560),('DoctrineMigrations\\Version20210428021633','2021-04-28 02:16:34',617),('DoctrineMigrations\\Version20210428021832','2021-04-28 02:18:35',75),('DoctrineMigrations\\Version20210428022351','2021-04-28 02:23:52',621),('DoctrineMigrations\\Version20210428022921','2021-04-28 02:29:23',461),('DoctrineMigrations\\Version20210502022502','2021-05-02 02:25:04',352),('DoctrineMigrations\\Version20210502025642','2021-05-02 02:56:44',2096),('DoctrineMigrations\\Version20210502030459','2021-05-02 03:05:02',94),('DoctrineMigrations\\Version20210502031110','2021-05-02 03:11:11',421),('DoctrineMigrations\\Version20210502055926','2021-05-02 05:59:28',681),('DoctrineMigrations\\Version20210502094800','2021-05-02 09:48:01',53),('DoctrineMigrations\\Version20210502095014','2021-05-02 09:50:15',115),('DoctrineMigrations\\Version20210502095051','2021-05-02 09:50:53',53),('DoctrineMigrations\\Version20210502101033','2021-05-02 10:10:35',499),('DoctrineMigrations\\Version20210503090503','2021-05-03 09:05:04',58),('DoctrineMigrations\\Version20210503090610','2021-05-03 09:06:11',53),('DoctrineMigrations\\Version20210503090706','2021-05-03 09:07:07',51),('DoctrineMigrations\\Version20210503091004','2021-05-03 09:10:06',373),('DoctrineMigrations\\Version20210503103459','2021-05-03 10:35:01',53),('DoctrineMigrations\\Version20210503105208','2021-05-03 10:52:09',637),('DoctrineMigrations\\Version20210503105903','2021-05-03 10:59:04',439),('DoctrineMigrations\\Version20210503110106','2021-05-03 11:02:03',196),('DoctrineMigrations\\Version20210503112448','2021-05-03 11:24:49',930),('DoctrineMigrations\\Version20210503122010','2021-05-03 12:20:12',707),('DoctrineMigrations\\Version20210503122037','2021-05-03 12:20:38',234),('DoctrineMigrations\\Version20210503130351','2021-05-03 13:03:53',115),('DoctrineMigrations\\Version20210503225912','2021-05-03 23:00:31',278),('DoctrineMigrations\\Version20210503230153','2021-05-03 23:01:54',301),('DoctrineMigrations\\Version20210503235348','2021-05-03 23:53:50',118),('DoctrineMigrations\\Version20210503235430','2021-05-03 23:54:32',100),('DoctrineMigrations\\Version20210504001036','2021-05-04 00:10:38',1308),('DoctrineMigrations\\Version20210504004155','2021-05-04 00:41:56',871),('DoctrineMigrations\\Version20210504010911','2021-05-04 01:09:12',1394),('DoctrineMigrations\\Version20210504033117','2021-05-04 03:31:19',191);
+INSERT INTO `doctrine_migration_versions` VALUES ('DoctrineMigrations\\Version20210421021409','2021-04-27 11:31:38',53),('DoctrineMigrations\\Version20210427113148','2021-04-27 11:32:04',108),('DoctrineMigrations\\Version20210427113315','2021-04-27 11:33:18',74),('DoctrineMigrations\\Version20210427113507','2021-04-27 11:35:15',71),('DoctrineMigrations\\Version20210427113654','2021-04-27 11:36:57',82),('DoctrineMigrations\\Version20210427113926','2021-04-27 11:39:29',76),('DoctrineMigrations\\Version20210427151758','2021-04-27 15:18:02',70),('DoctrineMigrations\\Version20210427151957','2021-04-27 15:20:00',96),('DoctrineMigrations\\Version20210427153404','2021-04-27 15:34:08',69),('DoctrineMigrations\\Version20210427153446','2021-04-27 15:34:49',53),('DoctrineMigrations\\Version20210427170832','2021-04-27 17:08:36',77),('DoctrineMigrations\\Version20210427171019','2021-04-27 17:10:22',72),('DoctrineMigrations\\Version20210427172324','2021-04-27 17:23:30',135),('DoctrineMigrations\\Version20210427172602','2021-04-27 17:26:12',91),('DoctrineMigrations\\Version20210427173110','2021-04-27 17:31:13',90),('DoctrineMigrations\\Version20210427173610','2021-04-27 17:36:13',34),('DoctrineMigrations\\Version20210427174307','2021-04-27 17:43:10',90),('DoctrineMigrations\\Version20210427174555','2021-04-27 17:45:58',110),('DoctrineMigrations\\Version20210427174754','2021-04-27 17:47:57',62),('DoctrineMigrations\\Version20210427180400','2021-04-27 18:04:03',83),('DoctrineMigrations\\Version20210427181148','2021-04-27 18:11:50',111),('DoctrineMigrations\\Version20210427181304','2021-04-27 18:13:06',62),('DoctrineMigrations\\Version20210427181404','2021-04-27 18:14:06',87),('DoctrineMigrations\\Version20210427181452','2021-04-27 18:14:54',139),('DoctrineMigrations\\Version20210427181557','2021-04-27 18:15:58',96),('DoctrineMigrations\\Version20210427181857','2021-04-27 18:18:58',83),('DoctrineMigrations\\Version20210427182156','2021-04-27 18:21:57',87),('DoctrineMigrations\\Version20210427182442','2021-04-27 18:24:44',116),('DoctrineMigrations\\Version20210427182934','2021-04-27 18:29:36',116),('DoctrineMigrations\\Version20210427184404','2021-04-27 18:44:04',146),('DoctrineMigrations\\Version20210427184500','2021-04-27 18:45:01',150),('DoctrineMigrations\\Version20210427184607','2021-04-27 18:46:08',146),('DoctrineMigrations\\Version20210427184734','2021-04-27 18:47:35',165),('DoctrineMigrations\\Version20210427184849','2021-04-27 18:48:50',95),('DoctrineMigrations\\Version20210427184932','2021-04-27 18:49:34',81),('DoctrineMigrations\\Version20210427185108','2021-04-27 18:51:09',98),('DoctrineMigrations\\Version20210427185337','2021-04-27 18:53:38',192),('DoctrineMigrations\\Version20210427185440','2021-04-27 18:54:41',99),('DoctrineMigrations\\Version20210427185536','2021-04-27 18:55:36',100),('DoctrineMigrations\\Version20210427232249','2021-04-27 23:22:50',334),('DoctrineMigrations\\Version20210427233431','2021-04-27 23:34:33',31),('DoctrineMigrations\\Version20210428000352','2021-04-28 00:03:53',234),('DoctrineMigrations\\Version20210428000448','2021-04-28 00:05:51',106),('DoctrineMigrations\\Version20210428000546','2021-04-28 00:05:51',36),('DoctrineMigrations\\Version20210428011835','2021-04-28 01:18:37',362),('DoctrineMigrations\\Version20210428012811','2021-04-28 01:28:12',622),('DoctrineMigrations\\Version20210428014204','2021-04-28 01:42:05',405),('DoctrineMigrations\\Version20210428015334','2021-04-28 01:53:35',474),('DoctrineMigrations\\Version20210428020431','2021-04-28 02:04:32',560),('DoctrineMigrations\\Version20210428021633','2021-04-28 02:16:34',617),('DoctrineMigrations\\Version20210428021832','2021-04-28 02:18:35',75),('DoctrineMigrations\\Version20210428022351','2021-04-28 02:23:52',621),('DoctrineMigrations\\Version20210428022921','2021-04-28 02:29:23',461),('DoctrineMigrations\\Version20210502022502','2021-05-02 02:25:04',352),('DoctrineMigrations\\Version20210502025642','2021-05-02 02:56:44',2096),('DoctrineMigrations\\Version20210502030459','2021-05-02 03:05:02',94),('DoctrineMigrations\\Version20210502031110','2021-05-02 03:11:11',421),('DoctrineMigrations\\Version20210502055926','2021-05-02 05:59:28',681),('DoctrineMigrations\\Version20210502094800','2021-05-02 09:48:01',53),('DoctrineMigrations\\Version20210502095014','2021-05-02 09:50:15',115),('DoctrineMigrations\\Version20210502095051','2021-05-02 09:50:53',53),('DoctrineMigrations\\Version20210502101033','2021-05-02 10:10:35',499),('DoctrineMigrations\\Version20210503090503','2021-05-03 09:05:04',58),('DoctrineMigrations\\Version20210503090610','2021-05-03 09:06:11',53),('DoctrineMigrations\\Version20210503090706','2021-05-03 09:07:07',51),('DoctrineMigrations\\Version20210503091004','2021-05-03 09:10:06',373),('DoctrineMigrations\\Version20210503103459','2021-05-03 10:35:01',53),('DoctrineMigrations\\Version20210503105208','2021-05-03 10:52:09',637),('DoctrineMigrations\\Version20210503105903','2021-05-03 10:59:04',439),('DoctrineMigrations\\Version20210503110106','2021-05-03 11:02:03',196),('DoctrineMigrations\\Version20210503112448','2021-05-03 11:24:49',930),('DoctrineMigrations\\Version20210503122010','2021-05-03 12:20:12',707),('DoctrineMigrations\\Version20210503122037','2021-05-03 12:20:38',234),('DoctrineMigrations\\Version20210503130351','2021-05-03 13:03:53',115),('DoctrineMigrations\\Version20210503225912','2021-05-03 23:00:31',278),('DoctrineMigrations\\Version20210503230153','2021-05-03 23:01:54',301),('DoctrineMigrations\\Version20210503235348','2021-05-03 23:53:50',118),('DoctrineMigrations\\Version20210503235430','2021-05-03 23:54:32',100),('DoctrineMigrations\\Version20210504001036','2021-05-04 00:10:38',1308),('DoctrineMigrations\\Version20210504004155','2021-05-04 00:41:56',871),('DoctrineMigrations\\Version20210504010911','2021-05-04 01:09:12',1394),('DoctrineMigrations\\Version20210504033117','2021-05-04 03:31:19',191),('DoctrineMigrations\\Version20210504035700','2021-05-04 07:53:45',33),('DoctrineMigrations\\Version20210504080506','2021-05-04 08:05:08',214),('DoctrineMigrations\\Version20210504081549','2021-05-04 08:15:50',250),('DoctrineMigrations\\Version20210504082201','2021-05-04 08:22:02',192),('DoctrineMigrations\\Version20210504082237','2021-05-04 08:22:38',116),('DoctrineMigrations\\Version20210504094725','2021-05-04 09:47:26',128),('DoctrineMigrations\\Version20210504095012','2021-05-04 09:50:13',32);
 /*!40000 ALTER TABLE `doctrine_migration_versions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -897,7 +902,6 @@ CREATE TABLE `main` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `doctype_id` int(11) NOT NULL,
   `date` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `count_child` smallint(6) NOT NULL,
   `sn` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `prodtype_id` int(11) NOT NULL,
@@ -941,7 +945,7 @@ CREATE TABLE `main` (
 
 LOCK TABLES `main` WRITE;
 /*!40000 ALTER TABLE `main` DISABLE KEYS */;
-INSERT INTO `main` VALUES (32,1,'2021-05-02 06:07:21','t',5,'20210502010004',1,1,1,1,1,1,1.2,10,'11',1,1,1,'11',1,0),(33,2,'2021-05-02 09:44:06','name',10,'20210502020005',2,2,1,3,1,2,1,10,'5555',3,2,1,'ttt',2,0),(34,1,'2021-05-02 10:03:40','t1',5,'20210502010006',1,1,1,1,1,1,1,50,'11',1,1,1,'tt',1,50),(35,1,'2021-05-03 12:54:27','1',1,'20210503010001',1,1,1,1,1,1,1,1,'1',1,1,1,'1',1,1),(36,1,'2021-05-03 12:57:03','t',1,'20210503010002',1,1,1,1,1,1,1,1,'11',NULL,NULL,NULL,NULL,1,1),(37,1,'2021-05-03 12:57:19','t',1,'12345',1,1,1,1,1,1,1,1,'1',NULL,NULL,NULL,'1',1,1);
+INSERT INTO `main` VALUES (32,1,'2021-05-02 06:07:21',5,'20210502010004',1,1,1,1,1,1,1.2,10,'11',1,1,1,'11',1,0),(33,2,'2021-05-02 09:44:06',10,'20210502020005',2,2,1,3,1,2,1,10,'5555',3,2,1,'ttt',2,0),(34,1,'2021-05-02 10:03:40',5,'20210502010006',1,1,1,1,1,1,1,50,'11',1,1,1,'tt',1,50),(35,1,'2021-05-03 12:54:27',1,'20210503010001',1,1,1,1,1,1,1,1,'1',1,1,1,'1',1,1),(36,1,'2021-05-03 12:57:03',1,'20210503010002',1,1,1,1,1,1,1,1,'11',NULL,NULL,NULL,NULL,1,1),(37,1,'2021-05-03 12:57:19',1,'12345',1,1,1,1,1,1,1,1,'1',NULL,NULL,NULL,'1',1,1);
 /*!40000 ALTER TABLE `main` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1428,4 +1432,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-04 11:52:43
+-- Dump completed on 2021-05-04 18:05:04
