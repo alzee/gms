@@ -121,7 +121,7 @@ class Main
     private $countPiece;
 
     /**
-     * @ORM\Column(type="datetime_immutable", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $dueDate;
 
@@ -368,12 +368,12 @@ class Main
         return $this;
     }
 
-    public function getDueDate(): ?\DateTimeImmutable
+    public function getDueDate(): ?\DateTimeInterface
     {
         return $this->dueDate;
     }
 
-    public function setDueDate(?\DateTimeImmutable $dueDate): self
+    public function setDueDate(?\DateTimeInterface $dueDate): self
     {
         $this->dueDate = $dueDate;
 
