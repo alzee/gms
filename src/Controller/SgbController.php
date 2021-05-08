@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/sgb")
@@ -16,12 +17,26 @@ use Symfony\Component\Routing\Annotation\Route;
 class SgbController extends AbstractController
 {
     /**
-     * @Route("/", name="sgb_index", methods={"GET"})
+     * @Route("/index", name="sgb_index0", methods={"GET"})
      */
     public function index(SgbRepository $sgbRepository): Response
     {
         return $this->render('sgb/index.html.twig', [
             'sgbs' => $sgbRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/", name="sgb_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select s from App\Entity\Gb s";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('sgb/paginate.html.twig', [
+            'sgbs' => $p
         ]);
     }
 

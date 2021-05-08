@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/gca")
@@ -16,12 +17,26 @@ use Symfony\Component\Routing\Annotation\Route;
 class GcaController extends AbstractController
 {
     /**
-     * @Route("/", name="gca_index", methods={"GET"})
+     * @Route("/index", name="gca_index0", methods={"GET"})
      */
     public function index(GcaRepository $gcaRepository): Response
     {
         return $this->render('gca/index.html.twig', [
             'gcas' => $gcaRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/", name="gca_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select g from App\Entity\Gca g";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('gca/paginate.html.twig', [
+            'gcas' => $p
         ]);
     }
 
