@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/child")
@@ -16,12 +17,26 @@ use Symfony\Component\Routing\Annotation\Route;
 class ChildController extends AbstractController
 {
     /**
-     * @Route("/", name="child_index", methods={"GET"})
+     * @Route("/index", name="child_index", methods={"GET"})
      */
     public function index(ChildRepository $childRepository): Response
     {
         return $this->render('child/index.html.twig', [
             'children' => $childRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/", name="child_paginate", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select c from App\Entity\Child c";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $pagination = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('child/paginate.html.twig', [
+            'children' => $pagination
         ]);
     }
 
