@@ -1,54 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Main index{% endblock %}
+{% block title %}Gb index{% endblock %}
 
 {% block body %}
-    <h1>{{'Main index' | trans}}</h1>
+    <h1>{{'Gb index' | trans}}</h1>
 
   <div class="row mx-0 my-3">
-    {{ knp_pagination_filter(mains, {'m.sn': 'Name'}) }}
+    {{ knp_pagination_filter(gbs, {'m.sn': 'Name'}) }}
     <div class="col-auto">
-      <a class="mx-2 btn btn-success" href="{{ path('center_import') }}">{{'Import' | trans}}</a>
-      <a class="btn btn-success" href="{{ path('main_new') }}">{{'Create new' | trans}}</a>
+      <a class="btn btn-success" href="{{ path('gb_new') }}">{{'Create new' | trans}}</a>
     </div>
   </div>
 
     <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(mains, 'sn'|trans, 'm.sn')}}</th>
-                <th>{{ knp_pagination_sortable(mains, 'Date'|trans, 'm.date')}}</th>
-                <th>{{ knp_pagination_sortable(mains, 'dueDate'|trans, 'm.dueDate')}}</th>
-                <th>{{'CountPiece' | trans}}</th>
-                <th>{{'CountChild' | trans}}</th>
-                <th>{{'PerWeight' | trans}}</th>
-                <th>{{'TotalWeight' | trans}}</th>
-                <th>{{'UpstreamDoc' | trans}}</th>
-                <th>{{'Length' | trans}}</th>
-                <th>{{'Width' | trans}}</th>
-                <th>{{'Height' | trans}}</th>
-                <th>{{'Note' | trans}}</th>
+                <th>{{'Id' | trans}}</th>
+                <th>{{'company' | trans}}</th>
+                <th>{{'goldclass' | trans}}</th>
+                <th>{{'position' | trans}}</th>
+                <th>{{'addtype' | trans}}</th>
+                <th>{{'addreason' | trans}}</th>
+                <th>{{'weight' | trans}}</th>
+                <th>{{'weightBooked' | trans}}</th>
+                <th>{{'short' | trans}}</th>
+                <th>{{'note' | trans}}</th>
+                <th>{{ knp_pagination_sortable(gbs, 'Date'|trans, 'g.date')}}</th>
                 <th>{{'actions' | trans}}</th>
             </tr>
         </thead>
         <tbody>
-        {% for main in mains %}
+        {% for gb in gbs %}
             <tr>
-                <td>{{ main.sn }}</td>
-                <td>{{ main.date ? main.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ main.dueDate ? main.dueDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ main.countPiece }}</td>
-                <td>{{ main.countChild }}</td>
-                <td>{{ main.perWeight }}</td>
-                <td>{{ main.totalWeight }}</td>
-                <td>{{ main.upstreamDoc }}</td>
-                <td>{{ main.length }}</td>
-                <td>{{ main.width }}</td>
-                <td>{{ main.height }}</td>
-                <td>{{ main.note }}</td>
+                <td>{{ gb.id }}</td>
+                <td>{{ gb.company }}</td>
+                <td>{{ gb.goldclass }}</td>
+                <td>{{ gb.position }}</td>
+                <td>{{ gb.addtype }}</td>
+                <td>{{ gb.addreason }}</td>
+                <td>{{ gb.weight }}</td>
+                <td>{{ gb.weightBooked }}</td>
+                <td>{{ gb.short }}</td>
+                <td>{{ gb.note }}</td>
+                <td>{{ gb.date ? gb.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a class="btn btn-sm btn-primary" href="{{ path('main_show', {'id': main.id}) }}">{{'show' | trans}}</a>
-                    <a class="btn btn-sm btn-warning" href="{{ path('main_edit', {'id': main.id}) }}">{{'edit' | trans}}</a>
+                    <a class="btn btn-sm btn-primary" href="{{ path('gb_show', {'id': gb.id}) }}">{{'show' | trans}}</a>
+                    <a class="btn btn-sm btn-warning" href="{{ path('gb_edit', {'id': gb.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
@@ -60,6 +57,6 @@
     </table>
 {# display navigation #}
 <div class="navigation">
-    {{ knp_pagination_render(mains) }}
+    {{ knp_pagination_render(gbs) }}
 </div>
 {% endblock %}
