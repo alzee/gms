@@ -7,9 +7,11 @@
 
   <div class="row mx-0 my-3">
     {{ knp_pagination_filter(children, {'c.sn': 'Name'}) }}
+    {#
     <div class="col-auto">
       <a class="btn btn-success" href="{{ path('child_new') }}">{{'Create new' | trans}}</a>
     </div>
+    #}
   </div>
 
     <table class="table table-striped table-hover">
