@@ -70,6 +70,11 @@ class Child
      */
     private $artisan;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Artisan::class)
+     */
+    private $holder;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -189,6 +194,18 @@ class Child
     public function setArtisan(?Artisan $artisan): self
     {
         $this->artisan = $artisan;
+
+        return $this;
+    }
+
+    public function getHolder(): ?Artisan
+    {
+        return $this->holder;
+    }
+
+    public function setHolder(?Artisan $holder): self
+    {
+        $this->holder = $holder;
 
         return $this;
     }

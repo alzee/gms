@@ -130,6 +130,11 @@ class Main
      */
     private $dueDate;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Artisan::class)
+     */
+    private $holder;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -381,6 +386,18 @@ class Main
     public function setDueDate(?\DateTimeInterface $dueDate): self
     {
         $this->dueDate = $dueDate;
+
+        return $this;
+    }
+
+    public function getHolder(): ?Artisan
+    {
+        return $this->holder;
+    }
+
+    public function setHolder(?Artisan $holder): self
+    {
+        $this->holder = $holder;
 
         return $this;
     }
