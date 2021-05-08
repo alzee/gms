@@ -47,7 +47,7 @@
                 {% if cc.status == 2 %}
                     <a class="btn btn-warning disabled" href="{{ path('cc_confirm', {'id': cc.id}) }}">{{'confirmed' | trans}}</a>
                 {% else %}
-                    <a class="btn btn-warning" href="{{ path('cc_confirm', {'id': cc.id}) }}">{{'confirm' | trans}}</a>
+                    <button class="btn btn-warning" data-toggle="modal" data-target="#myModal">{{'confirm' | trans}}</button>
                 {% endif %}
                 </td>
             </tr>
@@ -61,5 +61,29 @@
 {# display navigation #}
 <div class="navigation">
     {{ knp_pagination_render(ccs) }}
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">确认收金</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        操作无法取消，确认接收么？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary">确定</button>
+        {#
+        <a class="btn btn-warning" href="{{ path('cc_confirm', {'id': cc.id}) }}">确定</a>
+        #}
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
