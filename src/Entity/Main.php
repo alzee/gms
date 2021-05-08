@@ -4,10 +4,13 @@ namespace App\Entity;
 
 use App\Repository\MainRepository;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource()
+ * @ApiFilter(SearchFilter::class, properties={"sn": "exact"})
  * @ORM\Entity(repositoryClass=MainRepository::class)
  */
 class Main
