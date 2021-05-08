@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Cc index{% endblock %}
+{% block title %}Cc got{% endblock %}
 
 {% block body %}
-    <h1>{{'Cc index' | trans}}</h1>
+    <h1>{{'Cc got' | trans}}</h1>
 
   <div class="row mx-0 my-3">
     {{ knp_pagination_filter(ccs, {'u.username': 'Name'}) }}
     <div class="col-auto">
-        <button class="btn btn-outline-danger">未接收</button>
-        <button class="btn btn-outline-danger">已接收</button>
-        <button class="btn btn-outline-danger">全部</button>
+        <a class="btn btn-outline-danger" href="?filterField=c.status&filterValue=0">未接收</a>
+        <a class="btn btn-outline-danger" href="?filterField=c.status&filterValue=2">已接收</a>
+        <a class="btn btn-outline-danger" href="?">全部</a>
     </div>
   </div>
 
