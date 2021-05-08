@@ -17,7 +17,7 @@ use Knp\Component\Pager\PaginatorInterface;
 class ChildController extends AbstractController
 {
     /**
-     * @Route("/index", name="child_index", methods={"GET"})
+     * @Route("/index", name="child_index0", methods={"GET"})
      */
     public function index(ChildRepository $childRepository): Response
     {
@@ -27,7 +27,7 @@ class ChildController extends AbstractController
     }
 
     /**
-     * @Route("/", name="child_paginate", methods={"GET"})
+     * @Route("/", name="child_index", methods={"GET"})
      */
     public function paginate(PaginatorInterface $paginator, Request $request): Response
     {

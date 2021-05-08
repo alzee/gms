@@ -17,7 +17,7 @@ use Knp\Component\Pager\PaginatorInterface;
 class CgdController extends AbstractController
 {
     /**
-     * @Route("/index", name="cgd_index", methods={"GET"})
+     * @Route("/index", name="cgd_index0", methods={"GET"})
      */
     public function index(CgdRepository $cgdRepository): Response
     {
@@ -27,7 +27,7 @@ class CgdController extends AbstractController
     }
 
     /**
-     * @Route("/", name="cgd_paginate", methods={"GET"})
+     * @Route("/", name="cgd_index", methods={"GET"})
      */
     public function paginate(PaginatorInterface $paginator, Request $request): Response
     {
