@@ -6,6 +6,7 @@ use App\Entity\Gb;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 class GbType extends AbstractType
 {
@@ -17,9 +18,9 @@ class GbType extends AbstractType
             ->add('position')
             ->add('addtype')
             ->add('addreason')
-            ->add('weight')
+            ->add('weight', NumberType::class, ['label' => 'gb.weight'])
             ->add('weightBooked')
-            ->add('short')
+            ->add('short', NumberType::class)
             ->add('note')
         ;
     }
