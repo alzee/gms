@@ -31,7 +31,7 @@ class SgbController extends AbstractController
      */
     public function paginate(PaginatorInterface $paginator, Request $request): Response
     {
-        $dql = "select s from App\Entity\Gb s";
+        $dql = "select s from App\Entity\Sgb s";
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 
