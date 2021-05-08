@@ -3,7 +3,11 @@
 {% block title %}Cc index{% endblock %}
 
 {% block body %}
-    <h1>{{'Cc got index' | trans}}</h1>
+    <h1>{{'Cc index' | trans}}</h1>
+
+  <div class="row mx-0 my-3">
+    {{ knp_pagination_filter(ccs, {'u.username': 'Name'}) }}
+  </div>
 
     <table class="table table-striped table-hover">
         <thead>
@@ -16,8 +20,8 @@
                 <th>{{'position' | trans}}</th>
                 <th>{{'weight' | trans}}</th>
                 <th>{{'status' | trans}}</th>
-                <th>{{'Date' | trans}}</th>
-                <th>{{'Date1' | trans}}</th>
+                <th>{{ knp_pagination_sortable(ccs, 'Date'|trans, 'c.date')}}</th>
+                <th>{{ knp_pagination_sortable(ccs, 'Date1'|trans, 'c.date1')}}</th>
                 <th>{{'actions' | trans}}</th>
             </tr>
         </thead>
@@ -33,7 +37,7 @@
                 <td>{{ cc.weight }}</td>
                 <td>{{ cc.status }}</td>
                 <td>{{ cc.date ? cc.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ cc.date1 ? cc.date1|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ cc.date1 ? cc.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                 {% if cc.status == 2 %}
                     <a class="btn btn-warning disabled" href="{{ path('cc_confirm', {'id': cc.id}) }}">{{'confirmed' | trans}}</a>
@@ -44,9 +48,13 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">{{'no records found' | trans}}</td>
+                <td colspan="13">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(ccs) }}
+</div>
 {% endblock %}

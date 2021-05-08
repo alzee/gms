@@ -53,10 +53,14 @@ class CcController extends AbstractController
     /**
      * @Route("/got", name="cc_got", methods={"GET"})
      */
-    public function got(CcRepository $ccRepository): Response
+    public function got(PaginatorInterface $paginator, Request $request): Response
     {
+        $dql = "select c from App\Entity\Cc c join c.sender u";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
         return $this->render('cc/got.html.twig', [
-            'ccs' => $ccRepository->toMe($this->getUser()),
+            'ccs' => $p
         ]);
     }
 
