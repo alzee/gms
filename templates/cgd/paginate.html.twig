@@ -6,7 +6,7 @@
     <h1>{{'Cgd index' | trans}}</h1>
 
   <div class="row mx-0 my-3">
-    {{ knp_pagination_filter(cgds, {'c.main': 'Name'}) }}
+    {{ knp_pagination_filter(cgds, {'m.sn': 'Name'}) }}
     <div class="col-auto">
       <a class="btn btn-success" href="{{ path('cgd_new') }}">{{'Create new' | trans}}</a>
     </div>
