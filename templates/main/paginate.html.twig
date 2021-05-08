@@ -16,9 +16,9 @@
     <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(mains, '单号', 'm.sn')}}</th>
-                <th>{{'Date' | trans}}</th>
-                <th>{{'dueDate' | trans}}</th>
+                <th>{{ knp_pagination_sortable(mains, 'sn'|trans, 'm.sn')}}</th>
+                <th>{{ knp_pagination_sortable(mains, 'Date'|trans, 'm.date')}}</th>
+                <th>{{ knp_pagination_sortable(mains, 'dueDate'|trans, 'm.dueDate')}}</th>
                 <th>{{'CountPiece' | trans}}</th>
                 <th>{{'CountChild' | trans}}</th>
                 <th>{{'PerWeight' | trans}}</th>
