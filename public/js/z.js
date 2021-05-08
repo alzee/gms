@@ -8,6 +8,23 @@ if (doc) {
     doc.addEventListener('blur', showDoc);
 }
 
+let weight = document.querySelector('[id$=_weight]');
+let weightBooked = document.querySelector('[id$=_weightBooked]');
+if (weight) {
+    weightBooked.addEventListener('input', calcShort);
+}
+
+if (weightBooked) {
+    weightBooked.addEventListener('input', calcShort);
+}
+
+function calcShort() {
+    let short = document.querySelector('[id$=_short]');
+    let w = weight.value;
+    let b = weightBooked.value;
+    short.value = (w * 100 - b * 100) / 100;
+}
+
 function showDoc() {
     let docTable = document.querySelector('#docTable');
     let saveBtn = document.querySelector('#saveBtn');
