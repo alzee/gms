@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gca index{% endblock %}
+
+{% block body %}
+    <h1>{{'Gca index' | trans}}</h1>
+
+  <div class="row mx-0 my-3">
+    {{ knp_pagination_filter(gcas, {'g.sn': 'Name'}) }}
+    <div class="col-auto">
+      <a class="btn btn-success" href="{{ path('gca_new') }}">{{'Create new' | trans}}</a>
+    </div>
+  </div>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>{{'Id' | trans}}</th>
+                <th>{{'clerk' | trans}}</th>
+                <th>{{'artisan' | trans}}</th>
+                <th>{{'team' | trans}}</th>
+                <th>{{'goldclass' | trans}}</th>
+                <th>{{'position' | trans}}</th>
+                <th>{{'weight' | trans}}</th>
+                <th>{{'note' | trans}}</th>
+                <th>{{ knp_pagination_sortable(gcas, 'Date'|trans, 'm.date')}}</th>
+                <th>{{'actions' | trans}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gca in gcas %}
+            <tr>
+                <td>{{ gca.id }}</td>
+                <td>{{ gca.clerk }}</td>
+                <td>{{ gca.artisan }}</td>
+                <td>{{ gca.team }}</td>
+                <td>{{ gca.goldclass }}</td>
+                <td>{{ gca.position }}</td>
+                <td>{{ gca.weight }}</td>
+                <td>{{ gca.note }}</td>
+                <td>{{ gca.date ? gca.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a class="btn btn-sm btn-primary" href="{{ path('gca_show', {'id': gca.id}) }}">{{'show' | trans}}</a>
+                    <a class="btn btn-sm btn-warning" href="{{ path('gca_edit', {'id': gca.id}) }}">{{'edit' | trans}}</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(gcas) }}
+</div>
+{% endblock %}
