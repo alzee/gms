@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/cgd")
@@ -16,12 +17,26 @@ use Symfony\Component\Routing\Annotation\Route;
 class CgdController extends AbstractController
 {
     /**
-     * @Route("/", name="cgd_index", methods={"GET"})
+     * @Route("/index", name="cgd_index", methods={"GET"})
      */
     public function index(CgdRepository $cgdRepository): Response
     {
         return $this->render('cgd/index.html.twig', [
             'cgds' => $cgdRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/", name="cgd_paginate", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select c from App\Entity\Cgd c join c.main m";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('cgd/paginate.html.twig', [
+            'cgds' => $p
         ]);
     }
 
