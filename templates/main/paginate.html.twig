@@ -5,12 +5,11 @@
 {% block body %}
     <h1>{{'Main index' | trans}}</h1>
 
-<div class="row mx-0 my-3">
-<div class="col">
-</div>
+  <div class="row mx-0 my-3">
+    {{ knp_pagination_filter(mains, {'m.sn': 'Name'}) }}
     <a class="col-auto mx-2 btn btn-success" href="{{ path('center_import') }}">{{'Import' | trans}}</a>
     <a class="col-auto btn btn-success" href="{{ path('main_new') }}">{{'Create new' | trans}}</a>
-    </div>
+  </div>
 
     <table class="table table-striped table-hover">
         <thead>
