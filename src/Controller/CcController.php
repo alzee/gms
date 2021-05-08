@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/cc")
@@ -16,12 +17,26 @@ use Symfony\Component\Routing\Annotation\Route;
 class CcController extends AbstractController
 {
     /**
-     * @Route("/", name="cc_index", methods={"GET"})
+     * @Route("/index", name="cc_index0", methods={"GET"})
      */
     public function index(CcRepository $ccRepository): Response
     {
         return $this->render('cc/index.html.twig', [
             'ccs' => $ccRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/", name="cc_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select c from App\Entity\Cc c join c.sender u";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('cc/paginate.html.twig', [
+            'ccs' => $p
         ]);
     }
 
