@@ -6,6 +6,7 @@ use App\Entity\Sgb;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 class SgbType extends AbstractType
 {
@@ -17,8 +18,8 @@ class SgbType extends AbstractType
             ->add('position')
             ->add('subtracttype')
             ->add('subtractreason')
-            ->add('weight', NumberType::class, ['label' => 'sgb.weight'])
-            ->add('weight')
+            ->add('weight', NumberType::class, ['label' => 'actualWeight'])
+            ->add('weightBooked')
             ->add('short', NumberType::class)
             ->add('note')
         ;

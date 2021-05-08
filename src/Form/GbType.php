@@ -18,7 +18,7 @@ class GbType extends AbstractType
             ->add('position')
             ->add('addtype')
             ->add('addreason')
-            ->add('weight', NumberType::class, ['label' => 'gb.weight'])
+            ->add('weight', NumberType::class, ['label' => 'actualWeight'])
             ->add('weightBooked')
             ->add('short', NumberType::class)
             ->add('note')
