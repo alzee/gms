@@ -55,7 +55,7 @@ class CgdController extends AbstractController
             $entityManager->persist($cgd);
             $entityManager->flush();
 
-            return $this->redirectToRoute('cgd_index');
+            return $this->redirectToRoute('cgd_paginate');
         }
 
         return $this->render('cgd/new.html.twig', [
