@@ -55,7 +55,17 @@ class Sgb
     /**
      * @ORM\Column(type="float")
      */
+    private $weightBooked;
+
+    /**
+     * @ORM\Column(type="float")
+     */
     private $weight;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $short;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -139,6 +149,18 @@ class Sgb
         return $this;
     }
 
+    public function getWeightBooked(): ?float
+    {
+        return $this->weightBooked;
+    }
+
+    public function setWeightBooked(float $weightBooked): self
+    {
+        $this->weightBooked = $weightBooked;
+
+        return $this;
+    }
+
     public function getWeight(): ?float
     {
         return $this->weight;
@@ -147,6 +169,18 @@ class Sgb
     public function setWeight(float $weight): self
     {
         $this->weight = $weight;
+
+        return $this;
+    }
+
+    public function getShort(): ?float
+    {
+        return $this->short;
+    }
+
+    public function setShort(float $short): self
+    {
+        $this->short = $short;
 
         return $this;
     }

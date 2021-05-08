@@ -22,6 +22,8 @@
                 <th>{{ 'subtracttype' | trans}}</th>
                 <th>{{ 'subtractreason' | trans}}</th>
                 <th>{{ 'Weight' | trans}}</th>
+                <th>{{'weightBooked' | trans}}</th>
+                <th>{{'short' | trans}}</th>
                 <th>{{ 'Note' | trans}}</th>
                 <th>{{ knp_pagination_sortable(sgbs, 'Date'|trans, 's.date')}}</th>
                 <th>{{ 'actions' | trans}}</th>
@@ -37,6 +39,8 @@
                 <td>{{ sgb.subtracttype }}</td>
                 <td>{{ sgb.subtractreason }}</td>
                 <td>{{ sgb.weight }}</td>
+                <td>{{ sgb.weightBooked }}</td>
+                <td>{{ sgb.short }}</td>
                 <td>{{ sgb.note }}</td>
                 <td>{{ sgb.date ? sgb.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>

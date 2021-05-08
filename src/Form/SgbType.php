@@ -17,7 +17,9 @@ class SgbType extends AbstractType
             ->add('position')
             ->add('subtracttype')
             ->add('subtractreason')
+            ->add('weight', NumberType::class, ['label' => 'sgb.weight'])
             ->add('weight')
+            ->add('short', NumberType::class)
             ->add('note')
         ;
     }
