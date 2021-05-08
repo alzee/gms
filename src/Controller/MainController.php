@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/main")
@@ -16,12 +17,26 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     /**
-     * @Route("/", name="main_index", methods={"GET"})
+     * @Route("/index", name="main_index", methods={"GET"})
      */
     public function index(MainRepository $mainRepository): Response
     {
         return $this->render('main/index.html.twig', [
             'mains' => $mainRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/", name="main_paginate", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select m from App\Entity\Main m";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('main/paginate.html.twig', [
+            'mains' => $p
         ]);
     }
 
