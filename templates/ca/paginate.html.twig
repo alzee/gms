@@ -3,14 +3,12 @@
 {% block title %}Ca index{% endblock %}
 
 {% block body %}
-    <h1>{{'Ca back' | trans}}</h1>
+    <h1>{{'Ca index' | trans}}</h1>
 
   <div class="row mx-0 my-3">
-    <div class="col"></div>
+    {{ knp_pagination_filter(cas, {'c.child': 'Name'}) }}
     <div class="col-auto">
-        <button class="btn btn-outline-danger">未收单</button>
-        <button class="btn btn-outline-danger">已收单</button>
-        <button class="btn btn-outline-danger">全部</button>
+      <a class="btn btn-success" href="{{ path('ca_new') }}">{{'Create new' | trans}}</a>
     </div>
   </div>
 
@@ -25,8 +23,7 @@
                 <th>{{'weight' | trans}}</th>
                 <th>{{'craft' | trans}}</th>
                 <th>{{'artisan' | trans}}</th>
-                <th>{{'date' | trans}}</th>
-                <th>{{'date1' | trans}}</th>
+                <th>{{ knp_pagination_sortable(cas, 'Date'|trans, 'c.date')}}</th>
                 <th>{{'actions' | trans}}</th>
             </tr>
         </thead>
@@ -42,20 +39,20 @@
                 <td>{{ ca.craft }}</td>
                 <td>{{ ca.artisan }}</td>
                 <td>{{ ca.date|date("Y-m-d H:i:s") }}</td>
-                <td>{{ ca.date1 ? ca.date1|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                {% if ca.status == 2 %}
-                    <a class="btn btn-primary disabled" href="{{ path('ca_receive', {'id': ca.id}) }}">{{'received' | trans}}</a>
-                {% else %}
-                    <a class="btn btn-primary" href="{{ path('ca_receive', {'id': ca.id}) }}">{{'receive' | trans}}</a>
-                {% endif %}
+                    <a class="btn btn-sm btn-primary" href="{{ path('ca_show', {'id': ca.id}) }}">{{'show' | trans}}</a>
+                    <a class="btn btn-sm btn-warning" href="{{ path('ca_edit', {'id': ca.id}) }}">{{'edit' | trans}}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="2">{{'no records found' | trans}}</td>
+                <td colspan="13">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(cas) }}
+</div>
 {% endblock %}

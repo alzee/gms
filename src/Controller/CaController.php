@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/ca")
@@ -16,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CaController extends AbstractController
 {
     /**
-     * @Route("/", name="ca_index", methods={"GET"})
+     * @Route("/index", name="ca_index0", methods={"GET"})
      */
     public function index(CaRepository $caRepository): Response
     {
@@ -26,12 +27,30 @@ class CaController extends AbstractController
     }
 
     /**
+     * @Route("/", name="ca_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select c from App\Entity\Ca c";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('ca/paginate.html.twig', [
+            'cas' => $p
+        ]);
+    }
+
+    /**
      * @Route("/back", name="ca_back", methods={"GET"})
      */
-    public function back(CaRepository $caRepository): Response
+    public function back(PaginatorInterface $paginator, Request $request): Response
     {
+        $dql = "select c from App\Entity\Ca c";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
         return $this->render('ca/back.html.twig', [
-            'cas' => $caRepository->findAll(),
+            'cas' => $p
         ]);
     }
 
