@@ -31,7 +31,7 @@ class CcController extends AbstractController
      */
     public function paginate(PaginatorInterface $paginator, Request $request): Response
     {
-        $dql = "select c from App\Entity\Cc c join c.sender u";
+        $dql = "select c from App\Entity\Cc c join c.sender u order by c.id desc";
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 
@@ -55,7 +55,7 @@ class CcController extends AbstractController
      */
     public function got(PaginatorInterface $paginator, Request $request): Response
     {
-        $dql = "select c from App\Entity\Cc c join c.sender u";
+        $dql = "select c from App\Entity\Cc c join c.sender u order by c.id desc";
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 

@@ -31,7 +31,7 @@ class ChildController extends AbstractController
      */
     public function paginate(PaginatorInterface $paginator, Request $request): Response
     {
-        $dql = "select c from App\Entity\Child c";
+        $dql = "select c from App\Entity\Child c order by c.id desc";
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $pagination = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 

@@ -31,7 +31,7 @@ class GcaController extends AbstractController
      */
     public function paginate(PaginatorInterface $paginator, Request $request): Response
     {
-        $dql = "select g from App\Entity\Gca g";
+        $dql = "select g from App\Entity\Gca g order by g.id desc";
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 
