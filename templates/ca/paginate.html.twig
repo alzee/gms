@@ -42,7 +42,7 @@
                 <td>{{ ca.date|date("Y-m-d H:i:s") }}</td>
                 <td>
                     <a class="btn btn-sm btn-primary" href="{{ path('ca_show', {'id': ca.id}) }}">{{'show' | trans}}</a>
-                    <a class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal">工匠确认</a>
+                    <a class="btn btn-sm btn-warning modal-btn" data-toggle="modal" data-target="#myModal">工匠确认</a>
                 </td>
             </tr>
         {% else %}
@@ -69,30 +69,30 @@
 
   <div class="form-group">
     <label for="inputAddress">单号</label>
-    <input readonly type="text" class="form-control" id="inputAddress" placeholder="">
+    <input readonly type="text" class="form-control" id="sn" placeholder="">
   </div>
   <div class="form-group">
     <label for="inputAddress2">工匠</label>
-    <input readonly type="text" class="form-control" id="inputAddress2" placeholder="">
+    <input readonly type="text" class="form-control" id="artisan" placeholder="">
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">金重</label>
-      <input readonly type="email" class="form-control" id="inputEmail4">
+      <input readonly type="email" class="form-control" id="weight">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">附件重</label>
-      <input readonly type="password" class="form-control" id="inputPassword4">
+      <input readonly type="password" class="form-control" id="weightAttach">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">工艺</label>
-      <input readonly type="email" class="form-control" id="inputEmail4">
+      <input readonly type="email" class="form-control" id="craft">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">备注</label>
-      <input readonly type="password" class="form-control" id="inputPassword4">
+      <input readonly type="text" class="form-control" id="note">
     </div>
   </div>
 

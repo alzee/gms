@@ -92,10 +92,10 @@ function t() {
     w.value = +(1 + Math.random()).toFixed(2);
 }
 
+// active link
 let path = window.location.pathname
 let as= document.querySelectorAll('#menu li ul li a');
 for (const a of as) {
-    console.log(a.pathname);
     if (path == a.pathname) {
         a.classList.add('active');
         a.parentElement.classList.add('active');
@@ -147,4 +147,22 @@ function tbl2xlsx(){
     filename += '_' + date + '.xlsx' ;
 
     XLSX.writeFile(wb, filename ,{bookType: "xlsx"});
+}
+
+// addEventListener to #modal-btn
+let modalBtns = document.querySelectorAll('.modal-btn');
+if (modalBtns) {
+    for (const btn of modalBtns)
+    btn.addEventListener("click", dataToModal);
+}
+
+function dataToModal() {
+    let tds = this.parentElement.parentElement.children;
+    let modal = document.querySelector('#myModal');
+    modal.querySelector('#sn').placeholder = tds[1].innerText;
+    modal.querySelector('#artisan').placeholder = tds[7].innerText;
+    modal.querySelector('#weight').placeholder = tds[3].innerText;
+    modal.querySelector('#weightAttach').placeholder = tds[4].innerText;
+    modal.querySelector('#craft').placeholder = tds[6].innerText;
+    modal.querySelector('#note').placeholder = tds[8].innerText;
 }
