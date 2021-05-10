@@ -80,8 +80,8 @@ Create new Stock: 库存 新增
 Create new Gd: 加金入单 新增
 Create new Cgd: 文员加金入单 新增
 Create new Cc: 职员间交金 新增
-Create new Gca: 文员交工匠 新增
-Create new Gac: 文员收工匠 新增
+Create new Gca: 文员发原料 新增
+Create new Gac: 文员收原料 新增
 Create new Gb: 加金入金箱 新增
 Create new Sgb: 减金出金箱 新增
 Create new Division: 部门 新增
@@ -121,8 +121,8 @@ Gd index: 加金入单
 Cgd index: 文员加金入单
 Cc index: 职员间交金
 Cc got index: 我的接收
-Gca index: 文员交工匠
-Gac index: 文员收工匠
+Gca index: 文员发原料
+Gac index: 文员收原料
 Gb index: 加金入金箱
 Sgb index: 减金出金箱
 Division index: 部门
@@ -161,8 +161,8 @@ Stock: 库存
 Gd: 加金入单
 Cgd: 文员加金入单
 Cc: 职员间交金
-Gca: 文员交工匠
-Gac: 文员收工匠
+Gca: 文员发原料
+Gac: 文员收原料
 Gb: 加金入金箱
 Sgb: 减金出金箱
 Division: 部门
@@ -201,8 +201,8 @@ Edit Stock: 库存 编辑
 Edit Gd: 加金入单 编辑
 Edit Cgd: 文员加金入单 编辑
 Edit Cc: 职员间交金 编辑
-Edit Gca: 文员交工匠 编辑
-Edit Gac: 文员收工匠 编辑
+Edit Gca: 文员发原料 编辑
+Edit Gac: 文员收原料 编辑
 Edit Gb: 加金入金箱 编辑
 Edit Sgb: 减金出金箱 编辑
 Edit Division: 部门 编辑
