@@ -91,3 +91,15 @@ function t() {
     let w = document.querySelector('[id$=_weight]');
     w.value = +(1 + Math.random()).toFixed(2);
 }
+
+let path = window.location.pathname
+let as= document.querySelectorAll('#menu li ul li a');
+for (const a of as) {
+    console.log(a.pathname);
+    if (path == a.pathname) {
+        a.classList.add('active');
+        a.parentElement.classList.add('active');
+        a.parentElement.parentElement.classList.add('in');
+        a.parentElement.parentElement.parentElement.classList.add('active');
+    }
+}
