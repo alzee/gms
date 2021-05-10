@@ -109,34 +109,14 @@ var expbtn = document.getElementById('export');
 if(expbtn) expbtn.addEventListener("click", tbl2xlsx);
 
 function tbl2xlsx(){
-    var tbl = document.getElementById('report_table');
-    var filename= document.getElementById('reportbtn').getElementsByClassName('active')[0].innerText;
-
-    if (filename == '进度月报') {
-        tbl = tbl.cloneNode(true);
-        var tr = tbl.getElementsByClassName('d-none');
-        var l = tr.length;
-        for (var i=0; i < l; i++){
-            if (tr[0]) tr[0].remove();
-        }
-
-        var month = document.getElementById('month').innerText.trim();
-        filename = month;
-        var b1 = document.getElementById('myproject');
-        if (b1.classList.contains('btn-info')) {
-            filename += '我的';
-        }
-        var b2 = document.getElementById('type_btn');
-        if (b2.firstElementChild.classList.contains('count')) {
-            filename += b2.firstChild.textContent.replace(/ /g, '') + '类';
-        }
-        filename += '进度月报';
-    }
+    var tbl = document.querySelector('table');
+    let filename = document.querySelector('.container-fluid h1').innerText;
 
     // write workbook
     //var wb = XLSX.utils.table_to_book(tbl, {sheet: sheetname});
     var wb = XLSX.utils.table_to_book(tbl);
 
+    /*
     if (filename == '统计汇总') {
         // rename first sheet's name. don't know how to rename, so clone a new element
         var sheetname = tbl.firstElementChild.firstElementChild.firstElementChild.innerText;
@@ -154,6 +134,7 @@ function tbl2xlsx(){
             }
         }
     }
+    */
 
     var t = new Date();
     var date = '';
