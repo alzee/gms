@@ -103,3 +103,67 @@ for (const a of as) {
         a.parentElement.parentElement.parentElement.classList.add('active');
     }
 }
+
+// addEventListener to #exportbtn
+var expbtn = document.getElementById('export');
+if(expbtn) expbtn.addEventListener("click", tbl2xlsx);
+
+function tbl2xlsx(){
+    var tbl = document.getElementById('report_table');
+    var filename= document.getElementById('reportbtn').getElementsByClassName('active')[0].innerText;
+
+    if (filename == '进度月报') {
+        tbl = tbl.cloneNode(true);
+        var tr = tbl.getElementsByClassName('d-none');
+        var l = tr.length;
+        for (var i=0; i < l; i++){
+            if (tr[0]) tr[0].remove();
+        }
+
+        var month = document.getElementById('month').innerText.trim();
+        filename = month;
+        var b1 = document.getElementById('myproject');
+        if (b1.classList.contains('btn-info')) {
+            filename += '我的';
+        }
+        var b2 = document.getElementById('type_btn');
+        if (b2.firstElementChild.classList.contains('count')) {
+            filename += b2.firstChild.textContent.replace(/ /g, '') + '类';
+        }
+        filename += '进度月报';
+    }
+
+    // write workbook
+    //var wb = XLSX.utils.table_to_book(tbl, {sheet: sheetname});
+    var wb = XLSX.utils.table_to_book(tbl);
+
+    if (filename == '统计汇总') {
+        // rename first sheet's name. don't know how to rename, so clone a new element
+        var sheetname = tbl.firstElementChild.firstElementChild.firstElementChild.innerText;
+        wb.Sheets[sheetname] = wb.Sheets[wb.SheetNames[0]];
+        wb.SheetNames[0] = sheetname;
+
+        while (tbl){
+            tbl.id="";
+            tbl = document.getElementById('report_table');
+            if (tbl){
+                // append a sheet to workbook
+                var ws = XLSX.utils.table_to_sheet(tbl);
+                sheetname = tbl.firstElementChild.firstElementChild.firstElementChild.innerText;
+                XLSX.utils.book_append_sheet(wb, ws, sheetname);
+            }
+        }
+    }
+
+    var t = new Date();
+    var date = '';
+    date += t.getFullYear()
+        + ('0' + (t.getMonth() + 1)).slice(-2)
+        + ('0' + t.getDate()).slice(-2)
+        + ('0' + t.getHours()).slice(-2)
+        + ('0' + t.getMinutes()).slice(-2)
+        + ('0' + t.getSeconds()).slice(-2);
+    filename += '_' + date + '.xlsx' ;
+
+    XLSX.writeFile(wb, filename ,{bookType: "xlsx"});
+}
