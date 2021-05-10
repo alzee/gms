@@ -47,7 +47,7 @@
                 {% if cc.status == 2 %}
                     <a class="btn btn-warning disabled" href="{{ path('cc_confirm', {'id': cc.id}) }}">{{'confirmed' | trans}}</a>
                 {% else %}
-                    <button class="btn btn-warning" data-toggle="modal" data-target="#myModal">{{'confirm' | trans}}</button>
+                    <button class="btn btn-warning modal-btn" data-page="cc" data-toggle="modal" data-target="#myModal">{{'confirm' | trans}}</button>
                 {% endif %}
                 </td>
             </tr>
@@ -77,7 +77,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+        <a href="" class="btn btn-primary" id="modal-confirm">确定</a>
         {#
         <a class="btn btn-warning" href="{{ path('cc_confirm', {'id': cc.id}) }}">确定</a>
         #}

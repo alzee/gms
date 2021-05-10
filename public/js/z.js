@@ -152,17 +152,27 @@ function tbl2xlsx(){
 // addEventListener to #modal-btn
 let modalBtns = document.querySelectorAll('.modal-btn');
 if (modalBtns) {
-    for (const btn of modalBtns)
-    btn.addEventListener("click", dataToModal);
+    for (const btn of modalBtns) {
+        btn.addEventListener("click", dataToModal);
+    }
 }
 
 function dataToModal() {
+    console.log(this);
     let tds = this.parentElement.parentElement.children;
     let modal = document.querySelector('#myModal');
-    modal.querySelector('#sn').placeholder = tds[1].innerText;
-    modal.querySelector('#artisan').placeholder = tds[7].innerText;
-    modal.querySelector('#weight').placeholder = tds[3].innerText;
-    modal.querySelector('#weightAttach').placeholder = tds[4].innerText;
-    modal.querySelector('#craft').placeholder = tds[6].innerText;
-    modal.querySelector('#note').placeholder = tds[8].innerText;
+    switch (this.dataset.page) {
+        case 'ca':
+            console.log(tds);
+            modal.querySelector('#sn').placeholder = tds[1].innerText;
+            modal.querySelector('#artisan').placeholder = tds[7].innerText;
+            modal.querySelector('#weight').placeholder = tds[3].innerText;
+            modal.querySelector('#weightAttach').placeholder = tds[4].innerText;
+            modal.querySelector('#craft').placeholder = tds[6].innerText;
+            modal.querySelector('#note').placeholder = tds[8].innerText;
+            break;
+        case 'cc':
+            modal.querySelector('#modal-confirm').pathname = '/cc/confirm/' + tds[0].innerText;
+            break;
+    }
 }
