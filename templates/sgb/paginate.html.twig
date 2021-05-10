@@ -9,6 +9,7 @@
     {{ knp_pagination_filter(sgbs, {'s.sn': 'Name'}) }}
     <div class="col-auto">
       <a class="btn btn-success" href="{{ path('sgb_new') }}">{{'Create new' | trans}}</a>
+      <button class="btn btn-danger" id="export">{{'export' | trans}}</button>
     </div>
   </div>
 

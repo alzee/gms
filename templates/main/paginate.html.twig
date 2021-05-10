@@ -8,8 +8,9 @@
   <div class="row mx-0 my-3">
     {{ knp_pagination_filter(mains, {'m.sn': 'Name'}) }}
     <div class="col-auto">
-      <a class="mx-2 btn btn-success" href="{{ path('center_import') }}">{{'Import' | trans}}</a>
       <a class="btn btn-success" href="{{ path('main_new') }}">{{'Create new' | trans}}</a>
+      <a class="mx-2 btn btn-success" href="{{ path('center_import') }}">{{'Import' | trans}}</a>
+      <button class="btn btn-danger" id="export">{{'export' | trans}}</button>
     </div>
   </div>
 
