@@ -67,19 +67,19 @@ Weight booked: 原始金重
 Short: 磅差
 Company: 公司
 actualWeight: 实际重量
-Ca back: 职员收工匠
-Cc got: 职员间收金
+Ca back: 文员收工匠
+Cc got: 文员间收金
 
 Create new Center: 中央单 新增
 Create new Own: 自发单 新增
 Create new Main: 主单 新增
 Create new Child: 子单 新增
-Create new Ca: 职员交工匠 新增
-Create new Ac: 职员收工匠 新增
+Create new Ca: 文员交工匠 新增
+Create new Ac: 文员收工匠 新增
 Create new Stock: 库存 新增
 Create new Gd: 加金入单 新增
 Create new Cgd: 文员加金入单 新增
-Create new Cc: 职员间交金 新增
+Create new Cc: 文员间交金 新增
 Create new Gca: 文员发原料 新增
 Create new Gac: 文员收原料 新增
 Create new Gb: 加金入金箱 新增
@@ -114,12 +114,12 @@ Center index: 中央单
 Own index: 自发单
 Main index: 主单
 Child index: 子单
-Ca index: 职员交工匠
-Ac index: 职员收工匠
+Ca index: 文员交工匠
+Ac index: 文员收工匠
 Stock index: 库存
 Gd index: 加金入单
 Cgd index: 文员加金入单
-Cc index: 职员间交金
+Cc index: 文员间交金
 Cc got index: 我的接收
 Gca index: 文员发原料
 Gac index: 文员收原料
@@ -155,12 +155,12 @@ Center: 中央单
 Own: 自发单
 Main: 主单
 Child: 子单
-Ca: 职员交工匠
-Ac: 职员收工匠
+Ca: 文员交工匠
+Ac: 文员收工匠
 Stock: 库存
 Gd: 加金入单
 Cgd: 文员加金入单
-Cc: 职员间交金
+Cc: 文员间交金
 Gca: 文员发原料
 Gac: 文员收原料
 Gb: 加金入金箱
@@ -196,12 +196,12 @@ Edit Center: 中央单 编辑
 Edit Own: 自发单 编辑
 Edit Main: 主单 编辑
 Edit Child: 子单 编辑
-Edit Ca: 职员交工匠 编辑
-Edit Ac: 职员收工匠 编辑
+Edit Ca: 文员交工匠 编辑
+Edit Ac: 文员收工匠 编辑
 Edit Stock: 库存 编辑
 Edit Gd: 加金入单 编辑
 Edit Cgd: 文员加金入单 编辑
-Edit Cc: 职员间交金 编辑
+Edit Cc: 文员间交金 编辑
 Edit Gca: 文员发原料 编辑
 Edit Gac: 文员收原料 编辑
 Edit Gb: 加金入金箱 编辑
