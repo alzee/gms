@@ -176,3 +176,16 @@ function dataToModal() {
             break;
     }
 }
+
+// addEventListener to #child
+let trs = document.querySelectorAll('table#child tbody tr');
+if (trs) {
+    for (const tr of trs) {
+        tr.addEventListener("dblclick", childDetail);
+    }
+}
+
+function childDetail() {
+    let btn = this.querySelector('.showbtn');
+    window.location.href = btn.href;
+}
