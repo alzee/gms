@@ -7,4 +7,5 @@
 ############### Functions ###############
 
 ############### Main Part ###############
+yes | bin/console doc:mig:mig
 sudo -u www-data bin/console c:c
