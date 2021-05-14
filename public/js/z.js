@@ -175,11 +175,11 @@ function dataToModal() {
         case 'ca':
             modal.querySelector('#sn').placeholder = tds[1].innerText;
             modal.querySelector('#artisan').placeholder = tds[7].innerText;
-            modal.querySelector('#wn').placeholder = 'A001';
             modal.querySelector('#weight').placeholder = tds[3].innerText;
             modal.querySelector('#weightAttach').placeholder = tds[4].innerText;
             modal.querySelector('#craft').placeholder = tds[6].innerText;
             modal.querySelector('#note').placeholder = tds[8].innerText;
+            modal.querySelector('#wn').placeholder = tds[9].innerText;
             modal.querySelector('#modal-confirm').pathname = '/ca/confirm/' + tds[0].innerText;
             break;
         case 'cc':
