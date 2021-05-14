@@ -280,7 +280,7 @@ function getReader() {
         };
         if (target != null)
             target.fireEvent("SocketRet", resultData); */
-        alert("Server not running");
+        console.error("Server not running");
     };
 
     //创建socket, 建立连接
@@ -313,7 +313,7 @@ function getReader() {
             entryCmd += PROTOCEL_FLAG._reader_cmd_ETX;
             socket.send(entryCmd);
         } else {
-            alert("Server not connected.");
+            console.error("Server not connected.");
         }
     };
 
