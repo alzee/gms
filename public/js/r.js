@@ -84,10 +84,14 @@ reader.onResult(function (ret) {
         msg = "S50/S70 校验密码成功.\n";
         break;
       case READER_CMD._reader_cmd_m_write:
+        // auto beep
+        readerBeep();
         msg = "S50/S70 写数据成功.\n";
         $('#aModal').modal('show');
         break;
       case READER_CMD._reader_cmd_m_read:
+        // auto beep
+        readerBeep();
         msg = "S50/S70 读数据成功. 读取到的数据: " + ret.resultData + "\n";
         // get data
         let wn = ret.resultData.substr(0 ,4);
