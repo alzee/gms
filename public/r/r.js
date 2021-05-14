@@ -16,13 +16,14 @@ reader.onResult(function (ret) {
   if (ret.result == 0) {
     switch (ret.functionId) {
       case READER_CMD._reader_server_connect:
+        // auto connect
         connectUsbReader();
-        rfCardTypeA();
-        mifareAuthenticationKey();
         // alert('读写器服务连接成功.');
         break;
       case READER_CMD._reader_cmd_connect:
         icdev = parseInt(ret.resultData); //连接成功后, resultData 为设备句柄
+        // auto TypeA 寻卡
+        rfCardTypeA();
         msg.value = msg.value + "读写器连接成功.\n";
         break;
       case READER_CMD._reader_cmd_disconnect:
@@ -74,6 +75,8 @@ reader.onResult(function (ret) {
         break;
       case READER_CMD._reader_cmd_rf_card:
       case READER_CMD._reader_cmd_rf_card_b:
+        // auto authen
+        mifareAuthenticationKey();
         msg.value = msg.value + "寻卡成功, 卡片序列号: " + ret.resultData + "\n";
         break;
       case READER_CMD._reader_cmd_rf_halt:
