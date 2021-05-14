@@ -1,3 +1,4 @@
+let msg = document.getElementById('search');
 var icdev = 0; //设备句柄
 var reader = getReader(); //获取reader对象, getReader会自动连接ReaderService服务
 if (reader == null) {
