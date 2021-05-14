@@ -69,6 +69,13 @@ services:
                 event: 'prePersist'
                 entity: 'App\Entity\Gca'
 
+    App\EventListener\ArtisanNew:
+        tags:
+            -
+                name: 'doctrine.orm.entity_listener'
+                event: 'prePersist'
+                entity: 'App\Entity\Artisan'
+
     App\EventListener\GacNew:
         tags:
             -
