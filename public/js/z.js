@@ -175,6 +175,7 @@ function dataToModal() {
         case 'ca':
             modal.querySelector('#sn').placeholder = tds[1].innerText;
             modal.querySelector('#artisan').placeholder = tds[7].innerText;
+            modal.querySelector('#wn').placeholder = 'A001';
             modal.querySelector('#weight').placeholder = tds[3].innerText;
             modal.querySelector('#weightAttach').placeholder = tds[4].innerText;
             modal.querySelector('#craft').placeholder = tds[6].innerText;
