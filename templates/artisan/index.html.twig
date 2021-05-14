@@ -35,6 +35,25 @@
     </table>
 
     <a class="btn btn-success" href="{{ path('artisan_new') }}">{{'Create new' | trans}}</a>
+
+<!-- Modal -->
+<div class="modal fade" id="aModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">写卡成功</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        工号信息已成功写入卡片！
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
 
 {% block javascripts1 %}

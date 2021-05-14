@@ -85,6 +85,7 @@ reader.onResult(function (ret) {
         break;
       case READER_CMD._reader_cmd_m_write:
         msg = "S50/S70 写数据成功.\n";
+        $('#aModal').modal('show');
         break;
       case READER_CMD._reader_cmd_m_read:
         msg = "S50/S70 读数据成功. 读取到的数据: " + ret.resultData + "\n";
