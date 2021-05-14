@@ -17,6 +17,8 @@ reader.onResult(function (ret) {
     switch (ret.functionId) {
       case READER_CMD._reader_server_connect:
         connectUsbReader();
+        rfCardTypeA();
+        mifareAuthenticationKey();
         // alert('读写器服务连接成功.');
         break;
       case READER_CMD._reader_cmd_connect:
@@ -700,7 +702,7 @@ function mifaerWrite() {
   try {
     //写 4  块数据
     // reader.mifareWrite(icdev, 4, '1234567890abcdef');
-    reader.mifareWrite(icdev, 4, 'A000100000000000');
+    reader.mifareWrite(icdev, 4, 'A001000000000000');
   } catch (e) {
     msg.value = msg.value + e.Message + "\n";
   }
