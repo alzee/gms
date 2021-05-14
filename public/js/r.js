@@ -96,9 +96,10 @@ reader.onResult(function (ret) {
         msg.value = msg.value + "S50/S70 读数据成功. 读取到的数据: " + ret.resultData + "\n";
         // get data
         let wn = ret.resultData.substr(0 ,4);
+        let wn0 = document.querySelector('#caModal #wn').placeholder;
         console.log('工号: ' + wn);
         console.log('fffffffffffffffffff');
-        if (wn === 'A001') {
+        if (wn === wn0) {
             let a = document.querySelector('#caModal #modal-confirm');
             a.classList.remove('disabled');
         }
