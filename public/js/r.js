@@ -95,9 +95,13 @@ reader.onResult(function (ret) {
       case READER_CMD._reader_cmd_m_read:
         msg.value = msg.value + "S50/S70 读数据成功. 读取到的数据: " + ret.resultData + "\n";
         // get data
-        let a = document.querySelector('#caModal #modal-confirm');
-        a.classList.remove('disabled');
-        console.log(ret.resultData);
+        let wn = ret.resultData.substr(0 ,4);
+        console.log('工号: ' + wn);
+        console.log('fffffffffffffffffff');
+        if (1) {
+            let a = document.querySelector('#caModal #modal-confirm');
+            a.classList.remove('disabled');
+        }
         break;
       case READER_CMD._reader_cmd_m_init_value:
         msg.value = msg.value + "S50/S70 初始化值成功.\n";
@@ -1021,13 +1025,15 @@ function sle4442ReadCounter() {
   }
 }
 
+let intvl;
+
 function read(){
     let i = 0;
-    const intvl = setInterval(
+    intvl = setInterval(
         () => {
             rfCardTypeA();
             if (i === 5) {
-                clearInterval(intvl);
+                // clearInterval(intvl);
             }
             i += 1;
         }

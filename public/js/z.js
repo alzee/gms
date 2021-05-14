@@ -163,6 +163,7 @@ if (modalBtns) {
 $('#caModal').on('hide.bs.modal', (e) => {
     let a = document.querySelector('#caModal #modal-confirm');
     a.classList.add('disabled');
+    clearInterval(intvl);
     console.log(e);
 }
 )
@@ -172,7 +173,6 @@ function dataToModal() {
     let modal = document.querySelector('.modal');
     switch (this.dataset.page) {
         case 'ca':
-            console.log(tds);
             modal.querySelector('#sn').placeholder = tds[1].innerText;
             modal.querySelector('#artisan').placeholder = tds[7].innerText;
             modal.querySelector('#weight').placeholder = tds[3].innerText;
