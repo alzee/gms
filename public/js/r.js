@@ -98,7 +98,7 @@ reader.onResult(function (ret) {
         let wn = ret.resultData.substr(0 ,4);
         console.log('工号: ' + wn);
         console.log('fffffffffffffffffff');
-        if (1) {
+        if (wn === 'A001') {
             let a = document.querySelector('#caModal #modal-confirm');
             a.classList.remove('disabled');
         }
