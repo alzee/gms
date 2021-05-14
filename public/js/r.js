@@ -95,6 +95,8 @@ reader.onResult(function (ret) {
       case READER_CMD._reader_cmd_m_read:
         msg.value = msg.value + "S50/S70 读数据成功. 读取到的数据: " + ret.resultData + "\n";
         // get data
+        let a = document.querySelector('#caModal #modal-confirm');
+        a.classList.remove('disabled');
         console.log(ret.resultData);
         break;
       case READER_CMD._reader_cmd_m_init_value:
@@ -1024,7 +1026,7 @@ function read(){
     const intvl = setInterval(
         () => {
             rfCardTypeA();
-            if (i === 2) {
+            if (i === 5) {
                 clearInterval(intvl);
             }
             i += 1;

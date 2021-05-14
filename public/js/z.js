@@ -154,14 +154,22 @@ let modalBtns = document.querySelectorAll('.modal-btn');
 if (modalBtns) {
     for (const btn of modalBtns) {
         btn.addEventListener("click", dataToModal);
-        btn.addEventListener("click", read);
+        if (typeof read !== 'undefined') {
+            btn.addEventListener("click", read);
+        }
     }
 }
 
+$('#caModal').on('hide.bs.modal', (e) => {
+    let a = document.querySelector('#caModal #modal-confirm');
+    a.classList.add('disabled');
+    console.log(e);
+}
+)
+
 function dataToModal() {
-    console.log(this);
     let tds = this.parentElement.parentElement.children;
-    let modal = document.querySelector('#myModal');
+    let modal = document.querySelector('.modal');
     switch (this.dataset.page) {
         case 'ca':
             console.log(tds);
@@ -171,6 +179,7 @@ function dataToModal() {
             modal.querySelector('#weightAttach').placeholder = tds[4].innerText;
             modal.querySelector('#craft').placeholder = tds[6].innerText;
             modal.querySelector('#note').placeholder = tds[8].innerText;
+            modal.querySelector('#modal-confirm').pathname = '/ca/confirm/' + tds[0].innerText;
             break;
         case 'cc':
             modal.querySelector('#modal-confirm').pathname = '/cc/confirm/' + tds[0].innerText;
