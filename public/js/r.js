@@ -1,4 +1,4 @@
-let msg = document.getElementById('search');
+let msg = {value: ''}
 var icdev = 0; //设备句柄
 var reader = getReader(); //获取reader对象, getReader会自动连接ReaderService服务
 if (reader == null) {
@@ -596,6 +596,7 @@ reader.onResult(function (ret) {
     //失败打印错误信息
     msg.value = msg.value + ret.resultData + "\n";
   }
+    console.log(msg.value);
 });
 
 //连接串口读写器
