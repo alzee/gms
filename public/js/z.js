@@ -164,7 +164,6 @@ $('#caModal').on('hide.bs.modal', (e) => {
     let a = document.querySelector('#caModal #modal-confirm');
     a.classList.add('disabled');
     clearInterval(intvl);
-    console.log(e);
 }
 )
 
@@ -199,4 +198,18 @@ if (trs) {
 function childDetail() {
     let btn = this.querySelector('.showbtn');
     window.location.href = btn.href;
+}
+
+let writeCardBtns = document.querySelectorAll('table#artisan .write-card');
+if (writeCardBtns) {
+    for (const btn of writeCardBtns) {
+        btn.addEventListener("click", writeCard);
+    }
+}
+
+function writeCard() {
+  const wn = this.parentElement.parentElement.querySelector('.wn').innerText;
+  const data = wn.padEnd(16 - wn.length, 0);
+  console.log(wn, data);
+  write(data);
 }

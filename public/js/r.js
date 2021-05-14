@@ -23,8 +23,6 @@ reader.onResult(function (ret) {
         break;
       case READER_CMD._reader_cmd_connect:
         icdev = parseInt(ret.resultData); //连接成功后, resultData 为设备句柄
-        // auto TypeA 寻卡
-        rfCardTypeA();
         msg.value = msg.value + "读写器连接成功.\n";
         break;
       case READER_CMD._reader_cmd_disconnect:
@@ -76,8 +74,6 @@ reader.onResult(function (ret) {
         break;
       case READER_CMD._reader_cmd_rf_card:
       case READER_CMD._reader_cmd_rf_card_b:
-        // auto authen
-        mifareAuthenticationKey();
         msg.value = msg.value + "寻卡成功, 卡片序列号: " + ret.resultData + "\n";
         break;
       case READER_CMD._reader_cmd_rf_halt:
@@ -85,8 +81,6 @@ reader.onResult(function (ret) {
         msg.value = msg.value + "终止卡片操作成功.\n";
         break;
       case READER_CMD._reader_cmd_m_auth_key:
-        // auto read carf
-        mifareRead();
         msg.value = msg.value + "S50/S70 校验密码成功.\n";
         break;
       case READER_CMD._reader_cmd_m_write:
@@ -97,8 +91,6 @@ reader.onResult(function (ret) {
         // get data
         let wn = ret.resultData.substr(0 ,4);
         let wn0 = document.querySelector('#caModal #wn').placeholder;
-        console.log('工号: ' + wn);
-        console.log('fffffffffffffffffff');
         if (wn === wn0) {
             let a = document.querySelector('#caModal #modal-confirm');
             a.classList.remove('disabled');
@@ -714,11 +706,11 @@ function mifareAuthenticationKey() {
   }
 }
 //写数据
-function mifaerWrite() {
+function mifareWrite(data) {
   try {
     //写 4  块数据
     // reader.mifareWrite(icdev, 4, '1234567890abcdef');
-    reader.mifareWrite(icdev, 4, 'A001000000000000');
+    reader.mifareWrite(icdev, 4, data);
   } catch (e) {
     msg.value = msg.value + e.Message + "\n";
   }
@@ -1033,10 +1025,17 @@ function read(){
     intvl = setInterval(
         () => {
             rfCardTypeA();
+            mifareAuthenticationKey();
+            mifareRead();
             if (i === 5) {
-                // clearInterval(intvl);
             }
             i += 1;
         }
         ,1000);
+}
+
+function write(data) {
+    rfCardTypeA();
+    mifareAuthenticationKey();
+    mifareWrite(data);
 }
