@@ -84,6 +84,8 @@ reader.onResult(function (ret) {
         msg.value = msg.value + "终止卡片操作成功.\n";
         break;
       case READER_CMD._reader_cmd_m_auth_key:
+        // auto read carf
+        mifareRead();
         msg.value = msg.value + "S50/S70 校验密码成功.\n";
         break;
       case READER_CMD._reader_cmd_m_write:
@@ -91,6 +93,8 @@ reader.onResult(function (ret) {
         break;
       case READER_CMD._reader_cmd_m_read:
         msg.value = msg.value + "S50/S70 读数据成功. 读取到的数据: " + ret.resultData + "\n";
+        // get data
+        console.log(ret.resultData);
         break;
       case READER_CMD._reader_cmd_m_init_value:
         msg.value = msg.value + "S50/S70 初始化值成功.\n";
@@ -1011,4 +1015,17 @@ function sle4442ReadCounter() {
   } catch (e) {
     msg.value = msg.value + e.Message + "\n";
   }
+}
+
+function read(){
+    let i = 0;
+    const intvl = setInterval(
+        () => {
+            rfCardTypeA();
+            if (i === 2) {
+                clearInterval(intvl);
+            }
+            i += 1;
+        }
+        ,1000);
 }
