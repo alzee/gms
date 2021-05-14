@@ -37,7 +37,8 @@
                 if (ret.result == 0) {
                     switch (ret.functionId) {
                         case READER_CMD._reader_server_connect:
-                            alert('读写器服务连接成功.');
+                            connectUsbReader();
+                            // alert('读写器服务连接成功.');
                             break;
                         case READER_CMD._reader_cmd_connect:
                             icdev = parseInt(ret.resultData); //连接成功后, resultData 为设备句柄
