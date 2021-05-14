@@ -27,6 +27,11 @@ class Artisan
      */
     private $box = 0;
 
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
+     */
+    private $wn;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -57,6 +62,18 @@ class Artisan
     public function setBox(float $box): self
     {
         $this->box = $box;
+
+        return $this;
+    }
+
+    public function getWn(): ?string
+    {
+        return $this->wn;
+    }
+
+    public function setWn(?string $wn): self
+    {
+        $this->wn = $wn;
 
         return $this;
     }
