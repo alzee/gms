@@ -154,6 +154,7 @@ let modalBtns = document.querySelectorAll('.modal-btn');
 if (modalBtns) {
     for (const btn of modalBtns) {
         btn.addEventListener("click", dataToModal);
+        btn.addEventListener("click", read);
     }
 }
 
