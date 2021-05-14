@@ -44,7 +44,13 @@
                 <td class="d-none">{{ ca.artisan.wn}}</td>
                 <td>
                     <a class="btn btn-sm btn-primary" href="{{ path('ca_show', {'id': ca.id}) }}">{{'show' | trans}}</a>
-                    <a class="btn btn-sm btn-warning modal-btn" data-page="ca" data-toggle="modal" data-target="#caModal">工匠确认</a>
+                    {% if ca.status == 2 %}
+                    <button class="btn btn-sm btn-success" disabled >工匠已收</button>
+                    {% else %}
+                    <button class="btn btn-sm btn-warning modal-btn" data-page="ca" data-toggle="modal" data-target="#caModal">工匠确认</button>
+
+                    {% endif %}
+
                 </td>
             </tr>
         {% else %}

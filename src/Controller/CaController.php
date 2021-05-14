@@ -65,7 +65,7 @@ class CaController extends AbstractController
         $ca->setDate1(new \DateTimeImmutable());
         $em->persist($ca);
         $em->flush();
-        return $this->redirectToRoute('ca_back');
+        return $this->redirectToRoute('ca_index');
     }
 
     /**
