@@ -31,8 +31,8 @@ class ChildController extends AbstractController
             'page' => $this->page,
             'items' => $p,
             'columns' => [
-                ['name' => 'sn'],
-                ['name' => 'date'],
+                ['name' => 'sn', 'sort' => 'c.sn'],
+                ['name' => 'date', 'sort' => 'c.date'],
                 ['name' => 'goldclass'],
                 ['name' => 'note'],
                 ['name' => 'countPiece'],
