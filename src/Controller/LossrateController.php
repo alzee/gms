@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Lossrate;
-use App\Form\Lossrate2Type;
+use App\Form\LossrateType;
 use App\Repository\LossrateRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class LossrateController extends AbstractController
     public function new(Request $request): Response
     {
         $lossrate = new Lossrate();
-        $form = $this->createForm(Lossrate2Type::class, $lossrate);
+        $form = $this->createForm(LossrateType::class, $lossrate);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +63,7 @@ class LossrateController extends AbstractController
      */
     public function edit(Request $request, Lossrate $lossrate): Response
     {
-        $form = $this->createForm(Lossrate2Type::class, $lossrate);
+        $form = $this->createForm(LossrateType::class, $lossrate);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
