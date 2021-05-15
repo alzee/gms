@@ -68,7 +68,7 @@ class AddreasonController extends AbstractController
     {
         return $this->render('crud/show.html.twig', [
             'page' => $this->page,
-            'addreason' => $addreason,
+            'item' => $addreason,
             'fields' => ['id', 'name']
         ]);
     }
@@ -88,6 +88,7 @@ class AddreasonController extends AbstractController
         }
 
         return $this->render('crud/edit.html.twig', [
+            'page' => $this->page,
             'item' => $addreason,
             'form' => $form->createView(),
         ]);

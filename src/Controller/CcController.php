@@ -45,16 +45,6 @@ class CcController extends AbstractController
     }
 
     /**
-     * @Route("/sent", name="cc_sent", methods={"GET"})
-     */
-    public function sent(CcRepository $ccRepository): Response
-    {
-        return $this->render('cc/index.html.twig', [
-            'ccs' => $ccRepository->findAll(),
-        ]);
-    }
-
-    /**
      * @Route("/got", name="cc_got", methods={"GET"})
      */
     public function got(PaginatorInterface $paginator, Request $request): Response
@@ -101,7 +91,8 @@ class CcController extends AbstractController
         }
 
         return $this->render('crud/new.html.twig', [
-            'cc' => $cc,
+            'page' => $this->page,
+            'item' => $cc,
             'form' => $form->createView(),
         ]);
     }

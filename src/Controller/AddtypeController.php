@@ -68,7 +68,7 @@ class AddtypeController extends AbstractController
     {
         return $this->render('crud/show.html.twig', [
             'page' => $this->page,
-            'addtype' => $addtype,
+            'item' => $addtype,
             'fields' => ['id', 'name']
         ]);
     }
