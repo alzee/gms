@@ -13,6 +13,7 @@ class CaType extends AbstractType
     {
         $builder
             // ->add('child')
+            ->add('doc')
             ->add('artisan')
             ->add('weightGold')
             ->add('weightAttach')

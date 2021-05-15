@@ -17,6 +17,8 @@ class Ca
      */
     private $id;
 
+    private $doc;
+
     /**
      * @ORM\ManyToOne(targetEntity=Artisan::class)
      * @ORM\JoinColumn(nullable=false)
@@ -74,6 +76,18 @@ class Ca
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getDoc(): ?string
+    {
+        return $this->doc;
+    }
+
+    public function setDoc(string $doc): self
+    {
+        $this->doc= $doc;
+
+        return $this;
     }
 
     public function getArtisan(): ?Artisan

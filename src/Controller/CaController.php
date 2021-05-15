@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Ca;
 use App\Entity\Child;
+use App\Entity\Main;
 use App\Form\CaType;
 use App\Repository\CaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -90,17 +91,20 @@ class CaController extends AbstractController
         $ca->setDate(new \DateTimeImmutable());
         $form = $this->createForm(CaType::class, $ca);
         $form->handleRequest($request);
-        $doc = $request->request->get('doc');
+
+        $doc = $ca->getDoc();
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // check if $doc is main or child
-            //
-            if (true) {
-                $child = $this->getDoctrine()->getRepository(Child::class)->findOneBy(['sn' => $doc]);
+            $child = $this->getDoctrine()->getRepository(Child::class)->findOneBy(['sn' => $doc]);
+            if (!is_null($child)) {
+                $ca->setChild($child);
             }
             else {
+                $main = $this->getDoctrine()->getRepository(Main::class)->findOneBy(['sn' => $doc]);
+                if (!is_null($main)) {
+                    $ca->setMain($main);
+                }
             }
-            $form->getData()->setChild($child);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($ca);
             $entityManager->flush();
@@ -109,7 +113,8 @@ class CaController extends AbstractController
         }
 
         return $this->render('ca/new.html.twig', [
-            'ca' => $ca,
+            'page' => $this->page,
+            'item' => $ca,
             'form' => $form->createView(),
         ]);
     }

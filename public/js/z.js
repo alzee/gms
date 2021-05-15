@@ -3,14 +3,14 @@ if (i) {
     i.addEventListener('click', t);
 }
 
-let doc = document.querySelector('#doc');
+let doc = document.querySelector('[id$=_doc]');
 if (doc) {
     doc.addEventListener('blur', showDoc);
 }
 
 let weight = document.querySelector('[id$=_weight]');
 let weightBooked = document.querySelector('[id$=_weightBooked]');
-if (weight) {
+if (weightBooked) {
     weightBooked.addEventListener('input', calcShort);
 }
 
