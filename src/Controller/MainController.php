@@ -45,7 +45,7 @@ class MainController extends AbstractController
                 ['name' => 'sn', 'sort' => 'm.sn'],
                 ['name' => 'date', 'sort' => 'm.date'],
                 ['name' => 'dueDate', 'sort' => 'm.dueDate'],
-                ['name' => 'countPiece'],
+                ['name' => 'countChild'],
                 ['name' => 'countPiece'],
                 ['name' => 'perWeight'],
                 ['name' => 'totalWeight'],
@@ -75,8 +75,9 @@ class MainController extends AbstractController
             return $this->redirectToRoute('main_index');
         }
 
-        return $this->render('main/new.html.twig', [
-            'main' => $main,
+        return $this->render('crud/new.html.twig', [
+            'page' => $this->page,
+            'item' => $main,
             'form' => $form->createView(),
         ]);
     }
@@ -86,8 +87,10 @@ class MainController extends AbstractController
      */
     public function show(Main $main): Response
     {
-        return $this->render('main/show.html.twig', [
-            'main' => $main,
+        return $this->render('crud/show.html.twig', [
+            'page' => $this->page,
+            'item' => $main,
+            'fields' => ['sn', 'date', 'dueDate', 'countChild' ,'countPiece', 'perWeight', 'totalWeight', 'upstreamDoc', 'model', 'stamp', 'size', 'note']
         ]);
     }
 

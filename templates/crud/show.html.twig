@@ -3,14 +3,18 @@
 {% block title %}{{ page|capitalize|trans }}{% endblock %}
 
 {% block body %}
-    <h1>{{'User' | trans}}</h1>
+    <h1>{{ page|capitalize|trans }}</h1>
 
     <table class="table table-striped table-hover">
         <tbody>
             {% for field in fields %}
             <tr>
                 <th>{{ field|capitalize|trans }}</th>
+                {% if field == 'date' or field == 'dueDate' %}
+                <td>{{ attribute(item, field) ? attribute(item, field)|date('Y-m-d H:i:s') : '' }}</td>
+                {% else %}
                 <td>{{ attribute(item, field) }}</td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
