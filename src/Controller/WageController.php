@@ -32,7 +32,10 @@ class WageController extends AbstractController
             'items' => $p,
             'columns' => [
                 ['name' => 'id'],
-                ['name' => 'name']
+                ['name' => 'name'],
+                ['name' => 'model'],
+                ['name' => 'wage'],
+                ['name' => 'note'],
             ]
         ]);
     }
@@ -69,7 +72,7 @@ class WageController extends AbstractController
         return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $wage,
-            'fields' => ['id', 'name']
+            'fields' => ['id', 'name', 'model', 'wage', 'note']
         ]);
     }
 

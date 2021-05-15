@@ -32,7 +32,6 @@ class GacController extends AbstractController
             'items' => $p,
             'columns' => [
                 ['name' => 'id'],
-                ['name' => 'name']
             ]
         ]);
     }
@@ -71,7 +70,7 @@ class GacController extends AbstractController
         return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $gac,
-            'fields' => ['id', 'name']
+            'fields' => ['id']
         ]);
     }
 

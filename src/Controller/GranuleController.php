@@ -32,7 +32,8 @@ class GranuleController extends AbstractController
             'items' => $p,
             'columns' => [
                 ['name' => 'id'],
-                ['name' => 'name']
+                ['name' => 'name'],
+                ['name' => 'granule'],
             ]
         ]);
     }
@@ -69,6 +70,7 @@ class GranuleController extends AbstractController
         return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $granule,
+            'fields' => ['id', 'name', 'granule']
         ]);
     }
 

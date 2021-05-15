@@ -32,7 +32,11 @@ class LossrateController extends AbstractController
             'items' => $p,
             'columns' => [
                 ['name' => 'id'],
-                ['name' => 'name']
+                ['name' => 'name'],
+                ['name' => 'model'],
+                ['name' => 'craft'],
+                ['name' => 'rate'],
+                ['name' => 'note'],
             ]
         ]);
     }
@@ -69,7 +73,7 @@ class LossrateController extends AbstractController
         return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $lossrate,
-            'fields' => ['id', 'name']
+            'fields' => ['id', 'name', 'model', 'craft', 'rate', 'note']
         ]);
     }
 
