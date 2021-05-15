@@ -96,7 +96,7 @@ function t() {
 let path = window.location.pathname
 let as= document.querySelectorAll('#menu li ul li a');
 for (const a of as) {
-    if (path == a.pathname) {
+    if (path.indexOf(a.pathname) == 0) {
         a.classList.add('active');
         a.parentElement.classList.add('active');
         a.parentElement.parentElement.classList.add('in');
