@@ -36,8 +36,8 @@ class SgbController extends AbstractController
                 ['name' => 'company'],
                 ['name' => 'goldclass'],
                 ['name' => 'position'],
-                ['name' => 'addtype'],
-                ['name' => 'addreason'],
+                ['name' => 'subtracttype'],
+                ['name' => 'subtractreason'],
                 ['name' => 'weightBooked'],
                 ['name' => 'weight'],
                 ['name' => 'short'],
@@ -79,7 +79,7 @@ class SgbController extends AbstractController
         return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $sgb,
-            'fields' => ['id', 'date', 'company', 'goldclass', 'position', 'addtype', 'addreason', 'weightBooked', 'weight', 'short', 'note']
+            'fields' => ['id', 'date', 'company', 'goldclass', 'position', 'subtracttype', 'subtractreason', 'weightBooked', 'weight', 'short', 'note']
         ]);
     }
 
