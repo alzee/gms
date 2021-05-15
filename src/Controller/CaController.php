@@ -22,7 +22,7 @@ class CaController extends AbstractController
     /**
      * @Route("/0", name="craft_index0", methods={"GET"})
      */
-    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    public function paginate0(PaginatorInterface $paginator, Request $request): Response
     {
         $dql = "select c, ch, a from App\Entity\Ca c join c.child ch join c.artisan a order by c.id desc";
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
