@@ -173,12 +173,17 @@ function dataToModal() {
     switch (this.dataset.page) {
         case 'ca':
             modal.querySelector('#sn').placeholder = tds[1].innerText;
-            modal.querySelector('#artisan').placeholder = tds[7].innerText;
-            modal.querySelector('#weight').placeholder = tds[3].innerText;
+            modal.querySelector('#weightGold').placeholder = tds[3].innerText;
             modal.querySelector('#weightAttach').placeholder = tds[4].innerText;
+            modal.querySelector('#weight').placeholder = tds[5].innerText;
             modal.querySelector('#craft').placeholder = tds[6].innerText;
+            modal.querySelector('#artisan').placeholder = tds[7].innerText;
             modal.querySelector('#note').placeholder = tds[8].innerText;
             modal.querySelector('#wn').placeholder = tds[9].innerText;
+            modal.querySelector('#countPiece').placeholder = tds[10].innerText;
+            modal.querySelector('#size').placeholder = tds[11].innerText;
+            modal.querySelector('#goldClass').placeholder = tds[13].innerText;
+            modal.querySelector('#model').placeholder = tds[14].innerText;
             modal.querySelector('#modal-confirm').pathname = '/ca/confirm/' + tds[0].innerText;
             break;
         case 'cc':
