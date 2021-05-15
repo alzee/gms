@@ -95,6 +95,11 @@ class Child
      */
     private $model;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $weightGold;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -274,6 +279,18 @@ class Child
     public function setModel(?string $model): self
     {
         $this->model = $model;
+
+        return $this;
+    }
+
+    public function getWeightGold(): ?float
+    {
+        return $this->weightGold;
+    }
+
+    public function setWeightGold(?float $weightGold): self
+    {
+        $this->weightGold = $weightGold;
 
         return $this;
     }
