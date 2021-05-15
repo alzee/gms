@@ -28,7 +28,7 @@ class MainType extends AbstractType
             ->add('goldclass')
             ->add('cotype')
             ->add('model')
-            ->add('lossRate')
+            // ->add('lossRate')
             ->add('factory')
             ->add('branch')
             ->add('note')

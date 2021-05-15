@@ -1,3 +1,5 @@
+Stamp: 工厂字印
+Size: 尺寸
 wn: 工号
 Filter: 搜索
 edit: 编辑
@@ -19,7 +21,7 @@ Username: 用户名
 Password: 密码
 Count child: 子单数量
 Per weight: 单件重量
-Total weight: 预计用金
+Total weight: 总重
 Upstream doc: 上层单号
 Length: 长
 Width: 宽
@@ -33,7 +35,8 @@ main: 主单
 Weight: 重量
 CountChild: 子单数量
 PerWeight: 子单重量
-TotalWeight: 预计重量
+TotalWeight: 总重
+model: 模号类型
 UpstreamDoc: 上层单号
 Count piece: 生产单件数
 CountPiece: 生产单件数
