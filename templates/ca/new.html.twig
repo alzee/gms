@@ -3,7 +3,7 @@
 {% block title %}New Ca{% endblock %}
 
 {% block body %}
-    <h1>{{'Create new Ca' | trans}}</h1>
+    <h1>{{ 'Create new'|trans }} {{ 'Ca'|trans }}</h1>
 
     {{ include('ca/_form.html.twig') }}
 
