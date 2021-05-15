@@ -122,7 +122,7 @@ class CaController extends AbstractController
         return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $ca,
-            'fields' => ['id', 'sn', 'clerk', 'weightGold', 'weightAttach', 'craft', 'artisan' , 'date']
+            'fields' => ['id', 'child', 'clerk', 'weightGold', 'weightAttach', 'craft', 'artisan' , 'date']
         ]);
     }
 

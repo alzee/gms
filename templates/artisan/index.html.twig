@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Artisan index{% endblock %}
+{% block title %}{{ 'Artisan'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>{{'Artisan index' | trans}}</h1>
+    <h1>{{ 'Artisan'|trans }}</h1>
 
   <div class="row mx-0 my-3">
     <div class="col"></div>
@@ -17,7 +17,7 @@
     <table class="table table-striped table-hover" id="artisan">
         <thead>
             <tr>
-                <th>{{'Id' | trans}}</th>
+                <th>{{'id' | trans}}</th>
                 <th>{{'Name' | trans}}</th>
                 <th>{{'wn' | trans}}</th>
                 <th>{{'actions' | trans}}</th>

@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ca index{% endblock %}
+{% block title %} {{ 'Ca'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>{{'Ca index' | trans}}</h1>
+    <h1>{{ 'Ca'|trans }}</h1>
 
   <div class="row mx-0 my-3">
     {{ knp_pagination_filter(cas, {'ch.sn': 'Name'}) }}
