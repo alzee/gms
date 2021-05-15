@@ -114,6 +114,16 @@ class Main
      */
     private $holder;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $size;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $model;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -329,6 +339,30 @@ class Main
     public function setHolder(?Artisan $holder): self
     {
         $this->holder = $holder;
+
+        return $this;
+    }
+
+    public function getSize(): ?float
+    {
+        return $this->size;
+    }
+
+    public function setSize(?float $size): self
+    {
+        $this->size = $size;
+
+        return $this;
+    }
+
+    public function getModel(): ?string
+    {
+        return $this->model;
+    }
+
+    public function setModel(?string $model): self
+    {
+        $this->model = $model;
 
         return $this;
     }
