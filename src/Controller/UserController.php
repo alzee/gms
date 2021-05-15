@@ -94,7 +94,8 @@ class UserController extends AbstractController
         }
 
         return $this->render('crud/edit.html.twig', [
-            'user' => $user,
+            'page' => 'user',
+            'item' => $user,
             'form' => $form->createView(),
         ]);
     }

@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{'Edit User' | trans}}{% endblock %}
+{% block title %}{{ page|capitalize|trans }}{% endblock %}
 
 {% block body %}
-    <h1>{{'Edit User' | trans}}</h1>
+    <h1>{{ "Edit #{page}"|trans }}</h1>
 
     {{ include('crud/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a class="btn btn-primary" href="{{ path('user_index') }}">{{'back to list' | trans}}</a>
+    <a class="btn btn-primary" href="{{ path("#{page}_index") }}">{{'back to list' | trans}}</a>
 
     {{ include('crud/_delete_form.html.twig') }}
 {% endblock %}
