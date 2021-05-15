@@ -16,6 +16,7 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class ChildController extends AbstractController
 {
+    private $page = 'child';
 
     /**
      * @Route("/", name="child_index", methods={"GET"})
@@ -24,10 +25,16 @@ class ChildController extends AbstractController
     {
         $dql = "select c from App\Entity\Child c order by c.id desc";
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
-        $pagination = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 
-        return $this->render('child/paginate.html.twig', [
-            'children' => $pagination
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'sn'],
+                ['name' => 'main'],
+                ['name' => 'artisan']
+            ]
         ]);
     }
 
@@ -49,7 +56,8 @@ class ChildController extends AbstractController
         }
 
         return $this->render('child/new.html.twig', [
-            'child' => $child,
+            'page' => $this->page,
+            'item' => $child,
             'form' => $form->createView(),
         ]);
     }
@@ -60,7 +68,9 @@ class ChildController extends AbstractController
     public function show(Child $child): Response
     {
         return $this->render('child/show.html.twig', [
-            'child' => $child,
+            'page' => $this->page,
+            'item' => $child,
+            'fields' => ['id']
         ]);
     }
 
@@ -79,7 +89,8 @@ class ChildController extends AbstractController
         }
 
         return $this->render('child/edit.html.twig', [
-            'child' => $child,
+            'page' => $this->page,
+            'item' => $child,
             'form' => $form->createView(),
         ]);
     }

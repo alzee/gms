@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class SeriesController extends AbstractController
 {
+    private $page = 'series';
+
+    /**
+     * @Route("/", name="series_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select s from App\Entity\Series s order by s.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="series_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class SeriesController extends AbstractController
         }
 
         return $this->render('series/new.html.twig', [
-            'series' => $series,
+            'page' => $this->page,
+            'item' => $series,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class SeriesController extends AbstractController
     public function show(Series $series): Response
     {
         return $this->render('series/show.html.twig', [
-            'series' => $series,
+            'page' => $this->page,
+            'item' => $series,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class SeriesController extends AbstractController
         }
 
         return $this->render('series/edit.html.twig', [
-            'series' => $series,
+            'page' => $this->page,
+            'item' => $series,
             'form' => $form->createView(),
         ]);
     }

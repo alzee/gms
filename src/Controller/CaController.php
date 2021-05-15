@@ -20,7 +20,7 @@ class CaController extends AbstractController
     private $page = 'ca';
 
     /**
-     * @Route("/0", name="craft_index0", methods={"GET"})
+     * @Route("/0", name="ca_index0", methods={"GET"})
      */
     public function paginate0(PaginatorInterface $paginator, Request $request): Response
     {

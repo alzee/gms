@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class SubtracttypeController extends AbstractController
 {
+    private $page = 'subtracttype';
+
+    /**
+     * @Route("/", name="subtracttype_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select s from App\Entity\Subtracttype s order by s.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="subtracttype_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class SubtracttypeController extends AbstractController
         }
 
         return $this->render('subtracttype/new.html.twig', [
-            'subtracttype' => $subtracttype,
+            'page' => $this->page,
+            'item' => $subtracttype,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class SubtracttypeController extends AbstractController
     public function show(Subtracttype $subtracttype): Response
     {
         return $this->render('subtracttype/show.html.twig', [
-            'subtracttype' => $subtracttype,
+            'page' => $this->page,
+            'item' => $subtracttype,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class SubtracttypeController extends AbstractController
         }
 
         return $this->render('subtracttype/edit.html.twig', [
-            'subtracttype' => $subtracttype,
+            'page' => $this->page,
+            'item' => $subtracttype,
             'form' => $form->createView(),
         ]);
     }

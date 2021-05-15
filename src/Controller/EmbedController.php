@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class EmbedController extends AbstractController
 {
+    private $page = 'embed';
+
+    /**
+     * @Route("/", name="embed_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select e from App\Entity\Embed e order by e.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="embed_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class EmbedController extends AbstractController
         }
 
         return $this->render('embed/new.html.twig', [
-            'embed' => $embed,
+            'page' => $this->page,
+            'item' => $embed,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class EmbedController extends AbstractController
     public function show(Embed $embed): Response
     {
         return $this->render('embed/show.html.twig', [
-            'embed' => $embed,
+            'page' => $this->page,
+            'item' => $embed,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class EmbedController extends AbstractController
         }
 
         return $this->render('embed/edit.html.twig', [
-            'embed' => $embed,
+            'page' => $this->page,
+            'item' => $embed,
             'form' => $form->createView(),
         ]);
     }

@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class CotypeController extends AbstractController
 {
+    private $page = 'cotype';
+
+    /**
+     * @Route("/", name="cotype_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select c from App\Entity\Cotype c order by c.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="cotype_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class CotypeController extends AbstractController
         }
 
         return $this->render('cotype/new.html.twig', [
-            'cotype' => $cotype,
+            'page' => $this->page,
+            'item' => $cotype,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class CotypeController extends AbstractController
     public function show(Cotype $cotype): Response
     {
         return $this->render('cotype/show.html.twig', [
-            'cotype' => $cotype,
+            'page' => $this->page,
+            'item' => $cotype,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class CotypeController extends AbstractController
         }
 
         return $this->render('cotype/edit.html.twig', [
-            'cotype' => $cotype,
+            'page' => $this->page,
+            'item' => $cotype,
             'form' => $form->createView(),
         ]);
     }

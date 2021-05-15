@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class ProdtypeController extends AbstractController
 {
+    private $page = 'prodtype';
+
+    /**
+     * @Route("/", name="prodtype_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select p from App\Entity\Prodtype p order by p.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="prodtype_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class ProdtypeController extends AbstractController
         }
 
         return $this->render('prodtype/new.html.twig', [
-            'prodtype' => $prodtype,
+            'page' => $this->page,
+            'item' => $prodtype,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class ProdtypeController extends AbstractController
     public function show(Prodtype $prodtype): Response
     {
         return $this->render('prodtype/show.html.twig', [
-            'prodtype' => $prodtype,
+            'page' => $this->page,
+            'item' => $prodtype,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class ProdtypeController extends AbstractController
         }
 
         return $this->render('prodtype/edit.html.twig', [
-            'prodtype' => $prodtype,
+            'page' => $this->page,
+            'item' => $prodtype,
             'form' => $form->createView(),
         ]);
     }

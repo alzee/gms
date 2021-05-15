@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class SeqController extends AbstractController
 {
+    private $page = 'seq';
+
+    /**
+     * @Route("/", name="seq_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select s from App\Entity\Seq s order by s.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="seq_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class SeqController extends AbstractController
         }
 
         return $this->render('seq/new.html.twig', [
-            'seq' => $seq,
+            'page' => $this->page,
+            'item' => $seq,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class SeqController extends AbstractController
     public function show(Seq $seq): Response
     {
         return $this->render('seq/show.html.twig', [
-            'seq' => $seq,
+            'page' => $this->page,
+            'item' => $seq,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class SeqController extends AbstractController
         }
 
         return $this->render('seq/edit.html.twig', [
-            'seq' => $seq,
+            'page' => $this->page,
+            'item' => $seq,
             'form' => $form->createView(),
         ]);
     }

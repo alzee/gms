@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class StockController extends AbstractController
 {
+    private $page = 'stock';
+
+    /**
+     * @Route("/", name="stock_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select s from App\Entity\Stock s order by s.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="stock_new", methods={"GET","POST"})
@@ -34,8 +54,9 @@ class StockController extends AbstractController
             return $this->redirectToRoute('stock_index');
         }
 
-        return $this->render('stock/new.html.twig', [
-            'stock' => $stock,
+        return $this->render('crud/new.html.twig', [
+            'page' => $this->page,
+            'item' => $stock,
             'form' => $form->createView(),
         ]);
     }
@@ -45,8 +66,10 @@ class StockController extends AbstractController
      */
     public function show(Stock $stock): Response
     {
-        return $this->render('stock/show.html.twig', [
-            'stock' => $stock,
+        return $this->render('crud/show.html.twig', [
+            'page' => $this->page,
+            'item' => $stock,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -64,8 +87,9 @@ class StockController extends AbstractController
             return $this->redirectToRoute('stock_index');
         }
 
-        return $this->render('stock/edit.html.twig', [
-            'stock' => $stock,
+        return $this->render('crud/edit.html.twig', [
+            'page' => $this->page,
+            'item' => $stock,
             'form' => $form->createView(),
         ]);
     }

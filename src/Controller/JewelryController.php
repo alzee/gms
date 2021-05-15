@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class JewelryController extends AbstractController
 {
+    private $page = 'jewelry';
+
+    /**
+     * @Route("/", name="jewelry_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select j from App\Entity\Jewelry j order by j.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="jewelry_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class JewelryController extends AbstractController
         }
 
         return $this->render('jewelry/new.html.twig', [
-            'jewelry' => $jewelry,
+            'page' => $this->page,
+            'item' => $jewelry,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class JewelryController extends AbstractController
     public function show(Jewelry $jewelry): Response
     {
         return $this->render('jewelry/show.html.twig', [
-            'jewelry' => $jewelry,
+            'page' => $this->page,
+            'item' => $jewelry,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class JewelryController extends AbstractController
         }
 
         return $this->render('jewelry/edit.html.twig', [
-            'jewelry' => $jewelry,
+            'page' => $this->page,
+            'item' => $jewelry,
             'form' => $form->createView(),
         ]);
     }

@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class FactoryController extends AbstractController
 {
+    private $page = 'factory';
+
+    /**
+     * @Route("/", name="factory_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select f from App\Entity\Factory f order by f.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="factory_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class FactoryController extends AbstractController
         }
 
         return $this->render('factory/new.html.twig', [
-            'factory' => $factory,
+            'page' => $this->page,
+            'item' => $factory,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class FactoryController extends AbstractController
     public function show(Factory $factory): Response
     {
         return $this->render('factory/show.html.twig', [
-            'factory' => $factory,
+            'page' => $this->page,
+            'item' => $factory,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class FactoryController extends AbstractController
         }
 
         return $this->render('factory/edit.html.twig', [
-            'factory' => $factory,
+            'page' => $this->page,
+            'item' => $factory,
             'form' => $form->createView(),
         ]);
     }

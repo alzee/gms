@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class ModelController extends AbstractController
 {
+    private $page = 'model';
+
+    /**
+     * @Route("/", name="model_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select m from App\Entity\Model m order by m.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="model_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class ModelController extends AbstractController
         }
 
         return $this->render('model/new.html.twig', [
-            'model' => $model,
+            'page' => $this->page,
+            'item' => $model,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class ModelController extends AbstractController
     public function show(Model $model): Response
     {
         return $this->render('model/show.html.twig', [
-            'model' => $model,
+            'page' => $this->page,
+            'item' => $model,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class ModelController extends AbstractController
         }
 
         return $this->render('model/edit.html.twig', [
-            'model' => $model,
+            'page' => $this->page,
+            'item' => $model,
             'form' => $form->createView(),
         ]);
     }

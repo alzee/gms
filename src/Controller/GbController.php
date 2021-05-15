@@ -16,18 +16,24 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class GbController extends AbstractController
 {
+    private $page = 'gb';
 
     /**
      * @Route("/", name="gb_index", methods={"GET"})
      */
-    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    public function index(PaginatorInterface $paginator, Request $request): Response
     {
         $dql = "select g from App\Entity\Gb g order by g.id desc";
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 
-        return $this->render('gb/paginate.html.twig', [
-            'gbs' => $p
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
         ]);
     }
 
@@ -52,7 +58,8 @@ class GbController extends AbstractController
         }
 
         return $this->render('gb/new.html.twig', [
-            'gb' => $gb,
+            'page' => $this->page,
+            'item' => $gb,
             'form' => $form->createView(),
         ]);
     }
@@ -63,7 +70,9 @@ class GbController extends AbstractController
     public function show(Gb $gb): Response
     {
         return $this->render('gb/show.html.twig', [
-            'gb' => $gb,
+            'page' => $this->page,
+            'item' => $gb,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -82,7 +91,8 @@ class GbController extends AbstractController
         }
 
         return $this->render('gb/edit.html.twig', [
-            'gb' => $gb,
+            'page' => $this->page,
+            'item' => $gb,
             'form' => $form->createView(),
         ]);
     }

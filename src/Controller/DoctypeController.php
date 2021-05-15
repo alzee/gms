@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class DoctypeController extends AbstractController
 {
+    private $page = 'doctype';
+
+    /**
+     * @Route("/", name="doctype_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select d from App\Entity\Doctype d order by d.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="doctype_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class DoctypeController extends AbstractController
         }
 
         return $this->render('doctype/new.html.twig', [
-            'doctype' => $doctype,
+            'page' => $this->page,
+            'item' => $doctype,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class DoctypeController extends AbstractController
     public function show(Doctype $doctype): Response
     {
         return $this->render('doctype/show.html.twig', [
-            'doctype' => $doctype,
+            'page' => $this->page,
+            'item' => $doctype,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class DoctypeController extends AbstractController
         }
 
         return $this->render('doctype/edit.html.twig', [
-            'doctype' => $doctype,
+            'page' => $this->page,
+            'item' => $doctype,
             'form' => $form->createView(),
         ]);
     }

@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class WageController extends AbstractController
 {
+    private $page = 'wage';
+
+    /**
+     * @Route("/", name="wage_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select w from App\Entity\Wage w order by w.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="wage_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class WageController extends AbstractController
         }
 
         return $this->render('wage/new.html.twig', [
-            'wage' => $wage,
+            'page' => $this->page,
+            'item' => $wage,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class WageController extends AbstractController
     public function show(Wage $wage): Response
     {
         return $this->render('wage/show.html.twig', [
-            'wage' => $wage,
+            'page' => $this->page,
+            'item' => $wage,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class WageController extends AbstractController
         }
 
         return $this->render('wage/edit.html.twig', [
-            'wage' => $wage,
+            'page' => $this->page,
+            'item' => $wage,
             'form' => $form->createView(),
         ]);
     }

@@ -16,18 +16,24 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class GacController extends AbstractController
 {
+    private $page = 'gac';
 
     /**
      * @Route("/", name="gac_index", methods={"GET"})
      */
-    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    public function index(PaginatorInterface $paginator, Request $request): Response
     {
         $dql = "select g from App\Entity\Gac g order by g.id desc";
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 
-        return $this->render('gac/paginate.html.twig', [
-            'gacs' => $p
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
         ]);
     }
 
@@ -51,7 +57,8 @@ class GacController extends AbstractController
         }
 
         return $this->render('gac/new.html.twig', [
-            'gac' => $gac,
+            'page' => $this->page,
+            'item' => $gac,
             'form' => $form->createView(),
         ]);
     }
@@ -62,7 +69,9 @@ class GacController extends AbstractController
     public function show(Gac $gac): Response
     {
         return $this->render('gac/show.html.twig', [
-            'gac' => $gac,
+            'page' => $this->page,
+            'item' => $gac,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -81,7 +90,8 @@ class GacController extends AbstractController
         }
 
         return $this->render('gac/edit.html.twig', [
-            'gac' => $gac,
+            'page' => $this->page,
+            'item' => $gac,
             'form' => $form->createView(),
         ]);
     }

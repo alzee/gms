@@ -16,6 +16,7 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class GcaController extends AbstractController
 {
+    private $page = 'Gca';
 
     /**
      * @Route("/", name="gca_index", methods={"GET"})
@@ -26,10 +27,16 @@ class GcaController extends AbstractController
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 
-        return $this->render('gca/paginate.html.twig', [
-            'gcas' => $p
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
         ]);
     }
+
 
     /**
      * @Route("/new", name="gca_new", methods={"GET","POST"})
@@ -51,7 +58,8 @@ class GcaController extends AbstractController
         }
 
         return $this->render('gca/new.html.twig', [
-            'gca' => $gca,
+            'page' => $this->page,
+            'item' => $gca,
             'form' => $form->createView(),
         ]);
     }
@@ -62,7 +70,9 @@ class GcaController extends AbstractController
     public function show(Gca $gca): Response
     {
         return $this->render('gca/show.html.twig', [
-            'gca' => $gca,
+            'page' => $this->page,
+            'item' => $gca,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -81,7 +91,8 @@ class GcaController extends AbstractController
         }
 
         return $this->render('gca/edit.html.twig', [
-            'gca' => $gca,
+            'page' => $this->page,
+            'item' => $gca,
             'form' => $form->createView(),
         ]);
     }

@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class LossrateController extends AbstractController
 {
+    private $page = 'lossrate';
+
+    /**
+     * @Route("/", name="lossrate_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select l from App\Entity\Lossrate l order by l.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="lossrate_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class LossrateController extends AbstractController
         }
 
         return $this->render('lossrate/new.html.twig', [
-            'lossrate' => $lossrate,
+            'page' => $this->page,
+            'item' => $lossrate,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class LossrateController extends AbstractController
     public function show(Lossrate $lossrate): Response
     {
         return $this->render('lossrate/show.html.twig', [
-            'lossrate' => $lossrate,
+            'page' => $this->page,
+            'item' => $lossrate,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class LossrateController extends AbstractController
         }
 
         return $this->render('lossrate/edit.html.twig', [
-            'lossrate' => $lossrate,
+            'page' => $this->page,
+            'item' => $lossrate,
             'form' => $form->createView(),
         ]);
     }

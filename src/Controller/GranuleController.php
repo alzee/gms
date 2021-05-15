@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class GranuleController extends AbstractController
 {
+    private $page = 'granule';
+
+    /**
+     * @Route("/", name="granule_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select g from App\Entity\Granule g order by g.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="granule_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class GranuleController extends AbstractController
         }
 
         return $this->render('granule/new.html.twig', [
-            'granule' => $granule,
+            'page' => $this->page,
+            'item' => $granule,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,8 @@ class GranuleController extends AbstractController
     public function show(Granule $granule): Response
     {
         return $this->render('granule/show.html.twig', [
-            'granule' => $granule,
+            'page' => $this->page,
+            'item' => $granule,
         ]);
     }
 
@@ -65,7 +87,8 @@ class GranuleController extends AbstractController
         }
 
         return $this->render('granule/edit.html.twig', [
-            'granule' => $granule,
+            'page' => $this->page,
+            'item' => $granule,
             'form' => $form->createView(),
         ]);
     }

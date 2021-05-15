@@ -16,6 +16,7 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class SgbController extends AbstractController
 {
+    private $page = 'sgb';
 
     /**
      * @Route("/", name="sgb_index", methods={"GET"})
@@ -26,8 +27,13 @@ class SgbController extends AbstractController
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 
-        return $this->render('sgb/paginate.html.twig', [
-            'sgbs' => $p
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
         ]);
     }
 
@@ -50,7 +56,8 @@ class SgbController extends AbstractController
         }
 
         return $this->render('sgb/new.html.twig', [
-            'sgb' => $sgb,
+            'page' => $this->page,
+            'item' => $sgb,
             'form' => $form->createView(),
         ]);
     }
@@ -61,7 +68,9 @@ class SgbController extends AbstractController
     public function show(Sgb $sgb): Response
     {
         return $this->render('sgb/show.html.twig', [
-            'sgb' => $sgb,
+            'page' => $this->page,
+            'item' => $sgb,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -80,7 +89,8 @@ class SgbController extends AbstractController
         }
 
         return $this->render('sgb/edit.html.twig', [
-            'sgb' => $sgb,
+            'page' => $this->page,
+            'item' => $sgb,
             'form' => $form->createView(),
         ]);
     }

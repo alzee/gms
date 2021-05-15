@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class SubtractreasonController extends AbstractController
 {
+    private $page = 'subtractreason';
+
+    /**
+     * @Route("/", name="subtractreason_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select s from App\Entity\Subtractreason s order by s.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="subtractreason_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class SubtractreasonController extends AbstractController
         }
 
         return $this->render('subtractreason/new.html.twig', [
-            'subtractreason' => $subtractreason,
+            'page' => $this->page,
+            'item' => $subtractreason,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class SubtractreasonController extends AbstractController
     public function show(Subtractreason $subtractreason): Response
     {
         return $this->render('subtractreason/show.html.twig', [
-            'subtractreason' => $subtractreason,
+            'page' => $this->page,
+            'item' => $subtractreason,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class SubtractreasonController extends AbstractController
         }
 
         return $this->render('subtractreason/edit.html.twig', [
-            'subtractreason' => $subtractreason,
+            'page' => $this->page,
+            'item' => $subtractreason,
             'form' => $form->createView(),
         ]);
     }

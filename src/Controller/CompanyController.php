@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class CompanyController extends AbstractController
 {
+    private $page = 'company';
+
+    /**
+     * @Route("/", name="company_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select c from App\Entity\Company c order by c.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="company_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class CompanyController extends AbstractController
         }
 
         return $this->render('company/new.html.twig', [
-            'company' => $company,
+            'page' => $this->page,
+            'item' => $company,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class CompanyController extends AbstractController
     public function show(Company $company): Response
     {
         return $this->render('company/show.html.twig', [
-            'company' => $company,
+            'page' => $this->page,
+            'item' => $company,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class CompanyController extends AbstractController
         }
 
         return $this->render('company/edit.html.twig', [
-            'company' => $company,
+            'page' => $this->page,
+            'item' => $company,
             'form' => $form->createView(),
         ]);
     }

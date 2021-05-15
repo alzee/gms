@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class LineController extends AbstractController
 {
+    private $page = 'line';
+
+    /**
+     * @Route("/", name="line_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select l from App\Entity\Line l order by l.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="line_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class LineController extends AbstractController
         }
 
         return $this->render('line/new.html.twig', [
-            'line' => $line,
+            'page' => $this->page,
+            'item' => $line,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class LineController extends AbstractController
     public function show(Line $line): Response
     {
         return $this->render('line/show.html.twig', [
-            'line' => $line,
+            'page' => $this->page,
+            'item' => $line,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class LineController extends AbstractController
         }
 
         return $this->render('line/edit.html.twig', [
-            'line' => $line,
+            'page' => $this->page,
+            'item' => $line,
             'form' => $form->createView(),
         ]);
     }

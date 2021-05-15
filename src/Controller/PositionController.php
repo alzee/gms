@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class PositionController extends AbstractController
 {
+    private $page = 'position';
+
+    /**
+     * @Route("/", name="position_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select p from App\Entity\Position p order by p.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="position_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class PositionController extends AbstractController
         }
 
         return $this->render('position/new.html.twig', [
-            'position' => $position,
+            'page' => $this->page,
+            'item' => $position,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class PositionController extends AbstractController
     public function show(Position $position): Response
     {
         return $this->render('position/show.html.twig', [
-            'position' => $position,
+            'page' => $this->page,
+            'item' => $position,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class PositionController extends AbstractController
         }
 
         return $this->render('position/edit.html.twig', [
-            'position' => $position,
+            'page' => $this->page,
+            'item' => $position,
             'form' => $form->createView(),
         ]);
     }

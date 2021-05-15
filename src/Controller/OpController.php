@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class OpController extends AbstractController
 {
+    private $page = 'op';
+
+    /**
+     * @Route("/", name="op_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select o from App\Entity\Op o order by o.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="op_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class OpController extends AbstractController
         }
 
         return $this->render('op/new.html.twig', [
-            'op' => $op,
+            'page' => $this->page,
+            'item' => $op,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class OpController extends AbstractController
     public function show(Op $op): Response
     {
         return $this->render('op/show.html.twig', [
-            'op' => $op,
+            'page' => $this->page,
+            'item' => $op,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class OpController extends AbstractController
         }
 
         return $this->render('op/edit.html.twig', [
-            'op' => $op,
+            'page' => $this->page,
+            'item' => $op,
             'form' => $form->createView(),
         ]);
     }

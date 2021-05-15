@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class ProcessController extends AbstractController
 {
+    private $page = 'process';
+
+    /**
+     * @Route("/", name="process_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select p from App\Entity\Process p order by p.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="process_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class ProcessController extends AbstractController
         }
 
         return $this->render('process/new.html.twig', [
-            'process' => $process,
+            'page' => $this->page,
+            'item' => $process,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class ProcessController extends AbstractController
     public function show(Process $process): Response
     {
         return $this->render('process/show.html.twig', [
-            'process' => $process,
+            'page' => $this->page,
+            'item' => $process,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class ProcessController extends AbstractController
         }
 
         return $this->render('process/edit.html.twig', [
-            'process' => $process,
+            'page' => $this->page,
+            'item' => $process,
             'form' => $form->createView(),
         ]);
     }

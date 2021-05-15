@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class OwnController extends AbstractController
 {
+    private $page = 'own';
+
+    /**
+     * @Route("/", name="own_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select o from App\Entity\Own o order by o.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="own_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class OwnController extends AbstractController
         }
 
         return $this->render('own/new.html.twig', [
-            'own' => $own,
+            'page' => $this->page,
+            'item' => $own,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class OwnController extends AbstractController
     public function show(Own $own): Response
     {
         return $this->render('own/show.html.twig', [
-            'own' => $own,
+            'page' => $this->page,
+            'item' => $own,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class OwnController extends AbstractController
         }
 
         return $this->render('own/edit.html.twig', [
-            'own' => $own,
+            'page' => $this->page,
+            'item' => $own,
             'form' => $form->createView(),
         ]);
     }

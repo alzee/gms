@@ -16,6 +16,26 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class GoldclassController extends AbstractController
 {
+    private $page = 'goldclass';
+
+    /**
+     * @Route("/", name="goldclass_index", methods={"GET"})
+     */
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
+    {
+        $dql = "select g from App\Entity\Goldclass g order by g.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
+        ]);
+    }
 
     /**
      * @Route("/new", name="goldclass_new", methods={"GET","POST"})
@@ -35,7 +55,8 @@ class GoldclassController extends AbstractController
         }
 
         return $this->render('goldclass/new.html.twig', [
-            'goldclass' => $goldclass,
+            'page' => $this->page,
+            'item' => $goldclass,
             'form' => $form->createView(),
         ]);
     }
@@ -46,7 +67,9 @@ class GoldclassController extends AbstractController
     public function show(Goldclass $goldclass): Response
     {
         return $this->render('goldclass/show.html.twig', [
-            'goldclass' => $goldclass,
+            'page' => $this->page,
+            'item' => $goldclass,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -65,7 +88,8 @@ class GoldclassController extends AbstractController
         }
 
         return $this->render('goldclass/edit.html.twig', [
-            'goldclass' => $goldclass,
+            'page' => $this->page,
+            'item' => $goldclass,
             'form' => $form->createView(),
         ]);
     }
