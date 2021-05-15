@@ -23,12 +23,6 @@ class Gd
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Main::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $maindoc;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Team::class)
      * @ORM\JoinColumn(nullable=false)
      */
@@ -70,18 +64,6 @@ class Gd
     public function setDate(\DateTimeImmutable $date): self
     {
         $this->date = $date;
-
-        return $this;
-    }
-
-    public function getMaindoc(): ?Main
-    {
-        return $this->maindoc;
-    }
-
-    public function setMaindoc(?Main $maindoc): self
-    {
-        $this->maindoc = $maindoc;
 
         return $this;
     }
