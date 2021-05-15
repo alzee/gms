@@ -20,6 +20,7 @@ final class Version20210515120735 extends AbstractMigration
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
+        $this->addSql('ALTER TABLE gd DROP FOREIGN KEY FK_21BA4ADEA0321766;');
         $this->addSql('DROP TABLE center');
         $this->addSql('DROP INDEX IDX_21BA4ADEA0321766 ON gd');
         $this->addSql('ALTER TABLE gd DROP maindoc_id');
