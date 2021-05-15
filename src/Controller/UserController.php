@@ -34,9 +34,13 @@ class UserController extends AbstractController
         $dql = "select u from App\Entity\User u order by u.id desc";
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+        dump($p);
 
         return $this->render('crud/paginate.html.twig', [
-            'users' => $p
+            'page' => 'user',
+            'items' => $p,
+            'columns' => ['id', 'name', 'username', 'team', 'note'],
+            'filters' => ['u.name' => 'Name']
         ]);
     }
 
