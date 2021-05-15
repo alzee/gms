@@ -22,6 +22,16 @@ class Granule
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="smallint", nullable=true)
+     */
+    private $granule;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $note;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +45,30 @@ class Granule
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getGranule(): ?int
+    {
+        return $this->granule;
+    }
+
+    public function setGranule(?int $granule): self
+    {
+        $this->granule = $granule;
+
+        return $this;
+    }
+
+    public function getNote(): ?string
+    {
+        return $this->note;
+    }
+
+    public function setNote(?string $note): self
+    {
+        $this->note = $note;
 
         return $this;
     }
