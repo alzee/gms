@@ -35,7 +35,6 @@ class CaController extends AbstractController
         $dql = "select c, ch, a from App\Entity\Ca c join c.child ch join c.artisan a order by c.id desc";
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
-        dump($p);
 
         return $this->render('ca/paginate.html.twig', [
             'cas' => $p
