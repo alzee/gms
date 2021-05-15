@@ -41,9 +41,6 @@ class User implements UserInterface
      */
     private $box = 0;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $plainPassword;
 
     /**
