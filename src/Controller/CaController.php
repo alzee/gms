@@ -32,7 +32,7 @@ class CaController extends AbstractController
      */
     public function paginate(PaginatorInterface $paginator, Request $request): Response
     {
-        $dql = "select c, a from App\Entity\Ca c join c.child u join c.artisan a order by c.id desc";
+        $dql = "select c, ch, a from App\Entity\Ca c join c.child ch join c.artisan a order by c.id desc";
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
         dump($p);
@@ -47,7 +47,7 @@ class CaController extends AbstractController
      */
     public function back(PaginatorInterface $paginator, Request $request): Response
     {
-        $dql = "select c from App\Entity\Ca c join c.child u order by c.id desc";
+        $dql = "select c from App\Entity\Ca c join c.child ch order by c.id desc";
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 
