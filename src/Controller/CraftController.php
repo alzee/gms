@@ -32,7 +32,7 @@ class CraftController extends AbstractController
             'items' => $p,
             'columns' => [
                 ['name' => 'id'],
-                ['name' => 'name'],
+                ['name' => 'name']
             ]
         ]);
     }
