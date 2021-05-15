@@ -9,19 +9,31 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/craft")
  */
 class CraftController extends AbstractController
 {
+    private $page = 'craft';
+
     /**
      * @Route("/", name="craft_index", methods={"GET"})
      */
-    public function index(CraftRepository $craftRepository): Response
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
     {
-        return $this->render('craft/index.html.twig', [
-            'crafts' => $craftRepository->findAll(),
+        $dql = "select c from App\Entity\Craft c order by c.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name'],
+            ]
         ]);
     }
 
@@ -42,8 +54,9 @@ class CraftController extends AbstractController
             return $this->redirectToRoute('craft_index');
         }
 
-        return $this->render('craft/new.html.twig', [
-            'craft' => $craft,
+        return $this->render('crud/new.html.twig', [
+            'page' => $this->page,
+            'item' => $craft,
             'form' => $form->createView(),
         ]);
     }
@@ -53,8 +66,10 @@ class CraftController extends AbstractController
      */
     public function show(Craft $craft): Response
     {
-        return $this->render('craft/show.html.twig', [
-            'craft' => $craft,
+        return $this->render('crud/show.html.twig', [
+            'page' => $this->page,
+            'item' => $craft,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -72,8 +87,9 @@ class CraftController extends AbstractController
             return $this->redirectToRoute('craft_index');
         }
 
-        return $this->render('craft/edit.html.twig', [
-            'craft' => $craft,
+        return $this->render('crud/edit.html.twig', [
+            'page' => $this->page,
+            'item' => $craft,
             'form' => $form->createView(),
         ]);
     }
