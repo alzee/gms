@@ -1,4 +1,6 @@
+Edit: 编辑
 Plain password: 密码
+username: 用户名
 wage: 工费
 rate: 耗率
 granule: 粒数
@@ -15,6 +17,7 @@ show: 查看
 Create new: 新增
 id: 编号
 name: 名称
+Name: 名称
 actions: 操作
 Save: 保存
 back to list: 返回
@@ -83,95 +86,6 @@ Ca back: 文员收工匠
 Cc got: 文员间收金
 export: 导出
 
-Create new User: 文员 新增
-Create new Center: 中央单 新增
-Create new Own: 自发单 新增
-Create new Main: 主单 新增
-Create new Child: 子单 新增
-Create new Ca: 文员交工匠 新增
-Create new Ac: 文员收工匠 新增
-Create new Stock: 库存 新增
-Create new Gd: 加金入单 新增
-Create new Cgd: 文员加金入单 新增
-Create new Cc: 文员间交金 新增
-Create new Gca: 文员发原料 新增
-Create new Gac: 文员收原料 新增
-Create new Gb: 加金入金箱 新增
-Create new Sgb: 减金出金箱 新增
-Create new Division: 部门 新增
-Create new Craft: 工艺科室 新增
-Create new Team: 组别 新增
-Create new Clerk: 文员 新增
-Create new Artisan: 工匠 新增
-Create new Staff: 员工管理
-Create new Stafftype: 员工性质 新增
-Create new Process: 工序 新增
-Create new Model: 模号类型 新增
-Create new Seq: 处理次序 新增
-Create new Op: 操作类型 新增
-Create new Position: 位置 新增
-Create new Goldclass: 金类 新增
-Create new Jewelry: 首饰类别 新增
-Create new Prodtype: 货类 新增
-Create new Line: 专线类型 新增
-Create new Series: 产品系列 新增
-Create new Embed: 镶嵌原料 新增
-Create new Attach: 附件 新增
-Create new Wage: 工费 新增
-Create new Lossrate: 耗率 新增
-Create new Granule: 粒数 新增
-Create new Doctype: 单据类型 新增
-Create new Cotype: 合作方式 新增
-Create new Factory: 工厂 新增
-
-Subtracttype index: 减金类型
-Subtractreason index: 减金原因
-Addtype index: 加金类型
-Addreason index: 加金原因
-Company index: 公司
-Branch index: 发单分行
-User index: 文员
-Center index: 中央单
-Own index: 自发单
-Main index: 主单
-Child index: 子单
-Ca index: 文员交工匠
-Ac index: 文员收工匠
-Stock index: 库存
-Gd index: 加金入单
-Cgd index: 文员加金入单
-Cc index: 文员间交金
-Cc got index: 我的接收
-Gca index: 文员发原料
-Gac index: 文员收原料
-Gb index: 加金入金箱
-Sgb index: 减金出金箱
-Division index: 部门
-Craft index: 工艺科室
-Team index: 组别
-Clerk index: 文员
-Artisan index: 工匠
-Staff index: 员工管理
-Stafftype index: 员工性质
-Process index: 工序
-Model index: 模号类型
-Seq index: 处理次序
-Op index: 操作类型
-Position index: 位置
-Goldclass index: 金类
-Jewelry index: 首饰类别
-Prodtype index: 货类
-Line index: 专线类型
-Series index: 产品系列
-Embed index: 镶嵌原料
-Attach index: 附件
-Wage index: 工费
-Lossrate index: 耗率
-Granule index: 粒数
-Doctype index: 单据类型
-Cotype index: 合作方式
-Factory index: 工厂
-
 User: 文员
 Center: 中央单
 Own: 自发单
@@ -214,47 +128,6 @@ Cotype: 合作方式
 Factory: 工厂
 Recipient: 接收人
 
-Edit User: 文员 编辑
-Edit Center: 中央单 编辑
-Edit Own: 自发单 编辑
-Edit Main: 主单 编辑
-Edit Child: 子单 编辑
-Edit Ca: 文员交工匠 编辑
-Edit Ac: 文员收工匠 编辑
-Edit Stock: 库存 编辑
-Edit Gd: 加金入单 编辑
-Edit Cgd: 文员加金入单 编辑
-Edit Cc: 文员间交金 编辑
-Edit Gca: 文员发原料 编辑
-Edit Gac: 文员收原料 编辑
-Edit Gb: 加金入金箱 编辑
-Edit Sgb: 减金出金箱 编辑
-Edit Division: 部门 编辑
-Edit Craft: 工艺科室 编辑
-Edit Team: 组别 编辑
-Edit Clerk: 文员 编辑
-Edit Artisan: 工匠 编辑
-Edit Staff: 员工管理
-Edit Stafftype: 员工性质 编辑
-Edit Process: 工序 编辑
-Edit Model: 模号类型 编辑
-Edit Seq: 处理次序 编辑
-Edit Op: 操作类型 编辑
-Edit Position: 位置 编辑
-Edit Goldclass: 金类 编辑
-Edit Jewelry: 首饰类别 编辑
-Edit Prodtype: 货类 编辑
-Edit Line: 专线类型 编辑
-Edit Series: 产品系列 编辑
-Edit Embed: 镶嵌原料 编辑
-Edit Attach: 附件 编辑
-Edit Wage: 工费 编辑
-Edit Lossrate: 耗率 编辑
-Edit Granule: 粒数 编辑
-Edit Doctype: 单据类型 编辑
-Edit Cotype: 合作方式 编辑
-Edit Factory: 工厂 编辑
-
 maindoc: 主单号
 weightGold: 金重
 weightAttach: 附件重
@@ -274,4 +147,3 @@ addreason: 加金原因
 weightBooked: 原始金重
 short: 磅差
 Rate: 耗率
-

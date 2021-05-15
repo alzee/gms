@@ -3,7 +3,7 @@
 {% block title %}{{ page|capitalize|trans }}{% endblock %}
 
 {% block body %}
-    <h1>{{ "Edit #{page}"|trans }}</h1>
+    <h1>{{ 'Edit'|trans }} {{ page|capitalize|trans }}</h1>
 
     {{ include('crud/_form.html.twig', {'button_label': 'Update'}) }}
 

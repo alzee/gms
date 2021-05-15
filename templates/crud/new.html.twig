@@ -3,7 +3,7 @@
 {% block title %}{{ page|capitalize|trans }}{% endblock %}
 
 {% block body %}
-    <h1>{{"Create new #{page}" | trans}}</h1>
+    <h1>{{ 'Create new'|trans }} {{ page|capitalize|trans }}</h1>
 
     {{ include('crud/_form.html.twig') }}
 
