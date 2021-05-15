@@ -32,7 +32,6 @@ class GbController extends AbstractController
             'items' => $p,
             'columns' => [
                 ['name' => 'id'],
-                ['name' => 'name']
             ]
         ]);
     }
@@ -72,7 +71,7 @@ class GbController extends AbstractController
         return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $gb,
-            'fields' => ['id', 'name']
+            'fields' => ['id']
         ]);
     }
 

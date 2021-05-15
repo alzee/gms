@@ -20,24 +20,6 @@ class CaController extends AbstractController
     private $page = 'ca';
 
     /**
-     * @Route("/0", name="ca_index0", methods={"GET"})
-     */
-    public function paginate0(PaginatorInterface $paginator, Request $request): Response
-    {
-        $dql = "select c, ch, a from App\Entity\Ca c join c.child ch join c.artisan a order by c.id desc";
-        $query = $this->getDoctrine()->getManager()->createQuery($dql);
-        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
-
-        return $this->render('crud/index.html.twig', [
-            'page' => $this->page,
-            'items' => $p,
-            'columns' => [
-                ['name' => 'id'],
-            ]
-        ]);
-    }
-
-    /**
      * @Route("/", name="ca_index", methods={"GET"})
      */
     public function paginate(PaginatorInterface $paginator, Request $request): Response
@@ -45,6 +27,16 @@ class CaController extends AbstractController
         $dql = "select c, ch, a from App\Entity\Ca c join c.child ch join c.artisan a order by c.id desc";
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+        
+        /*
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+            ]
+        ]);
+         */
 
         return $this->render('ca/paginate.html.twig', [
             'cas' => $p

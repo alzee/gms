@@ -9,7 +9,7 @@
         <tbody>
             {% for field in fields %}
             <tr>
-                <th>{{ field|capitalize|trans }}</th>
+                <th>{{ field|trans }}</th>
                 {% if field == 'date' or field == 'dueDate' %}
                 <td>{{ attribute(item, field) ? attribute(item, field)|date('Y-m-d H:i:s') : '' }}</td>
                 {% else %}

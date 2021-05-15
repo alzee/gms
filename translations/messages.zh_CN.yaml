@@ -1,16 +1,21 @@
 Plain password: 密码
+wage: 工费
+rate: 耗率
+granule: 粒数
+no records found: 没有记录
 granule.note: 说明
+stamp: 工厂字印
 Stamp: 工厂字印
+size: 尺寸
 Size: 尺寸
 wn: 工号
 Filter: 搜索
 edit: 编辑
 show: 查看
 Create new: 新增
-Id: 编号
-Name: 名称
+id: 编号
+name: 名称
 actions: 操作
-no records found: 没有记录
 Save: 保存
 back to list: 返回
 Delete: 删除
@@ -21,7 +26,6 @@ Center import: 导入中央单
 Register: 注册
 Username: 用户名
 Password: 密码
-Count child: 子单数量
 Per weight: 单件重量
 Total weight: 总重
 Upstream doc: 上层单号
@@ -35,13 +39,14 @@ Sn: 单号
 sn: 单号
 main: 主单
 Weight: 重量
-CountChild: 子单数量
-PerWeight: 子单重量
-TotalWeight: 总重
+countChild: 子单数量
+Count child: 子单数量
+perWeight: 子单重量
+totalWeight: 总重
 model: 模号类型
-UpstreamDoc: 上层单号
+upstreamDoc: 上层单号
 Count piece: 生产单件数
-CountPiece: 生产单件数
+main.countPiece: 生产单件数
 countPiece: 件数
 child.countPiece: 件数
 factory: 工厂
