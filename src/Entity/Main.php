@@ -84,7 +84,7 @@ class Main
 
     /**
      * @ORM\ManyToOne(targetEntity=Lossrate::class)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $lossRate;
 
