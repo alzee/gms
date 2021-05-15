@@ -9,21 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/gd")
  */
 class GdController extends AbstractController
 {
-    /**
-     * @Route("/", name="gd_index", methods={"GET"})
-     */
-    public function index(GdRepository $gdRepository): Response
-    {
-        return $this->render('gd/index.html.twig', [
-            'gds' => $gdRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/new", name="gd_new", methods={"GET","POST"})

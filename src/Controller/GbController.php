@@ -16,15 +16,6 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class GbController extends AbstractController
 {
-    /**
-     * @Route("/index", name="gb_index0", methods={"GET"})
-     */
-    public function index(GbRepository $gbRepository): Response
-    {
-        return $this->render('gb/index.html.twig', [
-            'gbs' => $gbRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/", name="gb_index", methods={"GET"})

@@ -16,15 +16,6 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class GcaController extends AbstractController
 {
-    /**
-     * @Route("/index", name="gca_index0", methods={"GET"})
-     */
-    public function index(GcaRepository $gcaRepository): Response
-    {
-        return $this->render('gca/index.html.twig', [
-            'gcas' => $gcaRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/", name="gca_index", methods={"GET"})

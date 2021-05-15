@@ -9,21 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/subtractreason")
  */
 class SubtractreasonController extends AbstractController
 {
-    /**
-     * @Route("/", name="subtractreason_index", methods={"GET"})
-     */
-    public function index(SubtractreasonRepository $subtractreasonRepository): Response
-    {
-        return $this->render('subtractreason/index.html.twig', [
-            'subtractreasons' => $subtractreasonRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/new", name="subtractreason_new", methods={"GET","POST"})

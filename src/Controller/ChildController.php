@@ -16,15 +16,6 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class ChildController extends AbstractController
 {
-    /**
-     * @Route("/index", name="child_index0", methods={"GET"})
-     */
-    public function index(ChildRepository $childRepository): Response
-    {
-        return $this->render('child/index.html.twig', [
-            'children' => $childRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/", name="child_index", methods={"GET"})

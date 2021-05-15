@@ -9,19 +9,30 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/ac")
  */
 class AcController extends AbstractController
 {
+    private $page = 'ac';
+
     /**
      * @Route("/", name="ac_index", methods={"GET"})
      */
-    public function index(AcRepository $acRepository): Response
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
     {
-        return $this->render('ac/index.html.twig', [
-            'acs' => $acRepository->findAll(),
+        $dql = "select a from App\Entity\Ac a order by a.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+            ]
         ]);
     }
 
@@ -43,8 +54,9 @@ class AcController extends AbstractController
             return $this->redirectToRoute('ac_index');
         }
 
-        return $this->render('ac/new.html.twig', [
-            'ac' => $ac,
+        return $this->render('crud/new.html.twig', [
+            'page' => $this->page,
+            'item' => $ac,
             'form' => $form->createView(),
         ]);
     }
@@ -54,8 +66,10 @@ class AcController extends AbstractController
      */
     public function show(Ac $ac): Response
     {
-        return $this->render('ac/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
+            'page' => $this->page,
             'ac' => $ac,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -73,8 +87,9 @@ class AcController extends AbstractController
             return $this->redirectToRoute('ac_index');
         }
 
-        return $this->render('ac/edit.html.twig', [
-            'ac' => $ac,
+        return $this->render('crud/edit.html.twig', [
+            'page' => $this->page,
+            'item' => $ac,
             'form' => $form->createView(),
         ]);
     }

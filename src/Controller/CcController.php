@@ -16,15 +16,7 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class CcController extends AbstractController
 {
-    /**
-     * @Route("/index", name="cc_index0", methods={"GET"})
-     */
-    public function index(CcRepository $ccRepository): Response
-    {
-        return $this->render('cc/index.html.twig', [
-            'ccs' => $ccRepository->findAll(),
-        ]);
-    }
+    private $page = 'cc';
 
     /**
      * @Route("/", name="cc_index", methods={"GET"})
@@ -35,8 +27,13 @@ class CcController extends AbstractController
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 
-        return $this->render('cc/paginate.html.twig', [
-            'ccs' => $p
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'team'],
+            ]
         ]);
     }
 
@@ -108,7 +105,9 @@ class CcController extends AbstractController
     public function show(Cc $cc): Response
     {
         return $this->render('cc/show.html.twig', [
-            'cc' => $cc,
+            'page' => $this->page,
+            'item' => $cc,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -127,7 +126,8 @@ class CcController extends AbstractController
         }
 
         return $this->render('cc/edit.html.twig', [
-            'cc' => $cc,
+            'page' => $this->page,
+            'item' => $cc,
             'form' => $form->createView(),
         ]);
     }

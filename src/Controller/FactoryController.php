@@ -9,21 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/factory")
  */
 class FactoryController extends AbstractController
 {
-    /**
-     * @Route("/", name="factory_index", methods={"GET"})
-     */
-    public function index(FactoryRepository $factoryRepository): Response
-    {
-        return $this->render('factory/index.html.twig', [
-            'factories' => $factoryRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/new", name="factory_new", methods={"GET","POST"})

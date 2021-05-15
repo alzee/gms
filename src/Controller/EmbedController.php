@@ -9,21 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/embed")
  */
 class EmbedController extends AbstractController
 {
-    /**
-     * @Route("/", name="embed_index", methods={"GET"})
-     */
-    public function index(EmbedRepository $embedRepository): Response
-    {
-        return $this->render('embed/index.html.twig', [
-            'embeds' => $embedRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/new", name="embed_new", methods={"GET","POST"})

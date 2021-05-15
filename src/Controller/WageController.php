@@ -9,21 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/wage")
  */
 class WageController extends AbstractController
 {
-    /**
-     * @Route("/", name="wage_index", methods={"GET"})
-     */
-    public function index(WageRepository $wageRepository): Response
-    {
-        return $this->render('wage/index.html.twig', [
-            'wages' => $wageRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/new", name="wage_new", methods={"GET","POST"})

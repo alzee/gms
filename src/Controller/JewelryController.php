@@ -9,21 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/jewelry")
  */
 class JewelryController extends AbstractController
 {
-    /**
-     * @Route("/", name="jewelry_index", methods={"GET"})
-     */
-    public function index(JewelryRepository $jewelryRepository): Response
-    {
-        return $this->render('jewelry/index.html.twig', [
-            'jewelries' => $jewelryRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/new", name="jewelry_new", methods={"GET","POST"})

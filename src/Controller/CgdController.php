@@ -16,15 +16,7 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class CgdController extends AbstractController
 {
-    /**
-     * @Route("/index", name="cgd_index0", methods={"GET"})
-     */
-    public function index(CgdRepository $cgdRepository): Response
-    {
-        return $this->render('cgd/index.html.twig', [
-            'cgds' => $cgdRepository->findAll(),
-        ]);
-    }
+    private $page = 'cgd';
 
     /**
      * @Route("/", name="cgd_index", methods={"GET"})
@@ -35,8 +27,12 @@ class CgdController extends AbstractController
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 
-        return $this->render('cgd/paginate.html.twig', [
-            'cgds' => $p
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+            ]
         ]);
     }
 
@@ -59,7 +55,8 @@ class CgdController extends AbstractController
         }
 
         return $this->render('cgd/new.html.twig', [
-            'cgd' => $cgd,
+            'page' => $this->page,
+            'item' => $cgd,
             'form' => $form->createView(),
         ]);
     }
@@ -70,7 +67,9 @@ class CgdController extends AbstractController
     public function show(Cgd $cgd): Response
     {
         return $this->render('cgd/show.html.twig', [
-            'cgd' => $cgd,
+            'page' => $this->page,
+            'item' => $cgd,
+            'fields' => ['id']
         ]);
     }
 
@@ -89,7 +88,8 @@ class CgdController extends AbstractController
         }
 
         return $this->render('cgd/edit.html.twig', [
-            'cgd' => $cgd,
+            'page' => $this->page,
+            'item' => $cgd,
             'form' => $form->createView(),
         ]);
     }

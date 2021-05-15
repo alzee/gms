@@ -9,21 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/lossrate")
  */
 class LossrateController extends AbstractController
 {
-    /**
-     * @Route("/", name="lossrate_index", methods={"GET"})
-     */
-    public function index(LossrateRepository $lossrateRepository): Response
-    {
-        return $this->render('lossrate/index.html.twig', [
-            'lossrates' => $lossrateRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/new", name="lossrate_new", methods={"GET","POST"})

@@ -9,21 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/doctype")
  */
 class DoctypeController extends AbstractController
 {
-    /**
-     * @Route("/", name="doctype_index", methods={"GET"})
-     */
-    public function index(DoctypeRepository $doctypeRepository): Response
-    {
-        return $this->render('doctype/index.html.twig', [
-            'doctypes' => $doctypeRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/new", name="doctype_new", methods={"GET","POST"})

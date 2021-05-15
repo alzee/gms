@@ -9,19 +9,31 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/attach")
  */
 class AttachController extends AbstractController
 {
+    private $page = 'attach';
+
     /**
      * @Route("/", name="attach_index", methods={"GET"})
      */
-    public function index(AttachRepository $attachRepository): Response
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
     {
-        return $this->render('attach/index.html.twig', [
-            'attaches' => $attachRepository->findAll(),
+        $dql = "select a from App\Entity\Attach a order by a.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
         ]);
     }
 
@@ -42,8 +54,9 @@ class AttachController extends AbstractController
             return $this->redirectToRoute('attach_index');
         }
 
-        return $this->render('attach/new.html.twig', [
-            'attach' => $attach,
+        return $this->render('crud/new.html.twig', [
+            'page' => $this->page,
+            'item' => $attach,
             'form' => $form->createView(),
         ]);
     }
@@ -53,8 +66,10 @@ class AttachController extends AbstractController
      */
     public function show(Attach $attach): Response
     {
-        return $this->render('attach/show.html.twig', [
-            'attach' => $attach,
+        return $this->render('crud/show.html.twig', [
+            'page' => $this->page,
+            'item' => $attach,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -72,8 +87,9 @@ class AttachController extends AbstractController
             return $this->redirectToRoute('attach_index');
         }
 
-        return $this->render('attach/edit.html.twig', [
-            'attach' => $attach,
+        return $this->render('crud/edit.html.twig', [
+            'page' => $this->page,
+            'item' => $attach,
             'form' => $form->createView(),
         ]);
     }

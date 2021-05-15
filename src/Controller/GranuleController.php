@@ -9,21 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/granule")
  */
 class GranuleController extends AbstractController
 {
-    /**
-     * @Route("/", name="granule_index", methods={"GET"})
-     */
-    public function index(GranuleRepository $granuleRepository): Response
-    {
-        return $this->render('granule/index.html.twig', [
-            'granules' => $granuleRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/new", name="granule_new", methods={"GET","POST"})

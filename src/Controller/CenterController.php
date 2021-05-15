@@ -9,21 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/center")
  */
 class CenterController extends AbstractController
 {
-    /**
-     * @Route("/", name="center_index", methods={"GET"})
-     */
-    public function index(CenterRepository $centerRepository): Response
-    {
-        return $this->render('center/index.html.twig', [
-            'centers' => $centerRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/new", name="center_new", methods={"GET","POST"})

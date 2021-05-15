@@ -9,19 +9,31 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/addtype")
  */
 class AddtypeController extends AbstractController
 {
+    private $page = 'addtype';
+
     /**
      * @Route("/", name="addtype_index", methods={"GET"})
      */
-    public function index(AddtypeRepository $addtypeRepository): Response
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
     {
-        return $this->render('addtype/index.html.twig', [
-            'addtypes' => $addtypeRepository->findAll(),
+        $dql = "select a from App\Entity\Addtype a order by a.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
         ]);
     }
 
@@ -42,8 +54,9 @@ class AddtypeController extends AbstractController
             return $this->redirectToRoute('addtype_index');
         }
 
-        return $this->render('addtype/new.html.twig', [
-            'addtype' => $addtype,
+        return $this->render('crud/new.html.twig', [
+            'page' => $this->page,
+            'item' => $addtype,
             'form' => $form->createView(),
         ]);
     }
@@ -53,8 +66,10 @@ class AddtypeController extends AbstractController
      */
     public function show(Addtype $addtype): Response
     {
-        return $this->render('addtype/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
+            'page' => $this->page,
             'addtype' => $addtype,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -72,8 +87,9 @@ class AddtypeController extends AbstractController
             return $this->redirectToRoute('addtype_index');
         }
 
-        return $this->render('addtype/edit.html.twig', [
-            'addtype' => $addtype,
+        return $this->render('crud/edit.html.twig', [
+            'page' => $this->page,
+            'item' => $addtype,
             'form' => $form->createView(),
         ]);
     }

@@ -9,19 +9,31 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/addreason")
  */
 class AddreasonController extends AbstractController
 {
+    private $page = 'addreason';
+
     /**
      * @Route("/", name="addreason_index", methods={"GET"})
      */
-    public function index(AddreasonRepository $addreasonRepository): Response
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
     {
-        return $this->render('addreason/index.html.twig', [
-            'addreasons' => $addreasonRepository->findAll(),
+        $dql = "select a from App\Entity\Addreason a order by a.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
         ]);
     }
 
@@ -42,8 +54,9 @@ class AddreasonController extends AbstractController
             return $this->redirectToRoute('addreason_index');
         }
 
-        return $this->render('addreason/new.html.twig', [
-            'addreason' => $addreason,
+        return $this->render('crud/new.html.twig', [
+            'page' => $this->page,
+            'item' => $addreason,
             'form' => $form->createView(),
         ]);
     }
@@ -53,8 +66,10 @@ class AddreasonController extends AbstractController
      */
     public function show(Addreason $addreason): Response
     {
-        return $this->render('addreason/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
+            'page' => $this->page,
             'addreason' => $addreason,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -72,8 +87,8 @@ class AddreasonController extends AbstractController
             return $this->redirectToRoute('addreason_index');
         }
 
-        return $this->render('addreason/edit.html.twig', [
-            'addreason' => $addreason,
+        return $this->render('crud/edit.html.twig', [
+            'item' => $addreason,
             'form' => $form->createView(),
         ]);
     }

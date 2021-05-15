@@ -16,15 +16,6 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class GacController extends AbstractController
 {
-    /**
-     * @Route("/index", name="gac_index0", methods={"GET"})
-     */
-    public function index(GacRepository $gacRepository): Response
-    {
-        return $this->render('gac/index.html.twig', [
-            'gacs' => $gacRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/", name="gac_index", methods={"GET"})

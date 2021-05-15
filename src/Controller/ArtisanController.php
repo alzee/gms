@@ -9,19 +9,31 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/artisan")
  */
 class ArtisanController extends AbstractController
 {
+    private $page = 'artisan';
+
     /**
      * @Route("/", name="artisan_index", methods={"GET"})
      */
-    public function index(ArtisanRepository $artisanRepository): Response
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
     {
-        return $this->render('artisan/index.html.twig', [
-            'artisans' => $artisanRepository->findAll(),
+        $dql = "select a from App\Entity\Artisan a order by a.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
         ]);
     }
 
@@ -42,8 +54,9 @@ class ArtisanController extends AbstractController
             return $this->redirectToRoute('artisan_index');
         }
 
-        return $this->render('artisan/new.html.twig', [
-            'artisan' => $artisan,
+        return $this->render('crud/new.html.twig', [
+            'page' => $this->page,
+            'item' => $artisan,
             'form' => $form->createView(),
         ]);
     }
@@ -53,8 +66,10 @@ class ArtisanController extends AbstractController
      */
     public function show(Artisan $artisan): Response
     {
-        return $this->render('artisan/show.html.twig', [
-            'artisan' => $artisan,
+        return $this->render('crud/show.html.twig', [
+            'page' => $this->page,
+            'item' => $artisan,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -72,8 +87,9 @@ class ArtisanController extends AbstractController
             return $this->redirectToRoute('artisan_index');
         }
 
-        return $this->render('artisan/edit.html.twig', [
-            'artisan' => $artisan,
+        return $this->render('crud/edit.html.twig', [
+            'page' => $this->page,
+            'item' => $artisan,
             'form' => $form->createView(),
         ]);
     }

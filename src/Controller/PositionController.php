@@ -9,21 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/position")
  */
 class PositionController extends AbstractController
 {
-    /**
-     * @Route("/", name="position_index", methods={"GET"})
-     */
-    public function index(PositionRepository $positionRepository): Response
-    {
-        return $this->render('position/index.html.twig', [
-            'positions' => $positionRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/new", name="position_new", methods={"GET","POST"})

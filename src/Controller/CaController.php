@@ -17,13 +17,24 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class CaController extends AbstractController
 {
+    private $page = 'ca';
+
     /**
-     * @Route("/index", name="ca_index0", methods={"GET"})
+     * @Route("/0", name="craft_index0", methods={"GET"})
      */
-    public function index(CaRepository $caRepository): Response
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
     {
-        return $this->render('ca/index.html.twig', [
-            'cas' => $caRepository->findAll(),
+        $dql = "select c, ch, a from App\Entity\Ca c join c.child ch join c.artisan a order by c.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name']
+            ]
         ]);
     }
 
@@ -117,8 +128,10 @@ class CaController extends AbstractController
      */
     public function show(Ca $ca): Response
     {
-        return $this->render('ca/show.html.twig', [
-            'ca' => $ca,
+        return $this->render('crud/show.html.twig', [
+            'page' => $this->page,
+            'item' => $ca,
+            'fields' => ['id', 'sn', 'clerk', 'weightGold', 'weightAttach', 'craft', 'artisan' , 'date']
         ]);
     }
 
@@ -136,8 +149,9 @@ class CaController extends AbstractController
             return $this->redirectToRoute('ca_index');
         }
 
-        return $this->render('ca/edit.html.twig', [
-            'ca' => $ca,
+        return $this->render('crud/edit.html.twig', [
+            'page' => $this->page,
+            'item' => $ca,
             'form' => $form->createView(),
         ]);
     }

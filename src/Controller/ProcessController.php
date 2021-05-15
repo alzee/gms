@@ -9,21 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/process")
  */
 class ProcessController extends AbstractController
 {
-    /**
-     * @Route("/", name="process_index", methods={"GET"})
-     */
-    public function index(ProcessRepository $processRepository): Response
-    {
-        return $this->render('process/index.html.twig', [
-            'processes' => $processRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/new", name="process_new", methods={"GET","POST"})
