@@ -124,6 +124,11 @@ class Main
      */
     private $model;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $stamp;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -363,6 +368,18 @@ class Main
     public function setModel(?string $model): self
     {
         $this->model = $model;
+
+        return $this;
+    }
+
+    public function getStamp(): ?string
+    {
+        return $this->stamp;
+    }
+
+    public function setStamp(?string $stamp): self
+    {
+        $this->stamp = $stamp;
 
         return $this;
     }
