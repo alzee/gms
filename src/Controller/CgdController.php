@@ -32,6 +32,12 @@ class CgdController extends AbstractController
             'items' => $p,
             'columns' => [
                 ['name' => 'id'],
+                ['name' => 'date'],
+                ['name' => 'child'],
+                ['name' => 'goldclass'],
+                ['name' => 'position'],
+                ['name' => 'weight'],
+                ['name' => 'note'],
             ]
         ]);
     }
@@ -69,7 +75,7 @@ class CgdController extends AbstractController
         return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $cgd,
-            'fields' => ['id']
+            'fields' => ['id', 'date', 'child', 'goldclass', 'position', 'weight', 'note']
         ]);
     }
 

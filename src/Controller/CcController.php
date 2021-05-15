@@ -32,6 +32,14 @@ class CcController extends AbstractController
             'items' => $p,
             'columns' => [
                 ['name' => 'id'],
+                ['name' => 'date'],
+                ['name' => 'team'],
+                ['name' => 'recipient'],
+                ['name' => 'goldclass'],
+                ['name' => 'position'],
+                ['name' => 'weight'],
+                ['name' => 'sender'],
+                ['name' => 'status'],
             ]
         ]);
     }
@@ -106,7 +114,7 @@ class CcController extends AbstractController
         return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $cc,
-            'fields' => ['id']
+            'fields' => ['id', 'date', 'team', 'recipient', 'goldclass', 'position', 'weight', 'sender', 'status']
         ]);
     }
 

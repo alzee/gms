@@ -32,6 +32,14 @@ class GcaController extends AbstractController
             'items' => $p,
             'columns' => [
                 ['name' => 'id'],
+                ['name' => 'date'],
+                ['name' => 'team'],
+                ['name' => 'clerk'],
+                ['name' => 'artisan'],
+                ['name' => 'goldclass'],
+                ['name' => 'position'],
+                ['name' => 'weight'],
+                ['name' => 'note'],
             ]
         ]);
     }
@@ -71,7 +79,7 @@ class GcaController extends AbstractController
         return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $gca,
-            'fields' => ['id', 'name']
+            'fields' => ['id', 'date', 'team', 'clerk', 'artisan', 'goldclass', 'position', 'weight', 'note']
         ]);
     }
 
