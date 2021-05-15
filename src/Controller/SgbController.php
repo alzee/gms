@@ -55,7 +55,7 @@ class SgbController extends AbstractController
             return $this->redirectToRoute('sgb_index');
         }
 
-        return $this->render('sgb/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $sgb,
             'form' => $form->createView(),
@@ -67,7 +67,7 @@ class SgbController extends AbstractController
      */
     public function show(Sgb $sgb): Response
     {
-        return $this->render('sgb/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $sgb,
             'fields' => ['id', 'name']
@@ -88,7 +88,7 @@ class SgbController extends AbstractController
             return $this->redirectToRoute('sgb_index');
         }
 
-        return $this->render('sgb/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $sgb,
             'form' => $form->createView(),

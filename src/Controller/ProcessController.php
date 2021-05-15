@@ -54,7 +54,7 @@ class ProcessController extends AbstractController
             return $this->redirectToRoute('process_index');
         }
 
-        return $this->render('process/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $process,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class ProcessController extends AbstractController
      */
     public function show(Process $process): Response
     {
-        return $this->render('process/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $process,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class ProcessController extends AbstractController
             return $this->redirectToRoute('process_index');
         }
 
-        return $this->render('process/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $process,
             'form' => $form->createView(),

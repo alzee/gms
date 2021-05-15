@@ -54,7 +54,7 @@ class FactoryController extends AbstractController
             return $this->redirectToRoute('factory_index');
         }
 
-        return $this->render('factory/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $factory,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class FactoryController extends AbstractController
      */
     public function show(Factory $factory): Response
     {
-        return $this->render('factory/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $factory,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class FactoryController extends AbstractController
             return $this->redirectToRoute('factory_index');
         }
 
-        return $this->render('factory/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $factory,
             'form' => $form->createView(),

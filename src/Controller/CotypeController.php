@@ -54,7 +54,7 @@ class CotypeController extends AbstractController
             return $this->redirectToRoute('cotype_index');
         }
 
-        return $this->render('cotype/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $cotype,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class CotypeController extends AbstractController
      */
     public function show(Cotype $cotype): Response
     {
-        return $this->render('cotype/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $cotype,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class CotypeController extends AbstractController
             return $this->redirectToRoute('cotype_index');
         }
 
-        return $this->render('cotype/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $cotype,
             'form' => $form->createView(),

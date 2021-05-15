@@ -55,7 +55,7 @@ class GdController extends AbstractController
             return $this->redirectToRoute('gd_index');
         }
 
-        return $this->render('gd/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $gd,
             'form' => $form->createView(),
@@ -67,7 +67,7 @@ class GdController extends AbstractController
      */
     public function show(Gd $gd): Response
     {
-        return $this->render('gd/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $gd,
             'fields' => ['id', 'name']
@@ -88,7 +88,7 @@ class GdController extends AbstractController
             return $this->redirectToRoute('gd_index');
         }
 
-        return $this->render('gd/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $gd,
             'form' => $form->createView(),

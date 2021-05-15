@@ -32,7 +32,6 @@ class CcController extends AbstractController
             'items' => $p,
             'columns' => [
                 ['name' => 'id'],
-                ['name' => 'team'],
             ]
         ]);
     }
@@ -93,7 +92,7 @@ class CcController extends AbstractController
             return $this->redirectToRoute('cc_index');
         }
 
-        return $this->render('cc/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'cc' => $cc,
             'form' => $form->createView(),
         ]);
@@ -104,10 +103,10 @@ class CcController extends AbstractController
      */
     public function show(Cc $cc): Response
     {
-        return $this->render('cc/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $cc,
-            'fields' => ['id', 'name']
+            'fields' => ['id']
         ]);
     }
 
@@ -125,7 +124,7 @@ class CcController extends AbstractController
             return $this->redirectToRoute('cc_index');
         }
 
-        return $this->render('cc/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $cc,
             'form' => $form->createView(),

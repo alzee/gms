@@ -54,7 +54,7 @@ class OwnController extends AbstractController
             return $this->redirectToRoute('own_index');
         }
 
-        return $this->render('own/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $own,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class OwnController extends AbstractController
      */
     public function show(Own $own): Response
     {
-        return $this->render('own/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $own,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class OwnController extends AbstractController
             return $this->redirectToRoute('own_index');
         }
 
-        return $this->render('own/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $own,
             'form' => $form->createView(),

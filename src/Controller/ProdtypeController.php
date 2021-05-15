@@ -54,7 +54,7 @@ class ProdtypeController extends AbstractController
             return $this->redirectToRoute('prodtype_index');
         }
 
-        return $this->render('prodtype/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $prodtype,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class ProdtypeController extends AbstractController
      */
     public function show(Prodtype $prodtype): Response
     {
-        return $this->render('prodtype/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $prodtype,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class ProdtypeController extends AbstractController
             return $this->redirectToRoute('prodtype_index');
         }
 
-        return $this->render('prodtype/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $prodtype,
             'form' => $form->createView(),

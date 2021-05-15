@@ -54,7 +54,7 @@ class GranuleController extends AbstractController
             return $this->redirectToRoute('granule_index');
         }
 
-        return $this->render('granule/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $granule,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class GranuleController extends AbstractController
      */
     public function show(Granule $granule): Response
     {
-        return $this->render('granule/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $granule,
         ]);
@@ -86,7 +86,7 @@ class GranuleController extends AbstractController
             return $this->redirectToRoute('granule_index');
         }
 
-        return $this->render('granule/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $granule,
             'form' => $form->createView(),

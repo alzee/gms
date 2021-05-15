@@ -54,7 +54,7 @@ class GoldclassController extends AbstractController
             return $this->redirectToRoute('goldclass_index');
         }
 
-        return $this->render('goldclass/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $goldclass,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class GoldclassController extends AbstractController
      */
     public function show(Goldclass $goldclass): Response
     {
-        return $this->render('goldclass/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $goldclass,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class GoldclassController extends AbstractController
             return $this->redirectToRoute('goldclass_index');
         }
 
-        return $this->render('goldclass/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $goldclass,
             'form' => $form->createView(),

@@ -54,7 +54,7 @@ class LineController extends AbstractController
             return $this->redirectToRoute('line_index');
         }
 
-        return $this->render('line/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $line,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class LineController extends AbstractController
      */
     public function show(Line $line): Response
     {
-        return $this->render('line/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $line,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class LineController extends AbstractController
             return $this->redirectToRoute('line_index');
         }
 
-        return $this->render('line/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $line,
             'form' => $form->createView(),

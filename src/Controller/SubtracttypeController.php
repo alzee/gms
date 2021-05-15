@@ -54,7 +54,7 @@ class SubtracttypeController extends AbstractController
             return $this->redirectToRoute('subtracttype_index');
         }
 
-        return $this->render('subtracttype/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $subtracttype,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class SubtracttypeController extends AbstractController
      */
     public function show(Subtracttype $subtracttype): Response
     {
-        return $this->render('subtracttype/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $subtracttype,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class SubtracttypeController extends AbstractController
             return $this->redirectToRoute('subtracttype_index');
         }
 
-        return $this->render('subtracttype/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $subtracttype,
             'form' => $form->createView(),

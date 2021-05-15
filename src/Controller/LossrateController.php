@@ -54,7 +54,7 @@ class LossrateController extends AbstractController
             return $this->redirectToRoute('lossrate_index');
         }
 
-        return $this->render('lossrate/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $lossrate,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class LossrateController extends AbstractController
      */
     public function show(Lossrate $lossrate): Response
     {
-        return $this->render('lossrate/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $lossrate,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class LossrateController extends AbstractController
             return $this->redirectToRoute('lossrate_index');
         }
 
-        return $this->render('lossrate/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $lossrate,
             'form' => $form->createView(),

@@ -54,7 +54,7 @@ class SubtractreasonController extends AbstractController
             return $this->redirectToRoute('subtractreason_index');
         }
 
-        return $this->render('subtractreason/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $subtractreason,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class SubtractreasonController extends AbstractController
      */
     public function show(Subtractreason $subtractreason): Response
     {
-        return $this->render('subtractreason/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $subtractreason,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class SubtractreasonController extends AbstractController
             return $this->redirectToRoute('subtractreason_index');
         }
 
-        return $this->render('subtractreason/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $subtractreason,
             'form' => $form->createView(),

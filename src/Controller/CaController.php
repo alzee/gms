@@ -33,7 +33,6 @@ class CaController extends AbstractController
             'items' => $p,
             'columns' => [
                 ['name' => 'id'],
-                ['name' => 'name']
             ]
         ]);
     }

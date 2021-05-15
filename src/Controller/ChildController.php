@@ -55,7 +55,7 @@ class ChildController extends AbstractController
             return $this->redirectToRoute('child_index');
         }
 
-        return $this->render('child/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $child,
             'form' => $form->createView(),
@@ -67,7 +67,7 @@ class ChildController extends AbstractController
      */
     public function show(Child $child): Response
     {
-        return $this->render('child/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $child,
             'fields' => ['id']
@@ -88,7 +88,7 @@ class ChildController extends AbstractController
             return $this->redirectToRoute('child_index');
         }
 
-        return $this->render('child/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $child,
             'form' => $form->createView(),

@@ -54,7 +54,7 @@ class PositionController extends AbstractController
             return $this->redirectToRoute('position_index');
         }
 
-        return $this->render('position/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $position,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class PositionController extends AbstractController
      */
     public function show(Position $position): Response
     {
-        return $this->render('position/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $position,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class PositionController extends AbstractController
             return $this->redirectToRoute('position_index');
         }
 
-        return $this->render('position/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $position,
             'form' => $form->createView(),

@@ -54,7 +54,7 @@ class CompanyController extends AbstractController
             return $this->redirectToRoute('company_index');
         }
 
-        return $this->render('company/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $company,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class CompanyController extends AbstractController
      */
     public function show(Company $company): Response
     {
-        return $this->render('company/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $company,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class CompanyController extends AbstractController
             return $this->redirectToRoute('company_index');
         }
 
-        return $this->render('company/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $company,
             'form' => $form->createView(),

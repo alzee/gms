@@ -54,7 +54,7 @@ class DoctypeController extends AbstractController
             return $this->redirectToRoute('doctype_index');
         }
 
-        return $this->render('doctype/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $doctype,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class DoctypeController extends AbstractController
      */
     public function show(Doctype $doctype): Response
     {
-        return $this->render('doctype/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $doctype,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class DoctypeController extends AbstractController
             return $this->redirectToRoute('doctype_index');
         }
 
-        return $this->render('doctype/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $doctype,
             'form' => $form->createView(),

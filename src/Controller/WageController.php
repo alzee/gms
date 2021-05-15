@@ -54,7 +54,7 @@ class WageController extends AbstractController
             return $this->redirectToRoute('wage_index');
         }
 
-        return $this->render('wage/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $wage,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class WageController extends AbstractController
      */
     public function show(Wage $wage): Response
     {
-        return $this->render('wage/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $wage,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class WageController extends AbstractController
             return $this->redirectToRoute('wage_index');
         }
 
-        return $this->render('wage/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $wage,
             'form' => $form->createView(),

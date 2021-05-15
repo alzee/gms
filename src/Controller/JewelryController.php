@@ -54,7 +54,7 @@ class JewelryController extends AbstractController
             return $this->redirectToRoute('jewelry_index');
         }
 
-        return $this->render('jewelry/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $jewelry,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class JewelryController extends AbstractController
      */
     public function show(Jewelry $jewelry): Response
     {
-        return $this->render('jewelry/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $jewelry,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class JewelryController extends AbstractController
             return $this->redirectToRoute('jewelry_index');
         }
 
-        return $this->render('jewelry/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $jewelry,
             'form' => $form->createView(),

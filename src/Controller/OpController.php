@@ -54,7 +54,7 @@ class OpController extends AbstractController
             return $this->redirectToRoute('op_index');
         }
 
-        return $this->render('op/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $op,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class OpController extends AbstractController
      */
     public function show(Op $op): Response
     {
-        return $this->render('op/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $op,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class OpController extends AbstractController
             return $this->redirectToRoute('op_index');
         }
 
-        return $this->render('op/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $op,
             'form' => $form->createView(),

@@ -54,7 +54,7 @@ class SeqController extends AbstractController
             return $this->redirectToRoute('seq_index');
         }
 
-        return $this->render('seq/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $seq,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class SeqController extends AbstractController
      */
     public function show(Seq $seq): Response
     {
-        return $this->render('seq/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $seq,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class SeqController extends AbstractController
             return $this->redirectToRoute('seq_index');
         }
 
-        return $this->render('seq/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $seq,
             'form' => $form->createView(),

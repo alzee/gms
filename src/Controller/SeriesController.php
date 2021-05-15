@@ -54,7 +54,7 @@ class SeriesController extends AbstractController
             return $this->redirectToRoute('series_index');
         }
 
-        return $this->render('series/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $series,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class SeriesController extends AbstractController
      */
     public function show(Series $series): Response
     {
-        return $this->render('series/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $series,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class SeriesController extends AbstractController
             return $this->redirectToRoute('series_index');
         }
 
-        return $this->render('series/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $series,
             'form' => $form->createView(),

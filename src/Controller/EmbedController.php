@@ -54,7 +54,7 @@ class EmbedController extends AbstractController
             return $this->redirectToRoute('embed_index');
         }
 
-        return $this->render('embed/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $embed,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class EmbedController extends AbstractController
      */
     public function show(Embed $embed): Response
     {
-        return $this->render('embed/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $embed,
             'fields' => ['id', 'name']
@@ -87,7 +87,7 @@ class EmbedController extends AbstractController
             return $this->redirectToRoute('embed_index');
         }
 
-        return $this->render('embed/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $embed,
             'form' => $form->createView(),

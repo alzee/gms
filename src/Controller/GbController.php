@@ -57,7 +57,7 @@ class GbController extends AbstractController
             return $this->redirectToRoute('gb_index');
         }
 
-        return $this->render('gb/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $gb,
             'form' => $form->createView(),
@@ -69,7 +69,7 @@ class GbController extends AbstractController
      */
     public function show(Gb $gb): Response
     {
-        return $this->render('gb/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $gb,
             'fields' => ['id', 'name']
@@ -90,7 +90,7 @@ class GbController extends AbstractController
             return $this->redirectToRoute('gb_index');
         }
 
-        return $this->render('gb/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $gb,
             'form' => $form->createView(),

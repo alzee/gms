@@ -16,7 +16,7 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class GcaController extends AbstractController
 {
-    private $page = 'Gca';
+    private $page = 'gca';
 
     /**
      * @Route("/", name="gca_index", methods={"GET"})
@@ -32,7 +32,6 @@ class GcaController extends AbstractController
             'items' => $p,
             'columns' => [
                 ['name' => 'id'],
-                ['name' => 'name']
             ]
         ]);
     }
@@ -57,7 +56,7 @@ class GcaController extends AbstractController
             return $this->redirectToRoute('gca_index');
         }
 
-        return $this->render('gca/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $gca,
             'form' => $form->createView(),
@@ -69,7 +68,7 @@ class GcaController extends AbstractController
      */
     public function show(Gca $gca): Response
     {
-        return $this->render('gca/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $gca,
             'fields' => ['id', 'name']
@@ -90,7 +89,7 @@ class GcaController extends AbstractController
             return $this->redirectToRoute('gca_index');
         }
 
-        return $this->render('gca/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $gca,
             'form' => $form->createView(),

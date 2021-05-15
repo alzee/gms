@@ -54,7 +54,7 @@ class CgdController extends AbstractController
             return $this->redirectToRoute('cgd_index');
         }
 
-        return $this->render('cgd/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $cgd,
             'form' => $form->createView(),
@@ -66,7 +66,7 @@ class CgdController extends AbstractController
      */
     public function show(Cgd $cgd): Response
     {
-        return $this->render('cgd/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $cgd,
             'fields' => ['id']
@@ -87,7 +87,7 @@ class CgdController extends AbstractController
             return $this->redirectToRoute('cgd_index');
         }
 
-        return $this->render('cgd/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $cgd,
             'form' => $form->createView(),

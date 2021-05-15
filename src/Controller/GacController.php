@@ -56,7 +56,7 @@ class GacController extends AbstractController
             return $this->redirectToRoute('gac_index');
         }
 
-        return $this->render('gac/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'page' => $this->page,
             'item' => $gac,
             'form' => $form->createView(),
@@ -68,7 +68,7 @@ class GacController extends AbstractController
      */
     public function show(Gac $gac): Response
     {
-        return $this->render('gac/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $gac,
             'fields' => ['id', 'name']
@@ -89,7 +89,7 @@ class GacController extends AbstractController
             return $this->redirectToRoute('gac_index');
         }
 
-        return $this->render('gac/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'page' => $this->page,
             'item' => $gac,
             'form' => $form->createView(),
