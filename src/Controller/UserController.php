@@ -19,16 +19,6 @@ class UserController extends AbstractController
     private $page = 'user';
 
     /**
-     * @Route("/index", name="user_index0", methods={"GET"})
-     */
-    public function index(UserRepository $userRepository): Response
-    {
-        return $this->render('crud/index.html.twig', [
-            'users' => $userRepository->findAll(),
-        ]);
-    }
-
-    /**
      * @Route("/", name="user_index", methods={"GET"})
      */
     public function paginate(PaginatorInterface $paginator, Request $request): Response
@@ -36,13 +26,11 @@ class UserController extends AbstractController
         $dql = "select u from App\Entity\User u order by u.id desc";
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
-        dump($p);
 
-        return $this->render('crud/paginate.html.twig', [
+        return $this->render('crud/index.html.twig', [
             'page' => $this->page,
             'items' => $p,
             'filters' => ['u.name' => 'Name'],
-            'columns' => ['id', 'name', 'username', 'team', 'note'],
             'columns' => [
                 ['name' => 'id'],
                 ['name' => 'name'],
@@ -72,7 +60,7 @@ class UserController extends AbstractController
 
         return $this->render('crud/new.html.twig', [
             'page' => $this->page,
-            'user' => $user,
+            'item' => $user,
             'form' => $form->createView(),
         ]);
     }

@@ -9,19 +9,31 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/division")
  */
 class DivisionController extends AbstractController
 {
+    private $page = 'division';
+
     /**
      * @Route("/", name="division_index", methods={"GET"})
      */
-    public function index(DivisionRepository $divisionRepository): Response
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
     {
-        return $this->render('division/index.html.twig', [
-            'divisions' => $divisionRepository->findAll(),
+        $dql = "select d from App\Entity\Division d order by d.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name'],
+            ]
         ]);
     }
 
@@ -42,8 +54,9 @@ class DivisionController extends AbstractController
             return $this->redirectToRoute('division_index');
         }
 
-        return $this->render('division/new.html.twig', [
-            'division' => $division,
+        return $this->render('crud/new.html.twig', [
+            'page' => $this->page,
+            'item' => $division,
             'form' => $form->createView(),
         ]);
     }
@@ -53,8 +66,10 @@ class DivisionController extends AbstractController
      */
     public function show(Division $division): Response
     {
-        return $this->render('division/show.html.twig', [
-            'division' => $division,
+        return $this->render('crud/show.html.twig', [
+            'page' => $this->page,
+            'item' => $division,
+            'fields' => ['id', 'name'],
         ]);
     }
 
@@ -72,8 +87,9 @@ class DivisionController extends AbstractController
             return $this->redirectToRoute('division_index');
         }
 
-        return $this->render('division/edit.html.twig', [
-            'division' => $division,
+        return $this->render('crud/edit.html.twig', [
+            'page' => $this->page,
+            'item' => $division,
             'form' => $form->createView(),
         ]);
     }

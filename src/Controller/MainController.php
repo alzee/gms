@@ -19,16 +19,6 @@ class MainController extends AbstractController
     private $page = 'main';
 
     /**
-     * @Route("/index", name="main_index0", methods={"GET"})
-     */
-    public function index(MainRepository $mainRepository): Response
-    {
-        return $this->render('main/index.html.twig', [
-            'mains' => $mainRepository->findAll(),
-        ]);
-    }
-
-    /**
      * @Route("/", name="main_index", methods={"GET"})
      */
     public function paginate(PaginatorInterface $paginator, Request $request): Response
@@ -37,7 +27,7 @@ class MainController extends AbstractController
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 
-        return $this->render('crud/paginate.html.twig', [
+        return $this->render('crud/index.html.twig', [
             'page' => $this->page,
             'items' => $p,
             'filters' => ['m.sn' => 'sn'],
