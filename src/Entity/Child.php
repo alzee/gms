@@ -75,6 +75,26 @@ class Child
      */
     private $holder;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $weightAttach;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $size;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Craft::class)
+     */
+    private $craft;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $model;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -206,6 +226,54 @@ class Child
     public function setHolder(?Artisan $holder): self
     {
         $this->holder = $holder;
+
+        return $this;
+    }
+
+    public function getWeightAttach(): ?float
+    {
+        return $this->weightAttach;
+    }
+
+    public function setWeightAttach(?float $weightAttach): self
+    {
+        $this->weightAttach = $weightAttach;
+
+        return $this;
+    }
+
+    public function getSize(): ?float
+    {
+        return $this->size;
+    }
+
+    public function setSize(?float $size): self
+    {
+        $this->size = $size;
+
+        return $this;
+    }
+
+    public function getCraft(): ?Craft
+    {
+        return $this->craft;
+    }
+
+    public function setCraft(?Craft $craft): self
+    {
+        $this->craft = $craft;
+
+        return $this;
+    }
+
+    public function getModel(): ?string
+    {
+        return $this->model;
+    }
+
+    public function setModel(?string $model): self
+    {
+        $this->model = $model;
 
         return $this;
     }
