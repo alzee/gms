@@ -76,6 +76,7 @@ Ca back: 文员收工匠
 Cc got: 文员间收金
 export: 导出
 
+Create new User: 文员 新增
 Create new Center: 中央单 新增
 Create new Own: 自发单 新增
 Create new Main: 主单 新增
@@ -116,6 +117,7 @@ Create new Doctype: 单据类型 新增
 Create new Cotype: 合作方式 新增
 Create new Factory: 工厂 新增
 
+User index: 文员
 Center index: 中央单
 Own index: 自发单
 Main index: 主单
@@ -157,6 +159,7 @@ Doctype index: 单据类型
 Cotype index: 合作方式
 Factory index: 工厂
 
+User: 文员
 Center: 中央单
 Own: 自发单
 Main: 主单
@@ -198,6 +201,7 @@ Cotype: 合作方式
 Factory: 工厂
 Recipient: 接收人
 
+Edit User: 文员 编辑
 Edit Center: 中央单 编辑
 Edit Own: 自发单 编辑
 Edit Main: 主单 编辑
