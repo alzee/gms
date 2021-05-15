@@ -14,8 +14,11 @@ class LossrateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('rate', NumberType::class , ['label' => 'lossrate.rate'])
-            ->add('save', SubmitType::class)
+            ->add('name')
+            ->add('model')
+            ->add('craft')
+            ->add('rate')
+            ->add('note')
         ;
     }
 

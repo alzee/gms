@@ -13,6 +13,8 @@ class GranuleType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('granule')
+            ->add('note')
         ;
     }
 
