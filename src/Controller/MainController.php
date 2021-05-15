@@ -118,4 +118,12 @@ class MainController extends AbstractController
 
         return $this->redirectToRoute('main_index');
     }
+
+    /**
+     * @Route("/import", name="main_import", methods={"GET"})
+     */
+    public function import(Request $request, Main $main): Response
+    {
+        return $this->redirectToRoute('main_index');
+    }
 }
