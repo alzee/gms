@@ -45,6 +45,8 @@ class MainNew
         $count = $main->getCountChild();
         $countPiece = $main->getCountPiece() / $count;
         $weight = $main->getPerWeight();
+        $size = $main->getSize();
+        $model = $main->getModel();
         for ($i = 1; $i <= $count; $i++) {
             $child = new Child();
             $child->setSn($mainSn . str_pad($i, 3, '0', STR_PAD_LEFT));
@@ -52,6 +54,8 @@ class MainNew
             $child->setWeight($weight);
             $child->setMain($main);
             $child->setCountPiece($countPiece);
+            $child->setSize($size);
+            $child->setModel($model);
             $em->persist($child);
         }
         $em->flush();
