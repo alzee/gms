@@ -73,7 +73,9 @@ class UserController extends AbstractController
     public function show(User $user): Response
     {
         return $this->render('crud/show.html.twig', [
-            'user' => $user,
+            'page' => 'user',
+            'item' => $user,
+            'fields' => ['id', 'name', 'username', 'team', 'note', 'box'],
         ]);
     }
 

@@ -33,13 +33,6 @@
                 {% for col in columns %}
                 <td>{{ attribute(item, col) }}</td>
                 {% endfor %}
-                {#
-                <td>{{ item.id }}</td>
-                <td>{{ item.name }}</td>
-                <td>{{ item.username }}</td>
-                <td>{{ item.team }}</td>
-                <td>{{ item.note }}</td>
-                #}
                 <td>
                     <a class="btn btn-sm btn-primary" href="{{ path("#{page}_show", {'id': item.id}) }}">{{'show' | trans}}</a>
                     <a class="btn btn-sm btn-warning" href="{{ path("#{page}_edit", {'id': item.id}) }}">{{'edit' | trans}}</a>
