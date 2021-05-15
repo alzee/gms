@@ -9,19 +9,31 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/staff")
  */
 class StaffController extends AbstractController
 {
+    private $page = 'staff';
+
     /**
      * @Route("/", name="staff_index", methods={"GET"})
      */
-    public function index(StaffRepository $staffRepository): Response
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
     {
-        return $this->render('staff/index.html.twig', [
-            'staff' => $staffRepository->findAll(),
+        $dql = "select s from App\Entity\Staff s order by s.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name'],
+            ]
         ]);
     }
 
@@ -42,8 +54,9 @@ class StaffController extends AbstractController
             return $this->redirectToRoute('staff_index');
         }
 
-        return $this->render('staff/new.html.twig', [
-            'staff' => $staff,
+        return $this->render('crud/new.html.twig', [
+            'page' => $this->page,
+            'item' => $staff,
             'form' => $form->createView(),
         ]);
     }
@@ -53,8 +66,10 @@ class StaffController extends AbstractController
      */
     public function show(Staff $staff): Response
     {
-        return $this->render('staff/show.html.twig', [
-            'staff' => $staff,
+        return $this->render('crud/show.html.twig', [
+            'page' => $this->page,
+            'item' => $staff,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -72,8 +87,9 @@ class StaffController extends AbstractController
             return $this->redirectToRoute('staff_index');
         }
 
-        return $this->render('staff/edit.html.twig', [
-            'staff' => $staff,
+        return $this->render('crud/edit.html.twig', [
+            'page' => $this->page,
+            'item' => $staff,
             'form' => $form->createView(),
         ]);
     }
