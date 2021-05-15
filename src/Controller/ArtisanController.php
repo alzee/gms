@@ -27,6 +27,7 @@ class ArtisanController extends AbstractController
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 
+        /*
         return $this->render('crud/index.html.twig', [
             'page' => $this->page,
             'items' => $p,
@@ -34,6 +35,9 @@ class ArtisanController extends AbstractController
                 ['name' => 'id'],
                 ['name' => 'name']
             ]
+         */
+        return $this->render('artisan/index.html.twig', [
+            'artisans' => $p,
         ]);
     }
 
