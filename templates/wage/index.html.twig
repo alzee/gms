@@ -5,11 +5,24 @@
 {% block body %}
     <h1>{{'Wage index' | trans}}</h1>
 
+  <div class="row mx-0 my-3">
+  <div class="col">
+  </div>
+    <div class="col-auto">
+      <a class="btn btn-success" href="{{ path('wage_new') }}">{{'Create new' | trans}}</a>
+      <a class="mx-2 btn btn-success" href="{{ path('center_import') }}">{{'Import' | trans}}</a>
+      <button class="btn btn-danger" id="export">{{'export' | trans}}</button>
+    </div>
+  </div>
+
     <table class="table table-striped table-hover">
         <thead>
             <tr>
                 <th>{{'Id' | trans}}</th>
                 <th>{{'Name' | trans}}</th>
+                <th>{{'Model' | trans}}</th>
+                <th>{{'Wage' | trans}}</th>
+                <th>{{'Note' | trans}}</th>
                 <th>{{'actions' | trans}}</th>
             </tr>
         </thead>
@@ -18,6 +31,9 @@
             <tr>
                 <td>{{ wage.id }}</td>
                 <td>{{ wage.name }}</td>
+                <td>{{ wage.model }}</td>
+                <td>{{ wage.wage }}</td>
+                <td>{{ wage.note }}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ path('wage_show', {'id': wage.id}) }}">{{'show' | trans}}</a>
                     <a class="btn btn-warning" href="{{ path('wage_edit', {'id': wage.id}) }}">{{'edit' | trans}}</a>
@@ -31,5 +47,4 @@
         </tbody>
     </table>
 
-    <a class="btn btn-success" href="{{ path('wage_new') }}">{{'Create new' | trans}}</a>
 {% endblock %}

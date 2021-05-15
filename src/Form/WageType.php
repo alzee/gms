@@ -13,6 +13,9 @@ class WageType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('model')
+            ->add('wage')
+            ->add('note')
         ;
     }
 
