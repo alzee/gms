@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Cgd{% endblock %}
+{% block title %}{{ 'Cgd'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>{{'Create new Cgd' | trans}}</h1>
+    <h1>{{ 'Create new'|trans }} {{ 'Cgd'|trans }}</h1>
 
     {{ include('cgd/_form.html.twig') }}
 
