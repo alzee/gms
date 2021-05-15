@@ -16,6 +16,8 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class UserController extends AbstractController
 {
+    private $page = 'user';
+
     /**
      * @Route("/index", name="user_index0", methods={"GET"})
      */
@@ -37,7 +39,7 @@ class UserController extends AbstractController
         dump($p);
 
         return $this->render('crud/paginate.html.twig', [
-            'page' => 'user',
+            'page' => $this->page,
             'items' => $p,
             'columns' => ['id', 'name', 'username', 'team', 'note'],
             'filters' => ['u.name' => 'Name']
@@ -62,6 +64,7 @@ class UserController extends AbstractController
         }
 
         return $this->render('crud/new.html.twig', [
+            'page' => $this->page,
             'user' => $user,
             'form' => $form->createView(),
         ]);
@@ -73,7 +76,7 @@ class UserController extends AbstractController
     public function show(User $user): Response
     {
         return $this->render('crud/show.html.twig', [
-            'page' => 'user',
+            'page' => $this->page,
             'item' => $user,
             'fields' => ['id', 'name', 'username', 'team', 'note', 'box'],
         ]);
@@ -94,7 +97,7 @@ class UserController extends AbstractController
         }
 
         return $this->render('crud/edit.html.twig', [
-            'page' => 'user',
+            'page' => $this->page,
             'item' => $user,
             'form' => $form->createView(),
         ]);

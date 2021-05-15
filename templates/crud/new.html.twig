@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New User{% endblock %}
+{% block title %}{{ page|capitalize|trans }}{% endblock %}
 
 {% block body %}
-    <h1>{{'Create new User' | trans}}</h1>
+    <h1>{{"Create new #{page}" | trans}}</h1>
 
     {{ include('crud/_form.html.twig') }}
 
-    <a class="btn btn-primary" href="{{ path('user_index') }}">{{'back to list' | trans}}</a>
+    <a class="btn btn-primary" href="{{ path("#{page}_index") }}">{{'back to list' | trans}}</a>
 {% endblock %}
