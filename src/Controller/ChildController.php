@@ -32,8 +32,18 @@ class ChildController extends AbstractController
             'items' => $p,
             'columns' => [
                 ['name' => 'sn'],
-                ['name' => 'main'],
-                ['name' => 'artisan']
+                ['name' => 'date'],
+                ['name' => 'goldclass'],
+                ['name' => 'note'],
+                ['name' => 'countPiece'],
+                ['name' => 'artisan'],
+                ['name' => 'craft'],
+                ['name' => 'weightGold'],
+                ['name' => 'weightAttach'],
+                ['name' => 'weight'],
+                ['name' => 'box'],
+                ['name' => 'size'],
+                ['name' => 'model'],
             ]
         ]);
     }
@@ -70,7 +80,7 @@ class ChildController extends AbstractController
         return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $child,
-            'fields' => ['id']
+            'fields' => ['sn', 'date', 'goldclass', 'weightGold', 'weightAttach', 'weight', 'box', 'countPiece', 'artisan', 'craft', 'size', 'model']
         ]);
     }
 
