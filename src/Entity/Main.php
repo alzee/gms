@@ -77,12 +77,6 @@ class Main
     private $upstreamDoc;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Model::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $model;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Lossrate::class)
      * @ORM\JoinColumn(nullable=true)
      */
@@ -246,18 +240,6 @@ class Main
     public function setUpstreamDoc(string $upstreamDoc): self
     {
         $this->upstreamDoc = $upstreamDoc;
-
-        return $this;
-    }
-
-    public function getModel(): ?Model
-    {
-        return $this->model;
-    }
-
-    public function setModel(?Model $model): self
-    {
-        $this->model = $model;
 
         return $this;
     }
