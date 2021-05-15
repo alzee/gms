@@ -32,7 +32,6 @@ class GdController extends AbstractController
             'items' => $p,
             'columns' => [
                 ['name' => 'id'],
-                ['name' => 'name']
             ]
         ]);
     }
@@ -70,7 +69,7 @@ class GdController extends AbstractController
         return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $gd,
-            'fields' => ['id', 'name']
+            'fields' => ['id']
         ]);
     }
 

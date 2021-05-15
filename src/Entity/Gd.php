@@ -23,7 +23,7 @@ class Gd
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Center::class)
+     * @ORM\ManyToOne(targetEntity=Main::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $maindoc;
@@ -74,12 +74,12 @@ class Gd
         return $this;
     }
 
-    public function getMaindoc(): ?Center
+    public function getMaindoc(): ?Main
     {
         return $this->maindoc;
     }
 
-    public function setMaindoc(?Center $maindoc): self
+    public function setMaindoc(?Main $maindoc): self
     {
         $this->maindoc = $maindoc;
 
