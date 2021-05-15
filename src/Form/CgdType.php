@@ -15,16 +15,8 @@ class CgdType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            //->add('main', EntityType::class , [
-            //    'placeholder' => '选择主单',
-            //    'class' => Main::class,
-            //    'required' => false
-            //])
-            //->add('child', EntityType::class , [
-            //    'placeholder' => '选择子单',
-            //    'class' => Child::class,
-            //    'required' => false
-            //])
+            ->add('doc')
+            ->add('goldclass')
             ->add('goldclass')
             ->add('position')
             ->add('weight')

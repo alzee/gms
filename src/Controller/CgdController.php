@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Cgd;
 use App\Form\CgdType;
+use App\Entity\Child;
+use App\Entity\Main;
 use App\Repository\CgdRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -53,6 +55,17 @@ class CgdController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $doc = $cgd->getDoc();
+            $child = $this->getDoctrine()->getRepository(Child::class)->findOneBy(['sn' => $doc]);
+            if (!is_null($child)) {
+                $cgd->setChild($child);
+            }
+            else {
+                $main = $this->getDoctrine()->getRepository(Main::class)->findOneBy(['sn' => $doc]);
+                if (!is_null($main)) {
+                    $cgd->setMain($main);
+                }
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($cgd);
             $entityManager->flush();
@@ -60,7 +73,7 @@ class CgdController extends AbstractController
             return $this->redirectToRoute('cgd_index');
         }
 
-        return $this->render('crud/new.html.twig', [
+        return $this->render('cgd/new.html.twig', [
             'page' => $this->page,
             'item' => $cgd,
             'form' => $form->createView(),

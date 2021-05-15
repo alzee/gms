@@ -3,9 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Ca;
+use App\Form\CaType;
 use App\Entity\Child;
 use App\Entity\Main;
-use App\Form\CaType;
 use App\Repository\CaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -92,9 +92,8 @@ class CaController extends AbstractController
         $form = $this->createForm(CaType::class, $ca);
         $form->handleRequest($request);
 
-        $doc = $ca->getDoc();
-
         if ($form->isSubmitted() && $form->isValid()) {
+            $doc = $ca->getDoc();
             $child = $this->getDoctrine()->getRepository(Child::class)->findOneBy(['sn' => $doc]);
             if (!is_null($child)) {
                 $ca->setChild($child);

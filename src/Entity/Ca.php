@@ -73,6 +73,11 @@ class Ca
      */
     private $date1;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Main::class)
+     */
+    private $main;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -206,6 +211,18 @@ class Ca
     public function setDate1(?\DateTimeImmutable $date1): self
     {
         $this->date1 = $date1;
+
+        return $this;
+    }
+
+    public function getMain(): ?Main
+    {
+        return $this->main;
+    }
+
+    public function setMain(?Main $main): self
+    {
+        $this->main = $main;
 
         return $this;
     }
