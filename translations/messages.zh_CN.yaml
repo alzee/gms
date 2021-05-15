@@ -124,6 +124,12 @@ Create new Doctype: 单据类型 新增
 Create new Cotype: 合作方式 新增
 Create new Factory: 工厂 新增
 
+Subtracttype index: 减金类型
+Subtractreason index: 减金原因
+Addtype index: 加金类型
+Addreason index: 加金原因
+Company index: 公司
+Branch index: 发单分行
 User index: 文员
 Center index: 中央单
 Own index: 自发单
