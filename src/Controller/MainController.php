@@ -16,6 +16,8 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class MainController extends AbstractController
 {
+    private $page = 'main';
+
     /**
      * @Route("/index", name="main_index0", methods={"GET"})
      */
@@ -35,8 +37,24 @@ class MainController extends AbstractController
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 
-        return $this->render('main/paginate.html.twig', [
-            'mains' => $p
+        return $this->render('crud/paginate.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'filters' => ['m.sn' => 'sn'],
+            'columns' => [
+                ['name' => 'sn', 'sort' => 'm.sn'],
+                ['name' => 'date', 'sort' => 'm.date'],
+                ['name' => 'dueDate', 'sort' => 'm.dueDate'],
+                ['name' => 'countPiece'],
+                ['name' => 'countPiece'],
+                ['name' => 'perWeight'],
+                ['name' => 'totalWeight'],
+                ['name' => 'upstreamDoc'],
+                ['name' => 'model'],
+                ['name' => 'stamp'],
+                ['name' => 'size'],
+                ['name' => 'note'],
+            ]
         ]);
     }
 

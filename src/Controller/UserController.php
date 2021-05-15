@@ -41,8 +41,15 @@ class UserController extends AbstractController
         return $this->render('crud/paginate.html.twig', [
             'page' => $this->page,
             'items' => $p,
+            'filters' => ['u.name' => 'Name'],
             'columns' => ['id', 'name', 'username', 'team', 'note'],
-            'filters' => ['u.name' => 'Name']
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name'],
+                ['name' => 'username'],
+                ['name' => 'team'],
+                ['name' => 'note']
+            ]
         ]);
     }
 
