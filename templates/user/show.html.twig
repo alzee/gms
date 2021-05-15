@@ -12,16 +12,20 @@
                 <td>{{ user.id }}</td>
             </tr>
             <tr>
-                <th>Username</th>
-                <td>{{ user.username }}</td>
-            </tr>
-            <tr>
                 <th>name</th>
                 <td>{{ user.name }}</td>
             </tr>
             <tr>
-                <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <th>Username</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th>Team</th>
+                <td>{{ user.team }}</td>
+            </tr>
+            <tr>
+                <th>Note</th>
+                <td>{{ user.note }}</td>
             </tr>
             <tr>
                 <th>Box</th>

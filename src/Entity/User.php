@@ -51,6 +51,21 @@ class User implements UserInterface
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
+     */
+    private $wn;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Team::class)
+     */
+    private $team;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $note;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -164,6 +179,42 @@ class User implements UserInterface
     public function setName(?string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getWn(): ?string
+    {
+        return $this->wn;
+    }
+
+    public function setWn(?string $wn): self
+    {
+        $this->wn = $wn;
+
+        return $this;
+    }
+
+    public function getTeam(): ?Team
+    {
+        return $this->team;
+    }
+
+    public function setTeam(?Team $team): self
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
+    public function getNote(): ?string
+    {
+        return $this->note;
+    }
+
+    public function setNote(?string $note): self
+    {
+        $this->note = $note;
 
         return $this;
     }
