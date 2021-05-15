@@ -108,8 +108,9 @@ class MainController extends AbstractController
             return $this->redirectToRoute('main_index');
         }
 
-        return $this->render('main/edit.html.twig', [
-            'main' => $main,
+        return $this->render('crud/edit.html.twig', [
+            'page' => $this->page,
+            'item' => $main,
             'form' => $form->createView(),
         ]);
     }
