@@ -9,19 +9,31 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/stafftype")
  */
 class StafftypeController extends AbstractController
 {
+    private $page = 'stafftype';
+
     /**
      * @Route("/", name="stafftype_index", methods={"GET"})
      */
-    public function index(StafftypeRepository $stafftypeRepository): Response
+    public function paginate(PaginatorInterface $paginator, Request $request): Response
     {
-        return $this->render('stafftype/index.html.twig', [
-            'stafftypes' => $stafftypeRepository->findAll(),
+        $dql = "select s from App\Entity\Stafftype s order by s.id desc";
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+        $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+
+        return $this->render('crud/index.html.twig', [
+            'page' => $this->page,
+            'items' => $p,
+            'columns' => [
+                ['name' => 'id'],
+                ['name' => 'name'],
+            ]
         ]);
     }
 
@@ -42,8 +54,9 @@ class StafftypeController extends AbstractController
             return $this->redirectToRoute('stafftype_index');
         }
 
-        return $this->render('stafftype/new.html.twig', [
-            'stafftype' => $stafftype,
+        return $this->render('crud/new.html.twig', [
+            'page' => $this->page,
+            'item' => $stafftype,
             'form' => $form->createView(),
         ]);
     }
@@ -53,8 +66,10 @@ class StafftypeController extends AbstractController
      */
     public function show(Stafftype $stafftype): Response
     {
-        return $this->render('stafftype/show.html.twig', [
-            'stafftype' => $stafftype,
+        return $this->render('crud/show.html.twig', [
+            'page' => $this->page,
+            'item' => $stafftype,
+            'fields' => ['id', 'name']
         ]);
     }
 
@@ -72,8 +87,9 @@ class StafftypeController extends AbstractController
             return $this->redirectToRoute('stafftype_index');
         }
 
-        return $this->render('stafftype/edit.html.twig', [
-            'stafftype' => $stafftype,
+        return $this->render('crud/edit.html.twig', [
+            'page' => $this->page,
+            'item' => $stafftype,
             'form' => $form->createView(),
         ]);
     }
