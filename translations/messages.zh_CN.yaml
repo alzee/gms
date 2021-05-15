@@ -47,6 +47,7 @@ factory: 工厂
 branch: 发单分行
 LossRate: 耗率
 box: 现重
+Box: 现重
 child: 子单
 weighing: 称重
 confirm: 确认

@@ -21,7 +21,7 @@ class UserController extends AbstractController
      */
     public function index(UserRepository $userRepository): Response
     {
-        return $this->render('user/index.html.twig', [
+        return $this->render('crud/index.html.twig', [
             'users' => $userRepository->findAll(),
         ]);
     }
@@ -35,7 +35,7 @@ class UserController extends AbstractController
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 
-        return $this->render('user/paginate.html.twig', [
+        return $this->render('crud/paginate.html.twig', [
             'users' => $p
         ]);
     }
@@ -57,7 +57,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('user_index');
         }
 
-        return $this->render('user/new.html.twig', [
+        return $this->render('crud/new.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);
@@ -68,7 +68,7 @@ class UserController extends AbstractController
      */
     public function show(User $user): Response
     {
-        return $this->render('user/show.html.twig', [
+        return $this->render('crud/show.html.twig', [
             'user' => $user,
         ]);
     }
@@ -87,7 +87,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('user_index');
         }
 
-        return $this->render('user/edit.html.twig', [
+        return $this->render('crud/edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);
