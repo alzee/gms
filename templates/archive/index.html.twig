@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ page|capitalize|trans }} {{ 'log'|trans }}{% endblock %}
+{% block title %}{{ page|capitalize|trans }}{{ 'log'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>{{ page|capitalize|trans}}</h1>
+    <h1>{{ page|capitalize|trans }}{{ 'log'|trans }}</h1>
 
   <div class="row mx-0 my-3">
     {% if filters is defined %}
