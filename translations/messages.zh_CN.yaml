@@ -1,4 +1,33 @@
 log: 明细
+division: 部门
+prodtype: 货类
+line: 专线类型
+seq: 处理次序
+transtype: 交收类型
+transreason: 交收原因
+op: 操作类型
+lossrate: 耗率
+jewelry: 首饰类别
+series: 产品系列
+embed: 镶嵌原料
+shouhuopihao: 收货批号
+doctype: 单据类型
+cotype: 合作方式
+loss: 生产耗重
+wageId: 工费编号
+wageExtra: 手入工费
+wageTotal: 总工费
+whyExtra: 手入工费原因
+weightHolding: 存单总重
+balanceDoc: 结存单数
+balancePiece: 结存件数
+lossAccum: 累积生产耗重
+balance: 结存金重
+staff: 员工
+stafftype: 员工性质
+
+
+
 Balance: 结存
 Holding: 持单
 Trans: 交收

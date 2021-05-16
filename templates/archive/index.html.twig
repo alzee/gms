@@ -26,6 +26,7 @@
             </tr>
         </thead>
         <tbody>
+        {#
         {% for item in items %}
             <tr>
                 {% for col in columns %}
@@ -41,6 +42,7 @@
                 <td colspan="13">{{ 'no records found'|trans }}</td>
             </tr>
         {% endfor %}
+        #}
         </tbody>
     </table>
 {# display navigation #}
