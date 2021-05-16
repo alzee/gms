@@ -78,6 +78,21 @@ class Ca
      */
     private $main;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $model;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Goldclass::class)
+     */
+    private $goldclass;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Team::class)
+     */
+    private $team;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -223,6 +238,42 @@ class Ca
     public function setMain(?Main $main): self
     {
         $this->main = $main;
+
+        return $this;
+    }
+
+    public function getModel(): ?string
+    {
+        return $this->model;
+    }
+
+    public function setModel(?string $model): self
+    {
+        $this->model = $model;
+
+        return $this;
+    }
+
+    public function getGoldclass(): ?Goldclass
+    {
+        return $this->goldclass;
+    }
+
+    public function setGoldclass(?Goldclass $goldclass): self
+    {
+        $this->goldclass = $goldclass;
+
+        return $this;
+    }
+
+    public function getTeam(): ?Team
+    {
+        return $this->team;
+    }
+
+    public function setTeam(?Team $team): self
+    {
+        $this->team = $team;
 
         return $this;
     }
