@@ -1,20 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ArchiveController!{% endblock %}
+{% block title %}{{ page|capitalize|trans }} {{ 'log'|trans }}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>{{ page|capitalize|trans}}</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+  <div class="row mx-0 my-3">
+    {% if filters is defined %}
+    {{ knp_pagination_filter(items, filters) }}
+    {% else %}
+    <div class="col"></div>
+    {% endif %}
+  </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/al/w/gms/src/Controller/ArchiveController.php'|file_link(0) }}">src/Controller/ArchiveController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/al/w/gms/templates/archive/index.html.twig'|file_link(0) }}">templates/archive/index.html.twig</a></code></li>
-    </ul>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                {% for col in columns %}
+                {% if col.sort is defined %}
+                <th>{{ knp_pagination_sortable(items, col.name|trans, col.sort)}}</th>
+                {% else %}
+                <th>{{ col.name|trans }}</th>
+                {% endif %}
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                {% for col in columns %}
+                {% if col.name == 'date' or col.name == 'dueDate' %}
+                <td>{{ attribute(item, col.name) ? attribute(item, col.name)|date('Y-m-d H:i:s') : '' }}</td>
+                {% else %}
+                <td>{{ attribute(item, col.name) }}</td>
+                {% endif %}
+                {% endfor %}
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">{{ 'no records found'|trans }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(items) }}
 </div>
 {% endblock %}
