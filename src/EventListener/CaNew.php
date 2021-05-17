@@ -44,6 +44,7 @@ class CaNew
                         $ca1->setWeightAttach($ca1->getWeightAttach() / $countChildren);
                         $ca1->setWeight($ca1->getWeight() / $countChildren);
                         $em->persist($ca1);
+                        $ca->setChild($c);
                     }
                 }
             }

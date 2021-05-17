@@ -17,6 +17,7 @@
         <thead>
             <tr>
                 <th>{{'id' | trans}}</th>
+                <th>{{'main' | trans}}</th>
                 <th>{{'child' | trans}}</th>
                 <th>{{'clerk' | trans}}</th>
                 <th>{{'weightGold' | trans}}</th>
@@ -37,6 +38,7 @@
         {% for ca in cas %}
             <tr>
                 <td>{{ ca.id }}</td>
+                <td>{{ ca.main }}</td>
                 <td>{{ ca.child }}</td>
                 <td>{{ ca.clerk }}</td>
                 <td>{{ ca.weightGold }}</td>
