@@ -99,6 +99,7 @@ reader.onResult(function (ret) {
         if (wn === wn0) {
             let a = document.querySelector('#caModal #modal-confirm');
             a.classList.remove('disabled');
+            window.location = a.href;
         }
         break;
       case READER_CMD._reader_cmd_m_init_value:
