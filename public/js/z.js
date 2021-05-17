@@ -174,7 +174,6 @@ function dataToModal() {
         case 'ca':
             let inputs = modal.querySelectorAll('input');
             for (const i of inputs) {
-              console.log(i.id);
               let td = tr.querySelector('.' + i.id);
               if (td) {
                 i.placeholder = td.innerText;
@@ -210,7 +209,7 @@ if (writeCardBtns) {
 
 function writeCard() {
   const wn = this.parentElement.parentElement.querySelector('.wn').innerText;
-  const data = wn.padEnd(16 - wn.length, 0);
+  const data = wn.padEnd(16, 0);
   console.log(wn, data);
   write(data);
 }

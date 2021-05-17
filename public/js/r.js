@@ -93,9 +93,9 @@ reader.onResult(function (ret) {
         // auto beep
         msg = "S50/S70 读数据成功. 读取到的数据: " + ret.resultData + "\n";
         // get data
-        let wn = ret.resultData.substr(0 ,4);
+        let wn = ret.resultData.substr(0, 16);
         let wn0 = document.querySelector('#caModal #wn').placeholder;
-        if (wn === wn0) {
+        if (wn.indexOf(wn0) === 0) {
             readerBeep();
             let a = document.querySelector('#caModal #modal-confirm');
             a.classList.remove('disabled');
@@ -1033,8 +1033,6 @@ function read(){
             rfCardTypeA();
             mifareAuthenticationKey();
             mifareRead();
-            if (i === 5) {
-            }
             i += 1;
         }
         ,1000);
