@@ -180,9 +180,10 @@ function dataToModal() {
                 i.placeholder = td.innerText;
               }
             }
+            modal.querySelector('#modal-confirm').pathname = '/ca/confirm/' + tr.firstElementChild.innerText;
             break;
         case 'cc':
-            modal.querySelector('#modal-confirm').pathname = '/cc/confirm/' + tds[0].innerText;
+            modal.querySelector('#modal-confirm').pathname = '/cc/confirm/' + tr.firstElementChild.innerText;
             break;
     }
 }
