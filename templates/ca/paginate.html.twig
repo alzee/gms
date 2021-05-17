@@ -37,22 +37,21 @@
         <tbody>
         {% for ca in cas %}
             <tr>
-                <td>{{ ca.id }}</td>
-                <td>{{ ca.main }}</td>
-                <td>{{ ca.child }}</td>
-                <td>{{ ca.clerk }}</td>
-                <td>{{ ca.weightGold }}</td>
-                <td>{{ ca.weightAttach }}</td>
-                <td>{{ ca.weight }}</td>
-                <td>{{ ca.craft }}</td>
-                <td>{{ ca.artisan }}</td>
-                <td>{{ ca.date|date("Y-m-d H:i:s") }}</td>
-                <td class="d-none">{{ ca.artisan.wn}}</td>
-                <td class="d-none">{{ ca.child.countPiece}}</td>
-                <td class="d-none">{{ ca.child.countPiece}}</td>
-                <td class="d-none">{{ ca.child.size}}</td>
-                <td class="d-none">{{ ca.child.goldClass}}</td>
-                <td class="d-none">{{ ca.child.model}}</td>
+                <td class="id">{{ ca.id }}</td>
+                <td class="main">{{ ca.main }}</td>
+                <td class="child">{{ ca.child }}</td>
+                <td class="cherk">{{ ca.clerk }}</td>
+                <td class="weightGold">{{ ca.weightGold }}</td>
+                <td class="weightAttach">{{ ca.weightAttach }}</td>
+                <td class="weight">{{ ca.weight }}</td>
+                <td class="craft">{{ ca.craft }}</td>
+                <td class="artisan">{{ ca.artisan }}</td>
+                <td class="date">{{ ca.date|date("Y-m-d H:i:s") }}</td>
+                <td class="d-none wn ">{{ ca.artisan.wn}}</td>
+                <td class="d-none countPiece ">{{ ca.child.countPiece}}</td>
+                <td class="d-none size ">{{ ca.child.size}}</td>
+                <td class="d-none goldclass ">{{ ca.child.goldclass}}</td>
+                <td class="d-none model">{{ ca.child.model}}</td>
                 <td>
                     <a class="btn btn-sm btn-primary" href="{{ path('ca_show', {'id': ca.id}) }}">{{'show' | trans}}</a>
                     {% if ca.status == 2 %}
@@ -89,7 +88,7 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="">单号</label>
-      <input readonly type="text" class="form-control" id="sn">
+      <input readonly type="text" class="form-control" id="child">
     </div>
     <div class="form-group col-md-6">
       <label for="">工匠</label>
@@ -113,7 +112,7 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="">金类</label>
-      <input readonly type="text" class="form-control" id="goldClass">
+      <input readonly type="text" class="form-control" id="goldclass">
     </div>
     <div class="form-group col-md-6">
       <label for="">金重</label>
