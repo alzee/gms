@@ -25,6 +25,7 @@ class CaNew
 
         $doc = $ca->getDoc();
         if (!is_null($doc)) {
+            $ca->setDoc(null);
             $child = $em->getRepository(Child::class)->findOneBy(['sn' => $doc]);
             if (!is_null($child)) {
                 $ca->setChild($child);
@@ -33,6 +34,17 @@ class CaNew
                 $main = $em->getRepository(Main::class)->findOneBy(['sn' => $doc]);
                 if (!is_null($main)) {
                     $ca->setMain($main);
+
+                    $children = $em->getRepository(Child::class)->findOneBy(['main' => $main]);
+                    $countChildren = $em->getRepository(Child::class)->count(['main' => $main]);
+                    foreach ($children as $c) {
+                        $ca1 = clone $ca;
+                        $ca1->setChild($c->getSn());
+                        $ca1->setWeightGold($ca1->getWeightGold() / $countChildren);
+                        $ca1->setWeightAttach($ca1->getWeightAttach() / $countChildren);
+                        $ca1->setWeight($ca1->getWeight() / $countChildren);
+                        $em->persist($ca1);
+                    }
                 }
             }
         }

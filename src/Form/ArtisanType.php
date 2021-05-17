@@ -13,6 +13,7 @@ class ArtisanType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('wn')
         ;
     }
 
