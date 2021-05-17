@@ -4,8 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Ca;
 use App\Form\CaType;
-use App\Entity\Child;
-use App\Entity\Main;
 use App\Repository\CaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -88,22 +86,10 @@ class CaController extends AbstractController
     {
         $ca = new Ca();
         $ca->setClerk($this->getUser());
-        $ca->setDate(new \DateTimeImmutable());
         $form = $this->createForm(CaType::class, $ca);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $doc = $ca->getDoc();
-            $child = $this->getDoctrine()->getRepository(Child::class)->findOneBy(['sn' => $doc]);
-            if (!is_null($child)) {
-                $ca->setChild($child);
-            }
-            else {
-                $main = $this->getDoctrine()->getRepository(Main::class)->findOneBy(['sn' => $doc]);
-                if (!is_null($main)) {
-                    $ca->setMain($main);
-                }
-            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($ca);
             $entityManager->flush();

@@ -41,6 +41,13 @@ services:
                 event: 'postPersist'
                 entity: 'App\Entity\Main'
 
+    App\EventListener\CaNew:
+        tags:
+            -
+                name: 'doctrine.orm.entity_listener'
+                event: 'prePersist'
+                entity: 'App\Entity\Ca'
+
     App\EventListener\CgdNew:
         tags:
             -
