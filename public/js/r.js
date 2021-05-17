@@ -91,12 +91,12 @@ reader.onResult(function (ret) {
         break;
       case READER_CMD._reader_cmd_m_read:
         // auto beep
-        readerBeep();
         msg = "S50/S70 读数据成功. 读取到的数据: " + ret.resultData + "\n";
         // get data
         let wn = ret.resultData.substr(0 ,4);
         let wn0 = document.querySelector('#caModal #wn').placeholder;
         if (wn === wn0) {
+            readerBeep();
             let a = document.querySelector('#caModal #modal-confirm');
             a.classList.remove('disabled');
             window.location = a.href;
