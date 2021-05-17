@@ -35,11 +35,11 @@ class CaNew
                 if (!is_null($main)) {
                     $ca->setMain($main);
 
-                    $children = $em->getRepository(Child::class)->findOneBy(['main' => $main]);
+                    $children = $em->getRepository(Child::class)->findBy(['main' => $main]);
                     $countChildren = $em->getRepository(Child::class)->count(['main' => $main]);
                     foreach ($children as $c) {
                         $ca1 = clone $ca;
-                        $ca1->setChild($c->getSn());
+                        $ca1->setChild($c);
                         $ca1->setWeightGold($ca1->getWeightGold() / $countChildren);
                         $ca1->setWeightAttach($ca1->getWeightAttach() / $countChildren);
                         $ca1->setWeight($ca1->getWeight() / $countChildren);

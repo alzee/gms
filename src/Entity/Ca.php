@@ -53,7 +53,7 @@ class Ca
 
     /**
      * @ORM\ManyToOne(targetEntity=Child::class)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $child;
 
@@ -103,7 +103,7 @@ class Ca
         return $this->doc;
     }
 
-    public function setDoc(string $doc): self
+    public function setDoc(?string $doc): self
     {
         $this->doc= $doc;
 
