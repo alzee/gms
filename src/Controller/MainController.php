@@ -81,7 +81,7 @@ class MainController extends AbstractController
         return $this->render('crud/show.html.twig', [
             'page' => $this->page,
             'item' => $main,
-            'fields' => ['sn', 'date', 'dueDate', 'countChild' ,'countPiece', 'perWeight', 'totalWeight', 'upstreamDoc', 'model', 'goldclass' 'stamp', 'size', 'note']
+            'fields' => ['sn', 'date', 'dueDate', 'countChild' ,'countPiece', 'perWeight', 'totalWeight', 'upstreamDoc', 'model', 'goldclass', 'stamp', 'size', 'note']
         ]);
     }
 
