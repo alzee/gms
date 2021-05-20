@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Ca;
 use App\Form\CaType;
+use App\Form\CaBackType;
 use App\Repository\CaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -57,25 +58,42 @@ class CaController extends AbstractController
     }
 
     /**
-     * @Route("/confirm/{id}", name="ca_confirm", methods={"GET"})
+     * @Route("/confirm/{id}", name="ca_confirm", methods={"POST", "GET"})
      */
-    public function confirm(Ca $ca): Response
+    public function confirm(Request $request, Ca $ca): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        $ca->setStatus(2);
-        $ca->setDate1(new \DateTimeImmutable());
-        $em->persist($ca);
-        $em->flush();
+        $form = $this->createForm(CaBackType::class, $ca);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            $em = $this->getDoctrine()->getManager();
+            $ca->setStatus(2);
+            $ca->setDate1(new \DateTimeImmutable());
+            $em->persist($ca);
+            $em->flush();
+
+            return $this->redirectToRoute('ca_back_index');
+
+        }
+
         return $this->redirectToRoute('ca_back_index');
     }
 
     /**
      * @Route("/back/{id}", name="ca_back", methods={"GET"})
      */
-    public function back(Ca $ca): Response
+    public function back(Ca $ca, $id): Response
     {
+        $form = $this->createForm(CaBackType::class, $ca, [
+          'action' => $this->generateUrl('ca_confirm', ['id' => $id]),
+        ]);
+
         return $this->render('ca/back.html.twig', [
             'ca' => $ca,
+            'form' => $form->createView(),
+            'weighing' => true
         ]);
     }
 

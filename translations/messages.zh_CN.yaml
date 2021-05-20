@@ -77,6 +77,7 @@ Sn: 单号
 sn: 单号
 main: 主单
 Weight: 重量
+Weight1: 重量
 countChild: 子单数量
 Count child: 子单数量
 perWeight: 子单重量
@@ -105,7 +106,9 @@ Subtracttype: 减金类型
 subtractreason: 减金原因
 Subtractreason: 减金原因
 Weight gold: 金重
+Weight gold1: 金重
 Weight attach: 附件重
+Weight attach1: 附件重
 receive: 收单
 received: 已收单
 date1: 接收日期

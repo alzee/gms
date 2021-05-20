@@ -24,14 +24,6 @@
                 <td>{{ ca.clerk }}</td>
             </tr>
             <tr>
-                <th>{{'weightGold' | trans}}</th>
-                <td>{{ ca.weightGold }}</td>
-            </tr>
-            <tr>
-                <th>{{'weightAttach' | trans}}</th>
-                <td>{{ ca.weightAttach }}</td>
-            </tr>
-            <tr>
                 <th>{{'craft' | trans}}</th>
                 <td>{{ ca.craft }}</td>
             </tr>
@@ -43,21 +35,23 @@
                 <th>{{'date' | trans}}</th>
                 <td>{{ ca.date ? ca.date|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
-            <tr>
-                <th>{{'date1' | trans}}</th>
-                <td>{{ ca.date1 ? ca.date1|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
         </tbody>
     </table>
 
+{{ form_start(form) }}
+    {{ form_widget(form) }}
     <div class="row mr-1 mb-2">
       <div class="col"></div>
       <button class="col-2 btn btn-success mr-2">计耗计工费</button>
-      <div class="col-2"></div>
+      <button class="col-2 btn btn-warning">无耗无工费</button>
     </div>
     <div class="row mr-1">
       <div class="col"></div>
-      <button class="col-2 btn btn-warning mr-2">无耗无工费</button>
-      <a class="col-2 btn btn-success" href="{{ path('ca_confirm', {'id': ca.id}) }}">确认收单</a>
+      {% if weighing is defined %}
+      <a id="weighing" class="col-2 btn btn-danger mr-2" href="#" color="light">{{ 'weighing' | trans}}</a>
+      {% endif %}
+    <button class="col-2 btn btn-info">{{ button_label|default('确认收单')  | trans}}</button>
     </div>
+{{ form_end(form) }}
+
 {% endblock %}
