@@ -43,15 +43,15 @@ class CaController extends AbstractController
     }
 
     /**
-     * @Route("/back", name="ca_back", methods={"GET"})
+     * @Route("/back", name="ca_back_index", methods={"GET"})
      */
-    public function back(PaginatorInterface $paginator, Request $request): Response
+    public function backIndex(PaginatorInterface $paginator, Request $request): Response
     {
         $dql = "select c from App\Entity\Ca c join c.child ch order by c.id desc";
         $query = $this->getDoctrine()->getManager()->createQuery($dql);
         $p = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 
-        return $this->render('ca/back.html.twig', [
+        return $this->render('ca/back_index.html.twig', [
             'cas' => $p
         ]);
     }
@@ -66,15 +66,15 @@ class CaController extends AbstractController
         $ca->setDate1(new \DateTimeImmutable());
         $em->persist($ca);
         $em->flush();
-        return $this->redirectToRoute('ca_index');
+        return $this->redirectToRoute('ca_back_index');
     }
 
     /**
-     * @Route("/receive/{id}", name="ca_receive", methods={"GET"})
+     * @Route("/back/{id}", name="ca_back", methods={"GET"})
      */
-    public function receive(Ca $ca): Response
+    public function back(Ca $ca): Response
     {
-        return $this->render('ca/receive.html.twig', [
+        return $this->render('ca/back.html.twig', [
             'ca' => $ca,
         ]);
     }
