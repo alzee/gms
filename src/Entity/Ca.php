@@ -93,6 +93,21 @@ class Ca
      */
     private $team;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $weightGold1;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $weightAttach1;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $weight1;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -274,6 +289,42 @@ class Ca
     public function setTeam(?Team $team): self
     {
         $this->team = $team;
+
+        return $this;
+    }
+
+    public function getWeightGold1(): ?float
+    {
+        return $this->weightGold1;
+    }
+
+    public function setWeightGold1(?float $weightGold1): self
+    {
+        $this->weightGold1 = $weightGold1;
+
+        return $this;
+    }
+
+    public function getWeightAttach1(): ?float
+    {
+        return $this->weightAttach1;
+    }
+
+    public function setWeightAttach1(?float $weightAttach1): self
+    {
+        $this->weightAttach1 = $weightAttach1;
+
+        return $this;
+    }
+
+    public function getWeight1(): ?float
+    {
+        return $this->weight1;
+    }
+
+    public function setWeight1(?float $weight1): self
+    {
+        $this->weight1 = $weight1;
 
         return $this;
     }
