@@ -41,6 +41,7 @@ class MainController extends AbstractController
                 ['name' => 'totalWeight'],
                 ['name' => 'upstreamDoc'],
                 ['name' => 'model'],
+                ['name' => 'goldclass'],
                 ['name' => 'stamp'],
                 ['name' => 'size'],
                 ['name' => 'note'],
