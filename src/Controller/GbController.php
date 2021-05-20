@@ -70,6 +70,7 @@ class GbController extends AbstractController
             'page' => $this->page,
             'item' => $gb,
             'form' => $form->createView(),
+            'weighing' => true
         ]);
     }
 

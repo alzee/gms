@@ -67,6 +67,7 @@ class GacController extends AbstractController
             'page' => $this->page,
             'item' => $gac,
             'form' => $form->createView(),
+            'weighing' => true
         ]);
     }
 

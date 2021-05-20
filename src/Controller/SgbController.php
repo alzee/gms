@@ -68,6 +68,7 @@ class SgbController extends AbstractController
             'page' => $this->page,
             'item' => $sgb,
             'form' => $form->createView(),
+            'weighing' => true
         ]);
     }
 

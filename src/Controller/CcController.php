@@ -94,6 +94,7 @@ class CcController extends AbstractController
             'page' => $this->page,
             'item' => $cc,
             'form' => $form->createView(),
+            'weighing' => true
         ]);
     }
 

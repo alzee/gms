@@ -68,6 +68,7 @@ class GcaController extends AbstractController
             'page' => $this->page,
             'item' => $gca,
             'form' => $form->createView(),
+            'weighing' => true
         ]);
     }
 

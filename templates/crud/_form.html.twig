@@ -1,4 +1,7 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
+    {% if weighing is defined %}
+    <a id="weighing" class="btn btn-danger" href="#" color="light">{{ 'weighing' | trans}}</a>
+    {% endif %}
     <button class="btn btn-info">{{ button_label|default('Save')  | trans}}</button>
 {{ form_end(form) }}
